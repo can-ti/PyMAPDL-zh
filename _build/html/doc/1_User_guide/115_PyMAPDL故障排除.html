@@ -1,0 +1,950 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>16. PyMAPDL 故障排除 &#8212; PyMAPDL 中文指南</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'doc/1_User_guide/115_PyMAPDL故障排除';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../2_MAPDL_commands/200_intro.html" />
+    <link rel="prev" title="15. 使用Krylov方法进行谐波分析" href="114_%E4%BD%BF%E7%94%A8Krylov%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E8%B0%90%E6%B3%A2%E5%88%86%E6%9E%90.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    PyMAPDL中文指南
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting_started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/000_intro.html">1. 开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/001_%E5%AD%A6%E4%B9%A0PyMAPDL.html">2. 学习PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/002_%E7%89%88%E6%9C%AC%E5%92%8C%E6%8E%A5%E5%8F%A3.html">3. 版本和接口</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/003_%E6%A0%87%E5%87%86%E5%AE%89%E8%A3%85.html">4. 标准安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/004_%E7%94%A8%E4%BA%8ELinux%E7%9A%84Windows%E5%AD%90%E7%B3%BB%E7%BB%9F.html">5. 用于Linux的Windows子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/005_Julia_and_PyMAPDL.html">6. Julia 和 PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/006_%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html">7. 常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/007_%E8%B4%A1%E7%8C%AE.html">8. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/008_%E5%88%9B%E5%BB%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84MAPDL%20docker%E5%AE%B9%E5%99%A8.html">9. 创建你自己的 MAPDL docker 容器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/009_%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%8A%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91.html">10. Develop on a container</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User_guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="100_intro.html">1. 用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="101_MAPDL%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8.html">2. MAPDL 初始设置和本地启动</a></li>
+<li class="toctree-l1"><a class="reference internal" href="102_PyMAPDL%E8%AF%AD%E6%B3%95%E5%92%8C%E7%94%A8%E6%B3%95.html">3. PyMAPDL 语法和用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="103_ANSYS_APDL%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%8E%A7%E5%88%B6%E7%A4%BA%E4%BE%8B.html">4. ANSYS APDL 交互式控制示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="104_%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BB%98%E5%9B%BE.html">5. 交互式绘图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="105_%E7%BD%91%E6%A0%BC%E5%92%8C%E5%87%A0%E4%BD%95.html">6. 网格和几何</a></li>
+<li class="toctree-l1"><a class="reference internal" href="106_%E5%90%8E%E5%A4%84%E7%90%86.html">7. 后处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="107_%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%A3%80%E7%B4%A2%E5%8F%82%E6%95%B0.html">8. 设置和检索参数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="108_%E8%AE%BF%E9%97%AEMAPDL%E6%95%B0%E6%8D%AE%E5%BA%93.html">9. 访问 MAPDL 数据库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="109_%E8%BD%AC%E6%8D%A2%E8%84%9A%E6%9C%AC.html">10. 转换脚本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="110_APDL_Math%E6%A6%82%E8%BF%B0.html">11. APDL Math 概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="111_%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAMAPDL%E5%AE%9E%E4%BE%8B%E6%B1%A0.html">12. 创建一个 MAPDL 实例池</a></li>
+<li class="toctree-l1"><a class="reference internal" href="112_%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%E6%A6%82%E8%BF%B0.html">13. 文件资源管理器概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="113_%E4%BD%BF%E7%94%A8Python%E7%BC%96%E5%86%99UPF%E5%AD%90%E7%A8%8B%E5%BA%8F.html">14. 使用 Python 编写 UPF 子程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="114_%E4%BD%BF%E7%94%A8Krylov%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E8%B0%90%E6%B3%A2%E5%88%86%E6%9E%90.html">15. 使用Krylov方法进行谐波分析</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">16. PyMAPDL 故障排除</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/doc/1_User_guide/115_PyMAPDL故障排除.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>PyMAPDL 故障排除</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debug-in-pymapdl">16.1. Debug in PyMAPDL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">16.2. 运行问题</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-timeout">16.2.1. Connection timeout</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-mapdl-launching">16.2.2. Testing MAPDL launching</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-windows">16.2.2.1. On Windows</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-linux">16.2.2.2. On Linux</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#licensing-issues">16.2.3. Licensing issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#incorrect-licensing-environment-variables">16.2.3.1. Incorrect licensing environment variables</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-private-network-vpn-issues">16.2.4. Virtual private network (VPN) issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-dependencies-on-linux">16.2.5. Missing dependencies on Linux</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#centos-7">16.2.5.1. CentOS 7</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ubuntu">16.2.5.2. Ubuntu</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ubuntu-20-04-and-older">16.2.5.3. Ubuntu 20.04 and older</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflicts-with-student-version">16.2.6. Conflicts with student version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incorrect-environment-variables">16.2.7. Incorrect environment variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-proxy-server">16.2.8. Using a proxy server</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall-settings">16.2.9. Firewall settings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">16.3. 手动设置可执行文件的位置</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">16.3.1. 可执行文件的默认位置</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">16.4. PyMAPDL 使用问题</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapdl-numpy">16.4.1. 在 MAPDL 中导入和导出 numpy 数组时出现的问题</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">16.5. PyMAPDL 稳定性</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">16.5.1. 建议</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issues">16.5.2. Issues</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pymapdl">
+<h1><span class="section-number">16. </span>PyMAPDL 故障排除<a class="headerlink" href="#pymapdl" title="Permalink to this heading">#</a></h1>
+<p>为了帮助您解决在使用 PyMAPDL 时可能遇到的任何问题，这里发布了一些最常见的问题。</p>
+<section id="debug-in-pymapdl">
+<h2><span class="section-number">16.1. </span>Debug in PyMAPDL<a class="headerlink" href="#debug-in-pymapdl" title="Permalink to this heading">#</a></h2>
+<p>如果在使用 PyMAPDL 时遇到麻烦，可以使用日志记录器将一些内部日志记录到文件中。可以检查此文件以帮助识别任何问题。</p>
+<p>通过在 Python 终端或脚本开头运行以下命令，可以将 logger 输出文件设置为 <code class="docutils literal notranslate"><span class="pre">mylog.log</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansys.mapdl.core</span> <span class="kn">import</span> <span class="n">LOG</span>
+
+<span class="n">LOG</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+<span class="n">LOG</span><span class="o">.</span><span class="n">log_to_file</span><span class="p">(</span><span class="s2">&quot;mylog.log&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">ansys.mapdl.core</span> <span class="kn">import</span> <span class="n">launch_mapdl</span>
+
+<span class="n">mapdl</span> <span class="o">=</span> <span class="n">launch_mapdl</span><span class="p">(</span><span class="n">loglevel</span><span class="o">=</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你可以把这个文件附在 PyMAPDL GitHub 仓库的错误报告中，以便进一步调查。如果你不能确定问题，你可以在 (PyMAPDL Discussions page)(<a class="github reference external" href="https://github.com/pyansys/PyMAPDL/discussions">pyansys/PyMAPDL#discussions</a>) 上新建一个讨论。如果你认为你已经发现了一个 bug，请在 (PyMAPDL Issues page)(<a class="github reference external" href="https://github.com/pyansys/pymapdl/issues">pyansys/pymapdl#issues</a>) 上打开一个 issue。</p>
+</section>
+<section id="id1">
+<h2><span class="section-number">16.2. </span>运行问题<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>有一些问题可能导致 MAPDL 无法启动，包括:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#connection-timeout"><span class="std std-ref">Connection timeout</span></a> (连接超时)</p></li>
+<li><p><a class="reference internal" href="#testing-mapdl-launching"><span class="std std-ref">Testing MAPDL launching</span></a> (测试MAPDL启动)</p></li>
+<li><p><a class="reference internal" href="#licensing-issues"><span class="std std-ref">Licensing issues</span></a> (许可证问题)</p></li>
+<li><p><a class="reference internal" href="#vpn-issues"><span class="std std-ref">Virtual private network (VPN) issues</span></a> (VPN问题)</p></li>
+<li><p><a class="reference internal" href="#missing-dependencies-on-linux"><span class="std std-ref">Missing dependencies on Linux</span></a> (缺少对Linux的依赖)</p></li>
+<li><p><a class="reference internal" href="#conflicts-with-student-version"><span class="std std-ref">Conflicts with student version</span></a> (与学生版本的冲突)</p></li>
+<li><p><a class="reference internal" href="#incorrect-environment-variables"><span class="std std-ref">Incorrect environment variables</span></a> (环境变量不正确)</p></li>
+<li><p><a class="reference internal" href="#using-a-proxy-server"><span class="std std-ref">Using a proxy server</span></a> (使用代理服务器)</p></li>
+<li><p><a class="reference internal" href="#firewall-settings"><span class="std std-ref">Firewall settings</span></a> (防火墙设置)</p></li>
+</ul>
+<section id="connection-timeout">
+<span id="id2"></span><h3><span class="section-number">16.2.1. </span>Connection timeout<a class="headerlink" href="#connection-timeout" title="Permalink to this heading">#</a></h3>
+<p>在某些网络中，MAPDL 连接到许可证服务器或远程实例的时间可能比预期的要长。在这些情况下，您可能会看到以下信息:</p>
+<p><strong>PyMAPDL is taking longer than expected to connect to an MAPDL session. Checking if there are any available licenses…</strong> (PyMAPDL 连接到一个 MAPDL 会话所花费的时间比预期的要长。)</p>
+<p>在尝试其他选项之前，您可以考虑增加 <code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">timeout</span></code>(默认是 30s ):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansys.mapdl.core</span> <span class="kn">import</span> <span class="n">launch_mapdl</span>
+
+<span class="n">mapdl</span> <span class="o">=</span> <span class="n">launch_mapdl</span><span class="p">(</span><span class="n">start_timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>或者，如果连接到远程实例，则可以使用:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansys.mapdl.core</span> <span class="kn">import</span> <span class="n">Mapdl</span>
+
+<span class="n">mapdl</span> <span class="o">=</span> <span class="n">Mapdl</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-mapdl-launching">
+<span id="id3"></span><h3><span class="section-number">16.2.2. </span>Testing MAPDL launching<a class="headerlink" href="#testing-mapdl-launching" title="Permalink to this heading">#</a></h3>
+<p>在某些情况下，可能需要从命令行手动运行启动命令。</p>
+<section id="on-windows">
+<h4><span class="section-number">16.2.2.1. </span>On Windows<a class="headerlink" href="#on-windows" title="Permalink to this heading">#</a></h4>
+<p>打开命令提示符 (cmd) 并运行与版本相关的命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\ANSYS Inc</span><span class="se">\v</span><span class="s2">211</span><span class="se">\a</span><span class="s2">nsys</span><span class="se">\b</span><span class="s2">in\winx64\ANSYS211.exe&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>PowerShell 用户可以不使用引号运行前面的命令。</p>
+</div>
+</section>
+<section id="on-linux">
+<h4><span class="section-number">16.2.2.2. </span>On Linux<a class="headerlink" href="#on-linux" title="Permalink to this heading">#</a></h4>
+<p>运行版本相关的命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">ansys_inc</span><span class="o">/</span><span class="n">v211</span><span class="o">/</span><span class="n">ansys</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ansys211</span>
+</pre></div>
+</div>
+<p>你应该在一个临时工作目录中启动 MAPDL，因为 MAPDL 会创建一些临时文件。</p>
+<p>您可以通过从临时目录启动 MAPDL 来指定一个目录:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">temporary_directory</span>
+<span class="n">cd</span> <span class="n">temporary_directory</span>
+ <span class="o">&amp;</span> <span class="s1">&#39;C:\Program Files\ANSYS Inc</span><span class="se">\v</span><span class="s1">222</span><span class="se">\a</span><span class="s1">nsys</span><span class="se">\b</span><span class="s1">in\winx64\ANSYS222.exe&#39;</span>
+</pre></div>
+</div>
+<p>或者，您可以使用 <code class="docutils literal notranslate"><span class="pre">-dir</span></code> flag 标志指定目录:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">temporary_directory</span>
+<span class="o">&amp;</span> <span class="s1">&#39;C:\Program Files\ANSYS Inc</span><span class="se">\v</span><span class="s1">222</span><span class="se">\a</span><span class="s1">nsys</span><span class="se">\b</span><span class="s1">in\winx64\ANSYS222.exe&#39;</span> <span class="o">-</span><span class="nb">dir</span> <span class="s2">&quot;C:</span><span class="se">\a</span><span class="s2">nsys_job\mytest1&quot;</span>
+</pre></div>
+</div>
+<p>如果这个命令没有启动 MAPDL，请查看命令输出:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="n">PS</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">user</span>\<span class="n">temp</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="s1">&#39;C:\Program Files\ANSYS Inc</span><span class="se">\v</span><span class="s1">222</span><span class="se">\a</span><span class="s1">nsys</span><span class="se">\b</span><span class="s1">in\winx64\ANSYS222.exe&#39;</span>
+<span class="o">***</span> <span class="n">ERROR</span> <span class="o">***</span>
+<span class="n">Another</span> <span class="n">Ansys</span> <span class="n">job</span> <span class="k">with</span> <span class="n">the</span> <span class="n">same</span> <span class="n">job</span> <span class="n">name</span> <span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="ow">is</span> <span class="n">already</span> <span class="n">running</span> <span class="ow">in</span> <span class="n">this</span>
+<span class="n">directory</span> <span class="ow">or</span> <span class="n">the</span> <span class="n">file</span><span class="o">.</span><span class="n">lock</span> <span class="n">file</span> <span class="n">has</span> <span class="ow">not</span> <span class="n">been</span> <span class="n">deleted</span> <span class="kn">from</span> <span class="nn">an</span> <span class="n">abnormally</span>
+<span class="n">terminated</span> <span class="n">Ansys</span> <span class="n">run</span><span class="o">.</span> <span class="n">To</span> <span class="n">disable</span> <span class="n">this</span> <span class="n">check</span><span class="p">,</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">ANSYS_LOCK</span> <span class="n">environment</span>
+<span class="n">variable</span> <span class="n">to</span> <span class="n">OFF</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="licensing-issues">
+<span id="id4"></span><h3><span class="section-number">16.2.3. </span>Licensing issues<a class="headerlink" href="#licensing-issues" title="Permalink to this heading">#</a></h3>
+<p>不正确的许可证服务器配置会使 MAPDL 无法获得有效的许可证。在这种情况下，你可能会看到类似以下的输出：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="n">PS</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">user</span>\<span class="n">temp</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="s1">&#39;C:\Program Files\ANSYS Inc</span><span class="se">\v</span><span class="s1">222</span><span class="se">\a</span><span class="s1">nsys</span><span class="se">\b</span><span class="s1">in\winx64\ANSYS222.exe&#39;</span>
+
+<span class="n">ANSYS</span> <span class="n">LICENSE</span> <span class="n">MANAGER</span> <span class="n">ERROR</span><span class="p">:</span>
+
+<span class="n">Maximum</span> <span class="n">licensed</span> <span class="n">number</span> <span class="n">of</span> <span class="n">demo</span> <span class="n">users</span> <span class="n">already</span> <span class="n">reached</span><span class="o">.</span>
+
+
+<span class="n">ANSYS</span> <span class="n">LICENSE</span> <span class="n">MANAGER</span> <span class="n">ERROR</span><span class="p">:</span>
+
+<span class="n">Request</span> <span class="n">name</span> <span class="n">mech_2</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">licensing</span> <span class="n">pool</span><span class="o">.</span>
+<span class="n">No</span> <span class="n">such</span> <span class="n">feature</span> <span class="n">exists</span><span class="o">.</span>
+<span class="n">Feature</span><span class="p">:</span>          <span class="n">mech_2</span>
+<span class="n">License</span> <span class="n">path</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">user</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\\<span class="n">cb0400ba</span><span class="o">-</span><span class="mi">6</span><span class="n">edb</span><span class="o">-</span><span class="mi">4</span><span class="n">bb9</span><span class="o">-</span><span class="n">a333</span><span class="o">-</span><span class="mf">41e7318</span><span class="n">c007d</span><span class="p">;</span>
+<span class="n">FlexNet</span> <span class="n">Licensing</span> <span class="n">error</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">357</span>
+</pre></div>
+</div>
+<p>PADT 有一个关于 ANSYS 问题的很棒的博客，许可证一直是一个常见的问题。例如，请参阅 <a class="reference external" href="https://www.padtinc.com/blog/15271-2/">ANSYS 2020R1上许可证的更改</a>。如果您负责维护 Ansys 许可证或者个人安装了 Ansys，请参阅 <a class="reference external" href="https://ansyshelp.ansys.com/account/secured?returnurl=/Views/Secured/prod_page.html?pn=Installation%20and%20Licensing&amp;pid=InstallationAndLicensing&amp;lang=en">Ansys 安装和许可文档</a>。</p>
+<p>要获得更全面的信息，请下载 <em>ANSYS Licensing Guide &lt;licensing_guide_pdf_&gt;</em>。</p>
+<section id="incorrect-licensing-environment-variables">
+<h4><span class="section-number">16.2.3.1. </span>Incorrect licensing environment variables<a class="headerlink" href="#incorrect-licensing-environment-variables" title="Permalink to this heading">#</a></h4>
+<p>不正确的许可环境变量</p>
+<p>还可以使用环境变量 <code class="docutils literal notranslate"><span class="pre">ANSYSLMD_LICENSE_FILE</span></code> 指定许可证服务器。下面的代码示例展示了如何在 Windows 或 Linux 上查看这个环境变量的值。</p>
+<p><strong>On Windows</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$env:ANSYSLMD_LICENSE_FILE
+1055@1.1.1.1
+</pre></div>
+</div>
+<p><strong>On Linux</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">printenv</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">ANSYSLMD_LICENSE_FILE</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="virtual-private-network-vpn-issues">
+<span id="vpn-issues"></span><h3><span class="section-number">16.2.4. </span>Virtual private network (VPN) issues<a class="headerlink" href="#virtual-private-network-vpn-issues" title="Permalink to this heading">#</a></h3>
+<p>从 ANSYS 2022 R2 到 ANSYS 2021 R1，MAPDL 在运行 VPN 软件有启动问题。一个问题源于 MPI 通信，可以通过传递 <code class="docutils literal notranslate"><span class="pre">-smp</span></code> 选项将执行模式设置为 “共享内存并行”来解决，该选项<strong>禁用了默认的”分布式内存并行”</strong>。或者使用不同的 MPI 编译，例如，如果你使用的是 Windows，你可以通过<code class="docutils literal notranslate"><span class="pre">-mpi</span> <span class="pre">msmpi</span></code> 来使用微软的 MPI 库，而不是默认的 Intel MPI 库。这个问题不影响 Linux 版本的 MAPDL。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果你在 ANSYS 2022 R2 到 ANSYS 2021 R1 的任何一个版本中使用 Windows，当 MAPDL 实例由 PyMAPDL 启动时，默认的编译器是 Microsoft MPI。</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.mapdl.core</span> <span class="kn">import</span> <span class="n">launch_mapdl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span> <span class="o">=</span> <span class="n">launch_mapdl</span><span class="p">(</span><span class="n">additional_switches</span><span class="o">=</span><span class="s2">&quot;-smp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>虽然这种方法的缺点是使用的较慢的共享内存并行模式，但你至少能够运行 MAPDL。关于共享内存与分布式内存的更多信息，请参见<a class="reference external" href="https://ansyshelp.ansys.com/account/secured?returnurl=/Views/Secured/corp/v222/en/ans_dan/dantoc.html">High-Performance Computing for Mechanical Simulations using ANSYS</a> (使用 ANSYS 的高性能计算)。</p>
+<p>此外，如果您的设备在 VPN 内，MAPDL 可能无法正确解决许可证服务器的 IP。验证许可证服务器的主机名或 IP 地址是否正确。</p>
+<p>在 Windows 上，您可以在以下位置找到指向许可证服务器的许可证配置文件:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Program</span> <span class="n">Files</span>\<span class="n">ANSYS</span> <span class="n">Inc</span>\<span class="n">Shared</span> <span class="n">Files</span>\<span class="n">Licensing</span>\<span class="n">ansyslmd</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+</section>
+<section id="missing-dependencies-on-linux">
+<span id="id5"></span><h3><span class="section-number">16.2.5. </span>Missing dependencies on Linux<a class="headerlink" href="#missing-dependencies-on-linux" title="Permalink to this heading">#</a></h3>
+<p>一些 Linux 安装可能缺少必要的依赖项。如果你遇到 <code class="docutils literal notranslate"><span class="pre">libXp.so.6:</span> <span class="pre">cannot</span> <span class="pre">open</span> <span class="pre">shared</span> <span class="pre">object</span> <span class="pre">file:</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code>这样的错误，你可能缺少一些必要的依赖项。</p>
+<section id="centos-7">
+<h4><span class="section-number">16.2.5.1. </span>CentOS 7<a class="headerlink" href="#centos-7" title="Permalink to this heading">#</a></h4>
+<p>在 CentOS 7上，你可以用以下方法安装缺失的依赖项：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">openssl</span> <span class="n">openssh</span><span class="o">-</span><span class="n">clients</span> <span class="n">mesa</span><span class="o">-</span><span class="n">libGL</span> <span class="n">mesa</span><span class="o">-</span><span class="n">libGLU</span> <span class="n">motif</span> <span class="n">libgfortran</span>
+</pre></div>
+</div>
+</section>
+<section id="ubuntu">
+<h4><span class="section-number">16.2.5.2. </span>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this heading">#</a></h4>
+<p>在 Ubuntu 22.04 上，使用这段代码来安装所需的依赖项：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+
+<span class="c1"># Install dependencies</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> \
+<span class="n">openssh</span><span class="o">-</span><span class="n">client</span> \
+<span class="n">libgl1</span> \
+<span class="n">libglu1</span> \
+<span class="n">libxm4</span> \
+<span class="n">libxi6</span>
+</pre></div>
+</div>
+<p>前面的代码处理了所有的事情，除了 <code class="docutils literal notranslate"><span class="pre">libxp6</span></code>，你必须用这段代码安装它：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a workaround</span>
+<span class="c1"># Source: https://bugs.launchpad.net/ubuntu/+source/libxp/+bug/1517884</span>
+<span class="n">apt</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">software</span><span class="o">-</span><span class="n">properties</span><span class="o">-</span><span class="n">common</span>
+<span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="o">-</span><span class="n">y</span> <span class="n">ppa</span><span class="p">:</span><span class="n">zeehio</span><span class="o">/</span><span class="n">libxp</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">libxp6</span>
+</pre></div>
+</div>
+</section>
+<section id="ubuntu-20-04-and-older">
+<h4><span class="section-number">16.2.5.3. </span>Ubuntu 20.04 and older<a class="headerlink" href="#ubuntu-20-04-and-older" title="Permalink to this heading">#</a></h4>
+<p>如果你正在使用 Ubuntu 16.04，你可以用下面的代码安装 <code class="docutils literal notranslate"><span class="pre">libxp16</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">libxp6</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>但是，如果您正在使用 Ubuntu 18.04 到 20.04，您必须手动下载并安装软件包。</p>
+<p>因为 <code class="docutils literal notranslate"><span class="pre">libxpl6</span></code> 预先依赖于 <code class="docutils literal notranslate"><span class="pre">multiarch-support</span></code>，而后者也已经过时了，所以必须将其删除。否则,你的包配置就会出现故障。下面的代码下载并修改了 <code class="docutils literal notranslate"><span class="pre">libxp6</span></code> 包，删除了 <code class="docutils literal notranslate"><span class="pre">multiarch-support</span></code> 的依赖项，然后通过 <code class="docutils literal notranslate"><span class="pre">dpkg</span></code> 包进行安装。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span>
+<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">br</span><span class="o">.</span><span class="n">debian</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">debian</span><span class="o">/</span><span class="n">pool</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">libx</span><span class="o">/</span><span class="n">libxp</span><span class="o">/</span><span class="n">libxp6_1</span><span class="mf">.0.2</span><span class="o">-</span><span class="mi">2</span><span class="n">_amd64</span><span class="o">.</span><span class="n">deb</span>
+<span class="n">ar</span> <span class="n">x</span> <span class="n">libxp6_1</span><span class="mf">.0.2</span><span class="o">-</span><span class="mi">2</span><span class="n">_amd64</span><span class="o">.</span><span class="n">deb</span>
+<span class="n">sudo</span> <span class="n">tar</span> <span class="n">xzf</span> <span class="n">control</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">sudo</span> <span class="n">sed</span> <span class="s1">&#39;/Pre-Depends/d&#39;</span> <span class="n">control</span> <span class="o">-</span><span class="n">i</span>
+<span class="n">sudo</span> <span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;tar c postinst postrm md5sums control | gzip -c &gt; control.tar.gz&quot;</span>
+<span class="n">sudo</span> <span class="n">ar</span> <span class="n">rcs</span> <span class="n">libxp6_1</span><span class="mf">.0.2</span><span class="o">-</span><span class="mi">2</span><span class="n">_amd64_mod</span><span class="o">.</span><span class="n">deb</span> <span class="n">debian</span><span class="o">-</span><span class="n">binary</span> <span class="n">control</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="n">data</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">xz</span>
+<span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span> <span class="o">./</span><span class="n">libxp6_1</span><span class="mf">.0.2</span><span class="o">-</span><span class="mi">2</span><span class="n">_amd64_mod</span><span class="o">.</span><span class="n">deb</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="conflicts-with-student-version">
+<span id="id6"></span><h3><span class="section-number">16.2.6. </span>Conflicts with student version<a class="headerlink" href="#conflicts-with-student-version" title="Permalink to this heading">#</a></h3>
+<p>尽管你可以将 Ansys 与其他 Ansys 产品或版本安装在一起，但在 Windows 上，你不应该将 Ansys 产品的学生版与非学生版安装在一起。例如，同时安装 Ansys MAPDL 2022 R2 学生版和 Ansys MAPDL 2022 R2 可能会因环境变量被覆盖而导致许可证冲突。拥有不同的版本，例如 Ansys MAPDL 2022 R2 学生版和Ansys MAPDL 2021 R1，是可以的。</p>
+<p>如果遇到问题，你应该编辑这些环境变量，删除对学生版本的任何引用：<code class="docutils literal notranslate"><span class="pre">ANSYSXXX_DIR</span></code>，<code class="docutils literal notranslate"><span class="pre">AWP_ROOTXXX</span></code>，和 <code class="docutils literal notranslate"><span class="pre">CADOE_LIBDIRXXX</span></code>。请访问 <a class="reference external" href="https://mapdl.docs.pyansys.com/version/stable/user_guide/troubleshoot.html#incorrect-environment-variables">Incorrect environment variables</a>(不正确的环境变量)，了解如何将这些环境变量设置到正确的位置。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>启动 MAPDL 学生版本默认情况下，如果检测到学生版本， PyMAPDL 将以 <code class="docutils literal notranslate"><span class="pre">SMP</span></code> 模式启动 MAPDL 实例，除非指定了另一个 MPI 选项。</p>
+</div>
+</section>
+<section id="incorrect-environment-variables">
+<span id="id7"></span><h3><span class="section-number">16.2.7. </span>Incorrect environment variables<a class="headerlink" href="#incorrect-environment-variables" title="Permalink to this heading">#</a></h3>
+<p>如果你使用非标准的安装方式，你可能需要手动设置环境变量 <code class="docutils literal notranslate"><span class="pre">ANSYSXXX_DIR</span></code>、<code class="docutils literal notranslate"><span class="pre">AWP_ROOTXXX</span></code> 和 <code class="docutils literal notranslate"><span class="pre">CADOE_LIBDIRXXX</span></code> 到正确位置。三位数的 MAPDL 版本号出现在显示 <code class="docutils literal notranslate"><span class="pre">XXX</span></code> 的地方。例如对于 Ansys MAPDL 2022 R2，<code class="docutils literal notranslate"><span class="pre">222</span></code> 出现在显示 <code class="docutils literal notranslate"><span class="pre">XXX</span></code> 的地方。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PS echo $env:AWP_ROOT222
+C:\Program Files\ANSYS Inc\ANSYS Student\v222
+PS $env:AWP_ROOT222 = &quot;C:\Program Files\ANSYS Inc\v222&quot;  # This overwrites the env var for the terminal session only.
+PS [System.Environment]::SetEnvironmentVariable(&#39;AWP_ROOT222&#39;,&#39;C:\Program Files\ANSYS Inc\v222&#39;,[System.EnvironmentVariableTarget]::User)  # This changes the env var permanently.
+PS echo $env:AWP_ROOT222
+C:\Program Files\ANSYS Inc\v222
+
+PS echo $env:ANSYS222_DIR
+C:\Program Files\ANSYS Inc\ANSYS Student\v222\ANSYS
+PS [System.Environment]::SetEnvironmentVariable(&#39;ANSYS222_DIR&#39;,&#39;C:\Program Files\ANSYS Inc\v222\ANSYS&#39;,[System.EnvironmentVariableTarget]::User)
+PS echo $env:ANSYS222_DIR
+C:\Program Files\ANSYS Inc\v222\ANSYS
+
+PS echo $env:CADOE_LIBDIR222
+C:\Program Files\ANSYS Inc\ANSYS Student\v222\CommonFiles\Language\en-us
+PS [System.Environment]::SetEnvironmentVariable(&#39;CADOE_LIBDIR222&#39;,&#39;C:\Program Files\ANSYS Inc\v222\CommonFiles\Language\en-us&#39;,[System.EnvironmentVariableTarget]::User)
+PS echo $env:CADOE_LIBDIR222
+C:\Program Files\ANSYS Inc\v222\CommonFiles\Language\en-us
+</pre></div>
+</div>
+</section>
+<section id="using-a-proxy-server">
+<span id="id8"></span><h3><span class="section-number">16.2.8. </span>Using a proxy server<a class="headerlink" href="#using-a-proxy-server" title="Permalink to this heading">#</a></h3>
+<p>在某些罕见的情况下，如果你使用代理，你可能会遇到一些连接到 MAPDL 实例的问题。当 gRPC 在代理环境中使用时，如果指定一个本地地址（即 <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code> ）作为连接目的地，gRPC 的实现会自动引用代理地址。在这种情况下，无法引用本地地址，从而导致连接错误。作为一种解决方法，你可以将环境变量 <code class="docutils literal notranslate"><span class="pre">NO_PROXY</span></code> 设置为你的本地地址 <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>，然后运行 <strong><code class="docutils literal notranslate"><span class="pre">launch_mapdl()</span></code></strong> 来连接到 MAPDL 实例。</p>
+</section>
+<section id="firewall-settings">
+<span id="id9"></span><h3><span class="section-number">16.2.9. </span>Firewall settings<a class="headerlink" href="#firewall-settings" title="Permalink to this heading">#</a></h3>
+<p>MAPDL 和 Python 应该有正确的防火墙设置，以允许两者之间的通信。如果您使用的是防火墙，您应该允许 MAPDL 接收以下端口的入站连接：</p>
+<ul class="simple">
+<li><p>5005X (TCP) for gRPC connections.</p></li>
+<li><p>50055 (TCP) for gRPC connection to the MAPDL database.</p></li>
+<li><p>1055 (TCP) for licensing connections.</p></li>
+<li><p>2325 (TCP) for licensing connections.</p></li>
+</ul>
+<p>必须允许 Python 进程连接到所提到的端口（外向连接）。</p>
+<p>通常情况下，大多数防火墙规则都集中在入站连接上，所以你应该不需要配置出站连接。然而，如果你遇到了问题，你应该确保防火墙没有阻止以下端口的出站连接：</p>
+<ul class="simple">
+<li><p>5005X (TCP) for gRPC connections.</p></li>
+<li><p>50055 (TCP) for gRPC connection to the MAPDL database.</p></li>
+<li><p>1055 (TCP) for licensing connections.</p></li>
+<li><p>2325 (TCP) for licensing connections.</p></li>
+</ul>
+<p>有关<strong>如何在 Windows 上配置防火墙</strong>的详细信息，请参阅 Ansys 论坛中的以下链接:<a class="reference external" href="https://forum.ansys.com/forums/topic/licensing-2022-r2-linux-ubuntu-and-also-windows/">许可证2022 R2 Linux Ubuntu (以及 Windows)</a>。</p>
+<p>关于<strong>如何在 Ubuntu Linux 上配置防火墙</strong>的更多信息，请参考以下链接 <a class="reference external" href="https://ubuntu.com/server/docs/security-firewall">Security-Firewall | Ubuntu</a>。</p>
+</section>
+</section>
+<section id="id10">
+<h2><span class="section-number">16.3. </span>手动设置可执行文件的位置<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<p>如果你有一个非标准的安装，PyMAPDL 可能无法找到你的 MAPDL 安装位置。如果是这种情况，请提供 MAPDL 的位置作为 <strong><code class="docutils literal notranslate"><span class="pre">launch_mapdl()</span></code></strong> 的第一个参数。</p>
+<p><strong>On Windows</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.mapdl.core</span> <span class="kn">import</span> <span class="n">launch_mapdl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exec_loc</span> <span class="o">=</span> <span class="s2">&quot;C:/Program Files/ANSYS Inc/v211/ansys/bin/winx64/ANSYS211.exe&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span> <span class="o">=</span> <span class="n">launch_mapdl</span><span class="p">(</span><span class="n">exec_loc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>On Linux</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.mapdl.core</span> <span class="kn">import</span> <span class="n">launch_mapdl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exec_loc</span> <span class="o">=</span> <span class="s2">&quot;/usr/ansys_inc/v211/ansys/bin/ansys211&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span> <span class="o">=</span> <span class="n">launch_mapdl</span><span class="p">(</span><span class="n">exec_loc</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id11">
+<h3><span class="section-number">16.3.1. </span>可执行文件的默认位置<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<p>当你第一次运行 PyMAPDL 时，它会检测可用的 Ansys 安装程序。</p>
+<p><strong>On Windows</strong></p>
+<p>Ansys的安装程序通常是在：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">Program</span> <span class="n">Files</span><span class="o">/</span><span class="n">ANSYS</span> <span class="n">Inc</span><span class="o">/</span><span class="n">vXXX</span>
+</pre></div>
+</div>
+<p><strong>On Linux</strong></p>
+<p>Ansys的安装程序通常是在：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">ansys_inc</span><span class="o">/</span><span class="n">vXXX</span>
+</pre></div>
+</div>
+<p>Or 是在:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">ansys_inc</span><span class="o">/</span><span class="n">vXXX</span>
+</pre></div>
+</div>
+<p>默认情况下，Ansys 安装程序使用前一个(<code class="docutils literal notranslate"><span class="pre">/usr/ansys_inc</span></code>)，但也创建一个符号到后一个(<code class="docutils literal notranslate"><span class="pre">/ansys_inc</span></code>)。</p>
+<p>如果 PyMAPDL 找到一个有效的 Ansys 安装程序，它会将其路径缓存在配置文件 <code class="docutils literal notranslate"><span class="pre">config.txt</span></code> 中。该文件的路径显示在下面的代码中:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.mapdl.core.launcher</span> <span class="kn">import</span> <span class="n">CONFIG_FILE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">CONFIG_FILE</span><span class="p">)</span>
+<span class="go">&#39;C:\\Users\\user\\AppData\\Local\\ansys_mapdl_core\\ansys_mapdl_core\\config.txt&#39;</span>
+</pre></div>
+</div>
+<p>在某些情况下，这个配置文件可能会变得过时。例如，当一个新的 Ansys 版本被安装，而早期的安装就会被删除。</p>
+<p>要用最新的路径更新这个配置文件，请使用：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.mapdl.core</span> <span class="kn">import</span> <span class="n">save_ansys_path</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">save_ansys_path</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Program Files\ANSYS Inc\v222\ansys\bin\winx64\ansys222.exe&quot;</span><span class="p">)</span>
+<span class="go">&#39;C:\\Program Files\\ANSYS Inc\\v222\\ansys\\bin\\winx64\\ansys222.exe&#39;</span>
+</pre></div>
+</div>
+<p>如果你想看看 PyMAPDL 检测到了哪些 Ansys 安装，请使用：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.mapdl.core.launcher</span> <span class="kn">import</span> <span class="n">get_available_ansys_installations</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_available_ansys_installations</span><span class="p">()</span>
+<span class="go">{222: &#39;C:\\Program Files\\ANSYS Inc\\v222&#39;,</span>
+<span class="go">212: &#39;C:\\Program Files\\ANSYS Inc\\v212&#39;,</span>
+<span class="go">-222: &#39;C:\\Program Files\\ANSYS Inc\\ANSYS Student\\v222&#39;}</span>
+</pre></div>
+</div>
+<p>因为 Python 字典不接受两个相等的 key，所以学生版本是 <strong>negative</strong> version。<strong><code class="docutils literal notranslate"><span class="pre">get_ability_ansys_install()</span></code></strong> 方法的结果首先列出较高版本，最后列出学生版本。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>您不应该安装相同的 Ansys 产品版本和学生版本。有关更多信息，请参见与 <a class="reference internal" href="#conflicts-with-student-version"><span class="std std-ref">学生版本的冲突</span></a>。</p>
+</div>
+</section>
+</section>
+<section id="id12">
+<h2><span class="section-number">16.4. </span>PyMAPDL 使用问题<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
+<section id="mapdl-numpy">
+<h3><span class="section-number">16.4.1. </span>在 MAPDL 中导入和导出 numpy 数组时出现的问题<a class="headerlink" href="#mapdl-numpy" title="Permalink to this heading">#</a></h3>
+<p>由于 MAPDL 的设计方式，没有办法存储一个或多个维度为零的数组。这可能发生在 numpy 数组中，它的第一维可以被设置为零。比如说：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.mapdl.core</span> <span class="kn">import</span> <span class="n">launch_mapdl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span> <span class="o">=</span> <span class="n">launch_mapdl</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_array</span>
+<span class="go">array([1, 2, 3, 4])</span>
+</pre></div>
+</div>
+<p>这些类型的数组维度总是转换为 <code class="docutils literal notranslate"><span class="pre">1</span></code>。</p>
+<p>例如:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;mapdlarray&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">my_array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;mapdlarray&quot;</span><span class="p">]</span>
+<span class="go">array([[1.],</span>
+<span class="go">   [2.],</span>
+<span class="go">   [3.],</span>
+<span class="go">   [4.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;mapdlarray&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(4, 1)</span>
+</pre></div>
+</div>
+<p>这意味着当你传递两个数组时，一个数组的第二轴等于0（例如 <code class="docutils literal notranslate"><span class="pre">my_array</span></code>），另一个数组的第二轴等于 1 ，如果稍后检索的话，则具有相同的形状。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_other_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_other_array</span>
+<span class="go">array([[1],</span>
+<span class="go">   [2],</span>
+<span class="go">   [3],</span>
+<span class="go">   [4]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;mapdlarray_b&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">my_other_array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;mapdlarray_b&quot;</span><span class="p">]</span>
+<span class="go">array([[1.],</span>
+<span class="go">   [2.],</span>
+<span class="go">   [3.],</span>
+<span class="go">   [4.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">mapdl</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;mapdlarray&quot;</span><span class="p">],</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;mapdlarray_b&quot;</span><span class="p">])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id13">
+<h2><span class="section-number">16.5. </span>PyMAPDL 稳定性<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h2>
+<section id="id14">
+<h3><span class="section-number">16.5.1. </span>建议<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<p>当使用 gRPC (默认)连接到 MAPDL 实例时，有些情况下 MAPDL 服务器可能意外退出。有几种方法可以提高 MADPL 的性能和稳定性:</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">mute</span></code> 来提高稳定性</p>
+<p>如果可能，将 <code class="docutils literal notranslate"><span class="pre">mute=True</span></code> 传递给各个 MAPDL 命令，或者用 <strong><code class="docutils literal notranslate"><span class="pre">Mapdl.mute</span></code></strong> 方法全局地设置它。这将禁止从 MAPDL 流回每个命令的响应，并略微提高性能和稳定性。考虑在你的程序或脚本中设置一个调试标志，以便根据需要打开和关闭日志记录和详细信息。</p>
+</section>
+<section id="issues">
+<h3><span class="section-number">16.5.2. </span>Issues<a class="headerlink" href="#issues" title="Permalink to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MAPDL 2021 R1 的 <strong><code class="docutils literal notranslate"><span class="pre">Mapdl.input()</span></code></strong> 方法有一个稳定性问题。如果可能的话，避免使用输入文件。尝试使用 <strong><code class="docutils literal notranslate"><span class="pre">Mapdl.upload()</span></code></strong> 方法来上传节点和元素，并通过 <strong><code class="docutils literal notranslate"><span class="pre">Mapdl.nread()</span></code></strong> 和 <strong><code class="docutils literal notranslate"><span class="pre">Mapdl.eread()</span></code></strong> 方法将其读入。</p>
+</div>
+<p><strong>More help needed?</strong></p>
+<blockquote>
+<div><p>“What do you do if a problem is not listed here?”</p>
+</div></blockquote>
+<p>进入 <a class="reference external" href="https://github.com/pyansys/pymapdl/issues">PyMAPDL Issues</a> 页面并搜索，看看你的问题是否已经被列出。如果没有，你可以采取以下措施之一：</p>
+<ul class="simple">
+<li><p>转到 <a class="reference external" href="https://github.com/pyansys/PyMAPDL/discussions">PyMAPDL Discussions</a>页面，创建一个关于您的问题的讨论。</p></li>
+<li><p>如果您发现了一个 bug 或者想要创建一个特性请求，请转到 <a class="reference external" href="https://github.com/pyansys/pymapdl/issues">PyMAPDL Issues</a>。</p></li>
+</ul>
+<p>对于更复杂的问题或查询，请联系 <a class="reference external" href="mailto:pyansys&#46;support&#37;&#52;&#48;ansys&#46;com">pyansys<span>&#46;</span>support<span>&#64;</span>ansys<span>&#46;</span>com</a>。</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./doc\1_User_guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="114_%E4%BD%BF%E7%94%A8Krylov%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E8%B0%90%E6%B3%A2%E5%88%86%E6%9E%90.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>使用Krylov方法进行谐波分析</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../2_MAPDL_commands/200_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debug-in-pymapdl">16.1. Debug in PyMAPDL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">16.2. 运行问题</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-timeout">16.2.1. Connection timeout</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-mapdl-launching">16.2.2. Testing MAPDL launching</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-windows">16.2.2.1. On Windows</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-linux">16.2.2.2. On Linux</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#licensing-issues">16.2.3. Licensing issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#incorrect-licensing-environment-variables">16.2.3.1. Incorrect licensing environment variables</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-private-network-vpn-issues">16.2.4. Virtual private network (VPN) issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-dependencies-on-linux">16.2.5. Missing dependencies on Linux</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#centos-7">16.2.5.1. CentOS 7</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ubuntu">16.2.5.2. Ubuntu</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ubuntu-20-04-and-older">16.2.5.3. Ubuntu 20.04 and older</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflicts-with-student-version">16.2.6. Conflicts with student version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incorrect-environment-variables">16.2.7. Incorrect environment variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-proxy-server">16.2.8. Using a proxy server</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall-settings">16.2.9. Firewall settings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">16.3. 手动设置可执行文件的位置</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">16.3.1. 可执行文件的默认位置</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">16.4. PyMAPDL 使用问题</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapdl-numpy">16.4.1. 在 MAPDL 中导入和导出 numpy 数组时出现的问题</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">16.5. PyMAPDL 稳定性</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">16.5.1. 建议</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issues">16.5.2. Issues</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ff-郑州大学
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright  (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+# options:
+#   numbered: True  # 这一个好像有点问题，但是官方文档就这么写的呀
+parts:
+  - caption: Getting_started
+    numbered : True  # 这将为当前的 Part 添加标题序号
+    chapters: 
+    - file: doc/0_Getting_started/000_intro
+      # title: an alternate page title # 这将替换00_intro的文件名
+    - file: doc/0_Getting_started/001_学习PyMAPDL
+    - file: doc/0_Getting_started/002_版本和接口
+    - file: doc/0_Getting_started/003_标准安装
+    - file: doc/0_Getting_started/004_用于Linux的Windows子系统
+    - file: doc/0_Getting_started/005_Julia_and_PyMAPDL
+    - file: doc/0_Getting_started/006_常见问题
+    - file: doc/0_Getting_started/007_贡献
+    - file: doc/0_Getting_started/008_创建你自己的MAPDL docker容器
+    - file: doc/0_Getting_started/009_在容器上进行开发
+
+  - caption: User_guide
+    numbered : True  # 这将为当前的 Part 添加标题序号
+    chapters: 
+    - file: doc/1_User_guide/100_intro
+    - file: doc/1_User_guide/101_MAPDL初始设置和本地启动
+    - file: doc/1_User_guide/102_PyMAPDL语法和用法
+    - file: doc/1_User_guide/103_ANSYS_APDL交互式控制示例
+    - file: doc/1_User_guide/104_交互式绘图
+    - file: doc/1_User_guide/105_网格和几何
+    - file: doc/1_User_guide/106_后处理
+    - file: doc/1_User_guide/107_设置和检索参数
+    - file: doc/1_User_guide/108_访问MAPDL数据库
+    - file: doc/1_User_guide/109_转换脚本
+    - file: doc/1_User_guide/110_APDL_Math概述
+    - file: doc/1_User_guide/111_创建一个MAPDL实例池
+    - file: doc/1_User_guide/112_文件资源管理器概述
+    - file: doc/1_User_guide/113_使用Python编写UPF子程序
+    - file: doc/1_User_guide/114_使用Krylov方法进行谐波分析
+    - file: doc/1_User_guide/115_PyMAPDL故障排除
+
+  - caption: User_guide
+    numbered : True  # 这将为当前的 Part 添加标题序号
+    chapters: 
+    - file: doc/2_MAPDL_commands/200_intro

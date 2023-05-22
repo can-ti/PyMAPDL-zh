@@ -1,0 +1,681 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>7. 后处理 &#8212; PyMAPDL 中文指南</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'doc/1_User_guide/106_后处理';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8. 设置和检索参数" href="107_%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%A3%80%E7%B4%A2%E5%8F%82%E6%95%B0.html" />
+    <link rel="prev" title="6. 网格和几何" href="105_%E7%BD%91%E6%A0%BC%E5%92%8C%E5%87%A0%E4%BD%95.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    PyMAPDL中文指南
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting_started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/000_intro.html">1. 开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/001_%E5%AD%A6%E4%B9%A0PyMAPDL.html">2. 学习PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/002_%E7%89%88%E6%9C%AC%E5%92%8C%E6%8E%A5%E5%8F%A3.html">3. 版本和接口</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/003_%E6%A0%87%E5%87%86%E5%AE%89%E8%A3%85.html">4. 标准安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/004_%E7%94%A8%E4%BA%8ELinux%E7%9A%84Windows%E5%AD%90%E7%B3%BB%E7%BB%9F.html">5. 用于Linux的Windows子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/005_Julia_and_PyMAPDL.html">6. Julia 和 PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/006_%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html">7. 常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/007_%E8%B4%A1%E7%8C%AE.html">8. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/008_%E5%88%9B%E5%BB%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84MAPDL%20docker%E5%AE%B9%E5%99%A8.html">9. 创建你自己的 MAPDL docker 容器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/009_%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%8A%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91.html">10. Develop on a container</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User_guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="100_intro.html">1. 用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="101_MAPDL%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8.html">2. MAPDL 初始设置和本地启动</a></li>
+<li class="toctree-l1"><a class="reference internal" href="102_PyMAPDL%E8%AF%AD%E6%B3%95%E5%92%8C%E7%94%A8%E6%B3%95.html">3. PyMAPDL 语法和用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="103_ANSYS_APDL%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%8E%A7%E5%88%B6%E7%A4%BA%E4%BE%8B.html">4. ANSYS APDL 交互式控制示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="104_%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BB%98%E5%9B%BE.html">5. 交互式绘图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="105_%E7%BD%91%E6%A0%BC%E5%92%8C%E5%87%A0%E4%BD%95.html">6. 网格和几何</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. 后处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="107_%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%A3%80%E7%B4%A2%E5%8F%82%E6%95%B0.html">8. 设置和检索参数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="108_%E8%AE%BF%E9%97%AEMAPDL%E6%95%B0%E6%8D%AE%E5%BA%93.html">9. 访问 MAPDL 数据库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="109_%E8%BD%AC%E6%8D%A2%E8%84%9A%E6%9C%AC.html">10. 转换脚本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="110_APDL_Math%E6%A6%82%E8%BF%B0.html">11. APDL Math 概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="111_%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAMAPDL%E5%AE%9E%E4%BE%8B%E6%B1%A0.html">12. 创建一个 MAPDL 实例池</a></li>
+<li class="toctree-l1"><a class="reference internal" href="112_%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%E6%A6%82%E8%BF%B0.html">13. 文件资源管理器概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="113_%E4%BD%BF%E7%94%A8Python%E7%BC%96%E5%86%99UPF%E5%AD%90%E7%A8%8B%E5%BA%8F.html">14. 使用 Python 编写 UPF 子程序</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/doc/1_User_guide/106_后处理.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>后处理</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.1. 增强了命令输出</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">7.2. Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.3. 选择实体</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.4. 选择节点</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.5. 后处理对象方法</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">7. </span>后处理<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>在活动的 MAPDL 会话中，可以使用 <strong><code class="docutils literal notranslate"><span class="pre">MAPDL.post_processing</span></code></strong> 类进行后处理，这是
+<strong><code class="docutils literal notranslate"><span class="pre">MAPDL</span></code></strong> 实例的一个属性。这种方法的一个优点是，它能很好地与现有的 MAPDL 脚本或自动化集成。这种方法也可用于从其他程序生成的结果文件，包括 <em>ANSYS Mechanical</em>。</p>
+<p>也许基于 gRPC 的后处理的最大优势之一是，它可以在没有任何文件交换的情况下远程完成。几 GB 的结果文件可以保持远程，只有必要的数据被流回客户端进行审查或可视化。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>我们鼓励你使用 <a class="reference external" href="https://github.com/pyansys/DPF-Core">DPF-Core</a> 和 <a class="reference external" href="https://github.com/pyansys/DPF-Post">DPF-Post</a> 的数据处理框架（DPF）模块，因为它们使用客户端-服务器接口为Ansys结果文件提供现代接口。它们使用的软件与 Ansys Workbench 中使用的软件相同，只不过是通过一个 Python 客户端。</p>
+</div>
+<section id="id2">
+<h2><span class="section-number">7.1. </span>增强了命令输出<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>所有 <strong><code class="docutils literal notranslate"><span class="pre">Mapdl</span></code></strong> class 命令都输出一个字符串对象，可以解析该对象以从中获取特定数据。</p>
+<p>在某些 <strong><code class="docutils literal notranslate"><span class="pre">Mapdl</span></code></strong> class 命令中，返回的字符串包含一些处理输出的方法。下<a class="reference internal" href="#enriched-command-output"><span class="std std-numref">Table 7.1</span></a> 列出了这些命令。</p>
+<table class="table" id="enriched-command-output">
+<caption><span class="caption-number">Table 7.1 </span><span class="caption-text">输出中带有额外处理方法的命令</span><a class="headerlink" href="#enriched-command-output" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>分类</p></th>
+<th class="head"><p>额外可用方法</p></th>
+<th class="head"><p>MAPDL 命令</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Listing</strong></p></td>
+<td><ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">cmd.to_list()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">cmd.to_array()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">cmd.to_dataframe()</span></code></strong></p></li>
+</ul>
+</td>
+<td><blockquote>
+<div><p><strong>Results listing</strong></p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.prcint()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.prenergy()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.prerr()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.presol()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.pretab()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.print()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.priter()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.prjsol()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.prnld()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.prnsol()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.prorb()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.prpath()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.prrfor()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.prrsol()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.prsect()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.prvect()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.stat()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.swlist()</span></code></strong></p></li>
+</ul>
+<blockquote>
+<div><p><strong>Other Listing</strong></p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.set('LIST')</span></code></strong></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Boundary Conditions Listing</strong></p></td>
+<td><ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">cmd.to_list()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">cmd.to_dataframe()</span></code></strong></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.dist()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.flist()</span></code></strong></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>下面是一个简单的例子，说明了它的用法:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.mapdl.core</span> <span class="kn">import</span> <span class="n">launch_mapdl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.mapdl.core</span> <span class="kn">import</span> <span class="n">examples</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span> <span class="o">=</span> <span class="n">launch_mapdl</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">example</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">vmfiles</span><span class="p">[</span><span class="s2">&quot;vm10&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">slashsolu</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">post1</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cmd</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">prnsol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">)</span>
+
+<span class="go"># Output as a list.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cmd</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="go">[[&#39;1&#39;, &#39;0.0000&#39;], [&#39;2&#39;, &#39;0.0000&#39;]]</span>
+
+<span class="go"># Output as array.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cmd</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span>
+<span class="go">array([[1., 0.],</span>
+<span class="go">       [2., 0.]])</span>
+
+<span class="go"># Output as dataframe.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cmd</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="go">NODE   UX</span>
+<span class="go">0      1.0</span>
+<span class="go">1      2.0</span>
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2><span class="section-number">7.2. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
+<p>您通常会使用 PRNSOL 命令从 MAPDL 请求节点结果:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST1</span><span class="p">:</span>
+<span class="n">PRNSOL</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">X</span>
+
+<span class="n">PRINT</span> <span class="n">U</span>    <span class="n">NODAL</span> <span class="n">SOLUTION</span> <span class="n">PER</span> <span class="n">NODE</span>
+
+ <span class="o">*****</span> <span class="n">POST1</span> <span class="n">NODAL</span> <span class="n">DEGREE</span> <span class="n">OF</span> <span class="n">FREEDOM</span> <span class="n">LISTING</span> <span class="o">*****</span>
+
+ <span class="n">LOAD</span> <span class="n">STEP</span><span class="o">=</span>     <span class="mi">1</span>  <span class="n">SUBSTEP</span><span class="o">=</span>     <span class="mi">1</span>
+  <span class="n">TIME</span><span class="o">=</span>    <span class="mf">1.0000</span>      <span class="n">LOAD</span> <span class="n">CASE</span><span class="o">=</span>   <span class="mi">0</span>
+
+ <span class="n">THE</span> <span class="n">FOLLOWING</span> <span class="n">DEGREE</span> <span class="n">OF</span> <span class="n">FREEDOM</span> <span class="n">RESULTS</span> <span class="n">ARE</span> <span class="n">IN</span> <span class="n">THE</span> <span class="n">GLOBAL</span> <span class="n">COORDINATE</span> <span class="n">SYSTEM</span>
+
+   <span class="n">NODE</span>       <span class="n">UX</span>
+      <span class="mi">1</span>  <span class="mf">0.10751E-003</span>
+      <span class="mi">2</span>  <span class="mf">0.85914E-004</span>
+      <span class="mi">3</span>  <span class="mf">0.57069E-004</span>
+      <span class="mi">4</span>  <span class="mf">0.13913E-003</span>
+      <span class="mi">5</span>  <span class="mf">0.35621E-004</span>
+      <span class="mi">6</span>  <span class="mf">0.52186E-004</span>
+      <span class="mi">7</span>  <span class="mf">0.30417E-004</span>
+      <span class="mi">8</span>  <span class="mf">0.36139E-004</span>
+      <span class="mi">9</span>  <span class="mf">0.15001E-003</span>
+<span class="n">MORE</span> <span class="p">(</span><span class="n">YES</span><span class="p">,</span><span class="n">NO</span> <span class="n">OR</span> <span class="n">CONTINUOUS</span><span class="p">)</span><span class="o">=</span>
+</pre></div>
+</div>
+<p>然而，使用 <strong><code class="docutils literal notranslate"><span class="pre">Mapdl</span></code></strong> class 的一个实例，您也可以请求节点位移:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">disp_x</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">post_processing</span><span class="o">.</span><span class="n">nodal_displacement</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="go">array([1.07512979e-04, 8.59137773e-05, 5.70690047e-05, ...,</span>
+<span class="go">       5.70333124e-05, 8.58600402e-05, 1.07445726e-04])</span>
+</pre></div>
+</div>
+<p>你也可以用下面的代码来绘制节点位移:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">post_processing</span><span class="o">.</span><span class="n">plot_nodal_displacement</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../../_images/post_norm_disp.png"><img alt="../../_images/post_norm_disp.png" src="../../_images/post_norm_disp.png" style="width: 576.0px; height: 339.59999999999997px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text"><strong>Normalized Displacement of a Cylinder from MAPDL</strong></span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id3">
+<h2><span class="section-number">7.3. </span>选择实体<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>你可以用以下方法选择实体，如节点或线：</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.nsel()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.esel()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.ksel()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.lsel()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.asel()</span></code></strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Mapdl.vsel()</span></code></strong></p></li>
+</ul>
+<p>这些方法返回所选实体的 ID。比如说：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">selected_nodes</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">nsel</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;NODE&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">selected_nodes</span><span class="p">)</span>
+<span class="go">array([   1    2    3 ... 1998 1999 2000])</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">ksel</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+<span class="go">array([1, 2, 3, ..., 1998, 1999, 2000])</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2><span class="section-number">7.4. </span>选择节点<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>如果节点或单元被选中，MAPDL 数据库会独立处理一些结果。如果你已经次选了某个组件(component)，并想同时限制某个输出（<strong><code class="docutils literal notranslate"><span class="pre">nodal_displacement()</span></code></strong>）的结果，请使用 <strong><code class="docutils literal notranslate"><span class="pre">selected_nodes</span></code></strong> 属性来隐藏(mask)当前所选节点：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">nsel</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;NODE&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">esel</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;ELEM&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">post_processing</span><span class="o">.</span><span class="n">selected_nodes</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2><span class="section-number">7.5. </span>后处理对象方法<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>有关所有可用后处理方法的完整列表，请参见 <a class="reference external" href="https://mapdl.docs.pyansys.com/version/stable/api/post.html#post-processing-api">PostProcessing class</a>。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./doc\1_User_guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="105_%E7%BD%91%E6%A0%BC%E5%92%8C%E5%87%A0%E4%BD%95.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>网格和几何</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="107_%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%A3%80%E7%B4%A2%E5%8F%82%E6%95%B0.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>设置和检索参数</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.1. 增强了命令输出</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">7.2. Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.3. 选择实体</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.4. 选择节点</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.5. 后处理对象方法</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ff-郑州大学
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright  (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

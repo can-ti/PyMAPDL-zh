@@ -1,0 +1,108 @@
+# 对于 nesting directives（嵌套指令）， 可以缩进内部的指令，但若缩进幅度超过 3 个空格，它们将被呈现为“raw code”（原始代码）。https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html#parameterizing-directives
+# jupyter book里引用标签label的写法和原本myst写法不太一样, {ref}`label-text` 或者 [](label-text) ,可以看到标签前不需要井字符`#`
+
+
+
+#######################################################################################
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+title: PyMAPDL 中文指南
+author: ff-郑州大学
+copyright: " (c) 2023 ANSYS, Inc. All rights reserved"  # Copyright year to be placed in the footer
+logo: logo.png
+# Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
+exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
+# Auto-exclude files not in the toc
+only_build_toc_files        : false
+
+
+#######################################################################################
+# Execution settings
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks         : force  # 是否在构建时执行笔记本。必须是（"auto"（自动）、"force"（强制）、"cache"（缓存）、"off"（关闭））中的一个。
+  cache                     : ""    # 一个通往jupyter缓存的路径，该缓存将被用来存储执行工件。 Defaults to `_build/.jupyter_cache/`
+  exclude_patterns          : []    # 在执行过程中要*跳过的模式列表 (e.g. a notebook that takes a really long time)
+  timeout                   : 60    # 每个笔记本单元被允许运行的最大时间（秒）。
+  run_in_temp               : false # If `True`, then a temporary directory will be created and used as the command working directory (cwd),
+                                    # otherwise the notebook's parent directory will be the cwd.
+  allow_errors              : false # If `False`, when a code cell raises an error the execution is stopped, otherwise all cells are always run.
+  stderr_output             : show  # One of 'show', 'remove', 'remove-warn', 'warn', 'error', 'severe'
+
+#######################################################################################
+# Parse and render settings
+parse:
+  myst_enable_extensions:
+    # 不要忘记列出您要启用的其他任何扩展，
+    # 包括默认情况下启用的那些！
+    # 另外注意， {'attrs_block', 'attrs_inline', 'tasklists'}这几个是无效的
+    - amsmath # Direct LaTeX Math
+    # - attrs_inline # attributes 是丰富标准CommonMark语法的一种方式，它为元素添加额外的信息。 Attributes 在大括号{}内指定，例如{#my-id .my-class key="value"}，并在块元素之前或内联元素之后。 
+    # - attrs_block
+    - colon_fence # 可以使用三个冒号:::替换三个反引号```,好像:::对于markdown的兼容性会更好
+    - deflist # definition lists,可以用来替换无序列表,挺好看的
+    - dollarmath # dollar $ and $$ encapsulated math
+    - fieldlist # 字段列表,在 API docstrings中应用会很好看
+    - html_admonition
+    - html_image
+    - linkify  #自动识别“裸露”的网址并添加超链接,启用这项语法扩展需要安装`linkify-it-py`包:`pip install linkify-it-py`或`pip install myst-parser[linkify]`
+    - replacements  # 自动转换一些常见文本，例如`+-`→`±`;具体见https://myst-parser.readthedocs.io/en/latest/syntax/optional.html
+    - smartquotes
+    # - strikethrough  # 删除线,`~~strikethrough with *emphasis*~~`
+    - substitution # 启用这项语法扩展,将允许你在 front-matter 中添加"替换"(注:这项扩展在code blocks中将不会起作用)
+    # - tasklists # 任务清单,写法:`- [x] An item that is complete`
+
+  myst_number_code_blocks:
+    - typescript # set a global default for line numbering
+
+  myst_heading_anchors: 2  # auto-generated header anchors,标题隐性引用方式,不推荐使用,因为文档/标题修改后容易出错
+
+  myst_url_schemes          : [mailto, http, https]  # URI schemes that will be recognised as external URLs in Markdown links
+  # myst_heading_anchors: 3
+
+#######################################################################################
+# HTML-specific settings
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  favicon                   : ""  # A path to a favicon image
+  use_edit_page_button      : false  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
+  use_repository_button     : true  # Whether to add a link to your repository button
+  use_issues_button         : false  # Whether to add an "open an issue" button
+  use_multitoc_numbering    : false   # Continuous numbering across parts/chapters:{`true` or `force`},见 (https://daobook.github.io/jupyter-book-zh/structure/configure.html#),这是我这设置为 `false`,意味着标题编号在不同的 Part 间是独立的.
+  extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  # Will be displayed underneath the left navbar.
+  extra_footer              : ""  # Will be displayed underneath the footer.
+  google_analytics_id       : ""  # A GA id that can be used to track book views.
+  home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
+  baseurl                   : ""  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+  comments:
+    hypothesis              : false
+    utterances              : false
+
+#######################################################################################
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+#######################################################################################
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+#######################################################################################
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/executablebooks/jupyter-book  # Online location of your book
+  path_to_book: docs  # Optional path to your book, relative to the repository root
+  branch: master  # Which branch of the repository should be used when creating links (optional)
+
+
+
+
+
+
+
+
+
