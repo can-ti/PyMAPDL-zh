@@ -1,0 +1,570 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>7. 常见问题 &#8212; PyMAPDL 中文指南</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'doc/0_Getting_started/06_常见问题';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8. Contributing" href="07_%E8%B4%A1%E7%8C%AE.html" />
+    <link rel="prev" title="6. Julia 和 PyMAPDL" href="05_Julia_and_PyMAPDL.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    PyMAPDL中文指南
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting_started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_intro.html">1. 开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_%E5%AD%A6%E4%B9%A0PyMAPDL.html">2. 学习PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_%E7%89%88%E6%9C%AC%E5%92%8C%E6%8E%A5%E5%8F%A3.html">3. 版本和接口</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_%E6%A0%87%E5%87%86%E5%AE%89%E8%A3%85.html">4. 标准安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_%E7%94%A8%E4%BA%8ELinux%E7%9A%84Windows%E5%AD%90%E7%B3%BB%E7%BB%9F.html">5. 用于Linux的Windows子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Julia_and_PyMAPDL.html">6. Julia 和 PyMAPDL</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. 常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_%E8%B4%A1%E7%8C%AE.html">8. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_%E5%88%9B%E5%BB%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84MAPDL%20docker%E5%AE%B9%E5%99%A8.html">9. 创建你自己的 MAPDL docker 容器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%8A%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91.html">10. Develop on a container</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User_guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1_User_guide/10_intro.html">1. 用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_User_guide/11_MAPDL%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8.html">2. MAPDL 初始设置和本地启动</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_User_guide/12_PyMAPDL%E8%AF%AD%E6%B3%95%E5%92%8C%E7%94%A8%E6%B3%95.html">3. PyMAPDL 语法和用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_User_guide/13_ANSYS_APDL%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%8E%A7%E5%88%B6%E7%A4%BA%E4%BE%8B.html">4. ANSYS APDL 交互式控制示例</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/doc/0_Getting_started/06_常见问题.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>常见问题</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-you-report-issues">7.1. How do you report issues?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pymapdl-ansys-act">7.2. PyMAPDL 与 Ansys ACT 的优缺点是什么？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apdl-ansys-pymapdl">7.3. APDL 是否已被 Ansys “弃用”？如果是的话，这对 PyMAPDL 意味着什么？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workbench-ansys-pymapdl">7.4. 与 Workbench 等其他 Ansys 产品相比，使用 PyMAPDL 的主要原因是什么？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.5. 如何结束模拟并重新启动脚本？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pymapdl-mapdl-gui">7.6. 为什么 PyMAPDL 结果与 MAPDL GUI 中显示的结果不同？</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-results">7.6.1. Listing results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-results">7.6.2. Plotting results</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">7. </span>常见问题<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<section id="how-do-you-report-issues">
+<h2><span class="section-number">7.1. </span>How do you report issues?<a class="headerlink" href="#how-do-you-report-issues" title="Permalink to this heading">#</a></h2>
+<p>要报告错误和文档错误并发出特性请求，请使用 GitHub 存储库的 <a class="reference external" href="https://github.com/pyansys/pymapdl/issues">PyMAPDL issues</a> 页面。</p>
+<p>要询问更多开放式问题或从社区寻求建议，请使用 GitHub 存储库的 <a class="reference external" href="https://github.com/pyansys/PyMAPDL/discussions">PyMAPDL discussions</a>页面。</p>
+</section>
+<section id="pymapdl-ansys-act">
+<h2><span class="section-number">7.2. </span>PyMAPDL 与 Ansys ACT 的优缺点是什么？<a class="headerlink" href="#pymapdl-ansys-act" title="Permalink to this heading">#</a></h2>
+<p>二者的优缺点取决于您的管理和软件处理方法。Ansys ACT<a class="footnote-reference brackets" href="#ansys-act" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> 是一种依赖于 Ansys Workbench 的方法，其中扩展从 ACT App Builder 内部构建，然后从 Ansys Machinery 内部运行。如果您打算改变参数，那么必须使用 Ansys optiSLang 来改变它们并批处理您的解决方案。</p>
+<p>与 Ansys ACT 相比，PyMAPDL 的主要优势是:</p>
+<ul class="simple">
+<li><p>PyMAPDL 与 Python 工具和开源模块紧密结合，可以与 Ansys 软件一起运行。</p></li>
+<li><p>PyMADPL 脚本是用 Python 编写的。而 ACT 使用 .NET，这意味着你只能调用 IronPython 和可能的 Ansys Mechanical 中的其他工具。</p></li>
+<li><p>由于 PyMAPDL 是在 Ansys Mechanical 之外的，因此您可以调用您的应用工作流程，而不需要打开 GUI 与用户互动。如果需要 GUI，您可以用 PyQt 创建您自己的 GUI。或者，你可以用 Matplotlib 或 VTK 来输出图谱。</p></li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>PyQt 写 GUI,感觉可行呀</p>
+</div>
+</aside>
+<ul class="simple">
+<li><p>PyMAPDL 与现代 Python(3) 兼容，而 ACT 只与 IronPython (Python2)兼容。</p></li>
+</ul>
+<p>最好的方法取决于您的工作流需求以及您希望如何开发软件。</p>
+</section>
+<section id="apdl-ansys-pymapdl">
+<h2><span class="section-number">7.3. </span>APDL 是否已被 Ansys “弃用”？如果是的话，这对 PyMAPDL 意味着什么？<a class="headerlink" href="#apdl-ansys-pymapdl" title="Permalink to this heading">#</a></h2>
+<p>APDL 并没有消失。事实上，只要你调用 Mechanical Workbench，它就会生成一个输入文件（ds.dat），并将其输入到 MAPDL 中。然而，在过去几年中，发生变化的是几何体、网格划分和后处理发生的地方。几何图形的生成可以在 SpaceClaim 或 Design Modeler 中进行，网格划分则使用 Workbench 中各种新的和强大的网格生成器。虽然这些工具远远优于 MAPDL 中的工具，但它们最大的局限是难以编写脚本（尤其是在外部）。因此，仍然有用户选择在 MAPDL 中生成几何体和网格。</p>
+</section>
+<section id="workbench-ansys-pymapdl">
+<h2><span class="section-number">7.4. </span>与 Workbench 等其他 Ansys 产品相比，使用 PyMAPDL 的主要原因是什么？<a class="headerlink" href="#workbench-ansys-pymapdl" title="Permalink to this heading">#</a></h2>
+<p>总有一些任务，使用一个产品会比另一个更合适。Workbench 是快速建立模型、网格、设置边界条件和求解的伟大工具。因为它是大量开发的目标，有许多功能使它容易运行分析。然而，它受到 IronPython 脚本的限制。此外，你无法在考虑精细度或高级调用多个产品，也无法使用诸如 NumPy、SciPy、PyTorch 和 TensorFlow 等软件包。PyMAPDL 将其与 MAPDL 联系起来，使你能够拥有一个完全参数化的工作流程，利用这些机器学习工具。它还允许你使用 PyVista 或 Matplotlib 生成高级图表。</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">7.5. </span>如何结束模拟并重新启动脚本？<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>关闭并重新打开 Python 会清除 Python 中的求解数据。要清除所有以前的数据，如网格，可以使用这段代码：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">_name_</span><span class="p">]</span><span class="o">.</span><span class="n">_dict_</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>然而，一个更有效的方法是使用 <code class="docutils literal notranslate"><span class="pre">clear()</span></code> 方法清除 MAPDL。你也可以退出并重新启动 MAPDL。</p>
+</section>
+<section id="pymapdl-mapdl-gui">
+<h2><span class="section-number">7.6. </span>为什么 PyMAPDL 结果与 MAPDL GUI 中显示的结果不同？<a class="headerlink" href="#pymapdl-mapdl-gui" title="Permalink to this heading">#</a></h2>
+<section id="listing-results">
+<h3><span class="section-number">7.6.1. </span>Listing results<a class="headerlink" href="#listing-results" title="Permalink to this heading">#</a></h3>
+<p>可能有几个原因导致 MAPDL GUI 中显示的结果与使用 PyMAPDL 获得的结果不同。最常见的原因是 MAPDL GUI 使用的图形配置与 PyMAPDL 使用的图形配置不同。</p>
+<p>在 MAPDL GUI 中，图形配置会改变结果的显示方式。每个图形配置以不同的方式实现实体选择和平均化。默认情况下，其图形配置被设置为 Power Graphics。然而，PyMAPDL 连接到一个以批处理模式运行的 MAPDL 实例，它默认使用的是 Full Graphics 配置。图形配置的这种差异也会影响到平均值。</p>
+<p>您可以使用以下命令更改 PyMAPDL 中的图形配置:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mapdl</span><span class="o">.</span><span class="n">graphics</span><span class="p">(</span><span class="s2">&quot;POWER&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>或者，您可以使用 POWRGRPH 按钮或以下命令更改 MAPDL GUI 中的图形配置:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">GRAPHICS</span><span class="p">,</span><span class="n">FULL</span>
+</pre></div>
+</div>
+<p>如何对节点上的结果进行平均化也会影响结果。默认情况下，MAPDL 对节点上的结果进行平均，除非存在材料类型不连续的情况。欲了解更多信息，请参见 <code class="docutils literal notranslate"><span class="pre">avres()</span></code>。此外，<code class="docutils literal notranslate"><span class="pre">efacet()</span></code> 命令也会影响到结果的显示方式。</p>
+<p>您应该确保在 MAPDL GUI 和 PyMAPDL 中，<code class="docutils literal notranslate"><span class="pre">avres()</span></code>和 <code class="docutils literal notranslate"><span class="pre">efacet()</span></code> 命令的值是相同的。</p>
+<p>最后，根据您试图获得的结果，您可能会使用不同的 MAPDL 命令。例如，命令
+<code class="docutils literal notranslate"><span class="pre">post.element_displacement()</span></code> 会组合使用 <code class="docutils literal notranslate"><span class="pre">PRETAB</span></code> 和 <code class="docutils literal notranslate"><span class="pre">ETAB</span></code> 命令来获得结果。然后，这个 MAPDL 命令可能会显示与使用 PyMAPDL <code class="docutils literal notranslate"><span class="pre">presol</span> <span class="pre">()</span></code> 方法获得的结果不同。为了确保您使用了正确的命令，应该比较使用 MAPLD 和 PyMAPDL 命令获得的结果。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Further reading on <a class="reference external" href="https://github.com/pyansys/pymapdl-reader/issues/185">this discussion</a>.</p>
+</div>
+</section>
+<section id="plotting-results">
+<h3><span class="section-number">7.6.2. </span>Plotting results<a class="headerlink" href="#plotting-results" title="Permalink to this heading">#</a></h3>
+<p>即使在 PyMAPDL 和 MAPDL 对结果值达成一致的情况下，仍然可能存在显示差异。例如，在一个四边形切面的节点上对整个切面的标量值进行插值是不确定性的。</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="ansys-act" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>ANSYS Application Customization Toolkit 简称 ACT ，是 ANSYS 系列产品的统一二次开发平台，ACT 使用易于学习但功能强大的 XML 标记语言和 IronPython 编程语言，即使不是专业的编程人员，也能为仿真工作流程创建定制化的应用插件。</p>
+</aside>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./doc\0_Getting_started"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05_Julia_and_PyMAPDL.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Julia 和 PyMAPDL</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="07_%E8%B4%A1%E7%8C%AE.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Contributing</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-you-report-issues">7.1. How do you report issues?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pymapdl-ansys-act">7.2. PyMAPDL 与 Ansys ACT 的优缺点是什么？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apdl-ansys-pymapdl">7.3. APDL 是否已被 Ansys “弃用”？如果是的话，这对 PyMAPDL 意味着什么？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workbench-ansys-pymapdl">7.4. 与 Workbench 等其他 Ansys 产品相比，使用 PyMAPDL 的主要原因是什么？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.5. 如何结束模拟并重新启动脚本？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pymapdl-mapdl-gui">7.6. 为什么 PyMAPDL 结果与 MAPDL GUI 中显示的结果不同？</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-results">7.6.1. Listing results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-results">7.6.2. Plotting results</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ff-郑州大学
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright  (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

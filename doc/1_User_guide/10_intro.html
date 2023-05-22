@@ -1,0 +1,619 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>1. 用户指南 &#8212; PyMAPDL 中文指南</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'doc/1_User_guide/10_intro';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2. MAPDL 初始设置和本地启动" href="11_MAPDL%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8.html" />
+    <link rel="prev" title="10. Develop on a container" href="../0_Getting_started/09_%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%8A%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    PyMAPDL中文指南
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting_started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/00_intro.html">1. 开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/01_%E5%AD%A6%E4%B9%A0PyMAPDL.html">2. 学习PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/02_%E7%89%88%E6%9C%AC%E5%92%8C%E6%8E%A5%E5%8F%A3.html">3. 版本和接口</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/03_%E6%A0%87%E5%87%86%E5%AE%89%E8%A3%85.html">4. 标准安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/04_%E7%94%A8%E4%BA%8ELinux%E7%9A%84Windows%E5%AD%90%E7%B3%BB%E7%BB%9F.html">5. 用于Linux的Windows子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/05_Julia_and_PyMAPDL.html">6. Julia 和 PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/06_%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html">7. 常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/07_%E8%B4%A1%E7%8C%AE.html">8. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/08_%E5%88%9B%E5%BB%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84MAPDL%20docker%E5%AE%B9%E5%99%A8.html">9. 创建你自己的 MAPDL docker 容器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/09_%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%8A%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91.html">10. Develop on a container</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User_guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. 用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_MAPDL%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8.html">2. MAPDL 初始设置和本地启动</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_PyMAPDL%E8%AF%AD%E6%B3%95%E5%92%8C%E7%94%A8%E6%B3%95.html">3. PyMAPDL 语法和用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_ANSYS_APDL%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%8E%A7%E5%88%B6%E7%A4%BA%E4%BE%8B.html">4. ANSYS APDL 交互式控制示例</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/doc/1_User_guide/10_intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>用户指南</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pymapdl">1.1. PyMAPDL 概述</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-mapdl">1.2. 用 Python 调用 MAPDL</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">1. </span>用户指南<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>本节提供了 PyMAPDL 的总体概述以及如何使用它。</p>
+<section id="pymapdl">
+<h2><span class="section-number">1.1. </span>PyMAPDL 概述<a class="headerlink" href="#pymapdl" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ansys-mapdl-core</span></code> 库中的 <strong><code class="docutils literal notranslate"><span class="pre">launch_mapdl()</span></code></strong> 函数在后台创建一个 <strong><code class="docutils literal notranslate"><span class="pre">Mapdl</span></code></strong> 类的实例，并向该服务发送命令。错误和警告会以 Python 的方式处理，让您可以实时开发一个脚本，而不必担心它在批处理模式下部署时是否正常。</p>
+<p>可以使用 <strong><code class="docutils literal notranslate"><span class="pre">launch_mapdl()</span></code></strong> 方法从 Python 中以 gRPC 模式启动 MAPDL。默认情况下，这将在一个临时目录下启动 MAPDL。您可以用以下方法将其改为您的当前目录：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">ansys.mapdl.core</span> <span class="kn">import</span> <span class="n">launch_mapdl</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">mapdl</span> <span class="o">=</span> <span class="n">launch_mapdl</span><span class="p">(</span><span class="n">run_location</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>MAPDL 现在是活动的，你可以像一个真正的 Python class 一样向它发送命令。例如，如果你想用关键点来创建一个曲面，你可以运行：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;/PREP7&quot;</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;K, 1, 0, 0, 0&quot;</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;K, 2, 1, 0, 0&quot;</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;K, 3, 1, 1, 0&quot;</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;K, 4, 0, 1, 0&quot;</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;L, 1, 2&quot;</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;L, 2, 3&quot;</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;L, 3, 4&quot;</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;L, 4, 1&quot;</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;AL, 1, 2, 3, 4&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>MAPDL 会交互式地返回每条命令的结果，这些结果被存储到日志模块中。错误会被立即捕获。例如，如果你输入一个无效的命令：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;AL, 1, 2, 3&quot;</span><span class="p">)</span>
+
+<span class="go">apdlRuntimeError:</span>
+<span class="go">L, 1, 2, 3</span>
+
+<span class="go">EFINE AREA BY LIST OF LINES</span>
+<span class="go">INE LIST =     1    2    3</span>
+<span class="go">TRAVERSED IN SAME DIRECTION AS LINE     1)</span>
+
+<span class="go">** ERROR ***                           CP =       0.338   TIME= 09:45:36</span>
+<span class="go">eypoint 1 is referenced by only one line.  Improperly connected line</span>
+<span class="go">et for AL command.</span>
+</pre></div>
+</div>
+<p>这个 <code class="docutils literal notranslate"><span class="pre">MapdlRuntimeError</span></code> 将被立即捕获。这意味着你可以用 Python 编写 MAPDL 脚本，以交互方式运行，然后以批处理方式运行，而不必担心如果你把脚本输出到一个脚本文件中，该脚本是否会正确运行。</p>
+<p>Mapdl 类支持的不仅仅是向 MAPDL 发送文本。它包括更高层次的包装，允许更好地编写脚本和与 MAPDL 互动。关于可视化、编写脚本以及与 MAPDL 交互的各种高级方法的概述，请参见<a class="reference external" href="https://mapdl.docs.pyansys.com/version/stable/examples/index.html#ref-examples">示例</a>。</p>
+</section>
+<section id="python-mapdl">
+<h2><span class="section-number">1.2. </span>用 Python 调用 MAPDL<a class="headerlink" href="#python-mapdl" title="Permalink to this heading">#</a></h2>
+<p>MAPDL 函数可以直接从 <code class="docutils literal notranslate"><span class="pre">Mapdl</span></code> 的实例中以 Pythonic 方式调用。这是为了简化调用 Ansys，特别是当输入的是 Python 中的变量时。例如，以下两个命令是等价的：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mapdl</span><span class="o">.</span><span class="n">k</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;K, 1, 0, 0, 0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这种方法有一些明显的优势。首先，它更容易编写脚本，因为 <code class="docutils literal notranslate"><span class="pre">Ansys-mapdl-core</span></code> 为你处理了字符串格式化的问题。例如，你可以用以下方法从一个 numpy 数组中输入点：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># make 10 random keypoints in Ansys</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">k</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>此外，错误会在 Python 中捕获和处理。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;AL, 1, 2, 3&quot;</span><span class="p">)</span>
+
+<span class="go">xception:</span>
+<span class="go">L, 1, 2, 3</span>
+
+<span class="go">EFINE AREA BY LIST OF LINES</span>
+<span class="go">INE LIST =     1    2    3</span>
+<span class="go">TRAVERSED IN SAME DIRECTION AS LINE     1)</span>
+
+<span class="go">** ERROR ***                           CP =       0.338   TIME= 09:45:36</span>
+<span class="go">eypoint 1 is referenced by only one line.  Improperly connected line</span>
+<span class="go">et for AL command.</span>
+</pre></div>
+</div>
+<p>对于较长的脚本，不要像在创建 area 的例子中那样向 MAPDL 发送命令，而是可以这样运行：</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># clear existing geometry</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+<span class="c1"># create a square area using keypoints</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">prep7</span><span class="p">()</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">k</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">k</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">k</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">k</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">l</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">l</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">l</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">l</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">al</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这种方法有一些明显的优势，主要是它的脚本比较容易，因为 Mapdl 为你处理了字符串的格式化。例如，从一个 numpy 数组中输入点：</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># make 10 random keypoints in MAPDL</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">k</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>此外，MAPDL 类中的每个函数都有相关的帮助。例如:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">mapdl</span><span class="o">.</span><span class="n">k</span><span class="p">)</span>
+
+<span class="go">Help on method K in module ansys.mapdl.core.mapdl_grpc.MapdlGrpc:</span>
+
+<span class="go">k(npt=&#39;&#39;, x=&#39;&#39;, y=&#39;&#39;, z=&#39;&#39;) method of ansys.mapdl.core.mapdl_grpc.MapdlGrpc</span>
+<span class="go">instance</span>
+
+<span class="go">    Defines a keypoint.</span>
+
+<span class="go">    APDL Command: K</span>
+
+<span class="go">    Parameters</span>
+<span class="go">    ----------</span>
+<span class="go">    npt</span>
+<span class="go">        Reference number for keypoint. If zero, the lowest</span>
+<span class="go">        available number is assigned [NUMSTR].</span>
+
+<span class="go">    x, y, z</span>
+<span class="go">        Keypoint location in the active coordinate system (may be</span>
+<span class="go">        R, θ, Z or R, θ, Φ). If X = P, graphical picking is</span>
+<span class="go">        enabled and all other fields (including NPT) are ignored</span>
+<span class="go">        (valid only in the GUI).</span>
+
+<span class="go">    Examples</span>
+<span class="go">    --------</span>
+<span class="go">    Create a keypoint at (1, 1, 2)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">k</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="go">    Notes</span>
+<span class="go">    -----</span>
+<span class="go">    Defines a keypoint in the active coordinate system [CSYS] for</span>
+<span class="go">    line, area, and volume descriptions. A previously defined</span>
+<span class="go">    keypoint of the same number is then redefined. A keypoint may</span>
+<span class="go">    be redefined only if it is not yet attached to a line or is</span>
+<span class="go">    not yet meshed. Solid modeling in a toroidal system is not</span>
+<span class="go">    recommended.</span>
+</pre></div>
+</div>
+<p>有关稳定性的考虑，请参见 <a class="reference external" href="https://mapdl.docs.pyansys.com/version/stable/user_guide/troubleshoot.html#ref-pymapdl-stability">PyMAPDL 稳定性</a>。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./doc\1_User_guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../0_Getting_started/09_%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%8A%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Develop on a container</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="11_MAPDL%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>MAPDL 初始设置和本地启动</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pymapdl">1.1. PyMAPDL 概述</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-mapdl">1.2. 用 Python 调用 MAPDL</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ff-郑州大学
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright  (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
