@@ -14,7 +14,7 @@
 这些命令用于对数据库进行全局操作。
 
 - {doc}`../2_MAPDL_commands/205_Setup/205_Setup`
-- {doc}`..2_MAPDL_commands/206_Selecting/206_Selecting`
+- {doc}`../2_MAPDL_commands/206_Selecting/206_Selecting`
 
 
 
