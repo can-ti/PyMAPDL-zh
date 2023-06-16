@@ -24,7 +24,7 @@ These DATABASE commands are used to select subsets of database entities for furt
 | {doc}`Mapdl.lsel([type_, item, comp, vmin, vmax,...])  <../206_Selecting/lsel>` | Selects a subset of lines. |
 | {doc}`Mapdl.lsla([type_])  <../206_Selecting/lsla>` | Selects those lines contained in the selected areas. |
 | {doc}`Mapdl.lslk([type_, lskey])  <../206_Selecting/lslk>` | Selects those lines containing the selected keypoints. |
-| {doc}`Mapdl.nsel([type_, item, comp, vmin, vmax,...])  <../206_Selecting/nsel>` | Selects a subset of nodes. |
+| {doc}`Mapdl.nsel([type_, item, comp, vmin, vmax,...]) <../206_Selecting/nsel>` | Selects a subset of nodes. |
 | {doc}`Mapdl.nsla([type_, nkey])  <../206_Selecting/nsla>` | Selects those nodes associated with the selected areas. |
 | {doc}`Mapdl.nsle([type_, nodetype, num])  <../206_Selecting/nsle>` | Selects those nodes attached to the selected elements. |
 | {doc}`Mapdl.nslk([type_])  <../206_Selecting/nslk>` | Selects those nodes associated with the selected keypoints. |
