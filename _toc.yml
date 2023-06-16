@@ -6,7 +6,7 @@ root: intro
 # options:
 #   numbered: True  # 这一个好像有点问题，但是官方文档就这么写的呀
 parts:
-  - caption: Getting_started
+  - caption: Getting started
     numbered : True  # 这将为当前的 Part 添加标题序号
     chapters: 
     - file: doc/0_Getting_started/000_intro
@@ -21,7 +21,7 @@ parts:
     - file: doc/0_Getting_started/008_创建你自己的MAPDL docker容器
     - file: doc/0_Getting_started/009_在容器上进行开发
 
-  - caption: User_guide
+  - caption: User guide
     numbered : True  # 这将为当前的 Part 添加标题序号
     chapters: 
     - file: doc/1_User_guide/100_intro
@@ -41,7 +41,92 @@ parts:
     - file: doc/1_User_guide/114_使用Krylov方法进行谐波分析
     - file: doc/1_User_guide/115_PyMAPDL故障排除
 
-  - caption: User_guide
-    numbered : True  # 这将为当前的 Part 添加标题序号
+  - caption: MAPDL commands
+    numbered : false  # 这将为当前的 Part 添加标题序号
     chapters: 
     - file: doc/2_MAPDL_commands/200_intro
+    - file: doc/2_MAPDL_commands/201_Run_controls/201_Run_controls
+      sections:
+      - file: doc/2_MAPDL_commands/201_Run_controls/config
+      - file: doc/2_MAPDL_commands/201_Run_controls/cwd
+      - file: doc/2_MAPDL_commands/201_Run_controls/exit
+      - file: doc/2_MAPDL_commands/201_Run_controls/filname
+      - file: doc/2_MAPDL_commands/201_Run_controls/input
+      - file: doc/2_MAPDL_commands/201_Run_controls/keyw
+      - file: doc/2_MAPDL_commands/201_Run_controls/memm
+      - file: doc/2_MAPDL_commands/201_Run_controls/nerr
+      - file: doc/2_MAPDL_commands/201_Run_controls/pause
+      - file: doc/2_MAPDL_commands/201_Run_controls/slashstatus
+      - file: doc/2_MAPDL_commands/201_Run_controls/starstatus
+      - file: doc/2_MAPDL_commands/201_Run_controls/syp
+      - file: doc/2_MAPDL_commands/201_Run_controls/sys
+      - file: doc/2_MAPDL_commands/201_Run_controls/unpause
+    - file: doc/2_MAPDL_commands/202_Processor_entry/202_Processor_entry
+      sections:
+      - file: doc/2_MAPDL_commands/202_Processor_entry/aux2
+      - file: doc/2_MAPDL_commands/202_Processor_entry/aux3
+      - file: doc/2_MAPDL_commands/202_Processor_entry/aux12
+      - file: doc/2_MAPDL_commands/202_Processor_entry/aux15
+      - file: doc/2_MAPDL_commands/202_Processor_entry/finish
+      - file: doc/2_MAPDL_commands/202_Processor_entry/map
+      - file: doc/2_MAPDL_commands/202_Processor_entry/post1
+      - file: doc/2_MAPDL_commands/202_Processor_entry/post26
+      - file: doc/2_MAPDL_commands/202_Processor_entry/prep7
+      - file: doc/2_MAPDL_commands/202_Processor_entry/quit
+      - file: doc/2_MAPDL_commands/202_Processor_entry/slashsolu
+    - file: doc/2_MAPDL_commands/203_Files/203_Files
+      sections:
+      - file: doc/2_MAPDL_commands/203_Files/anstoaqwa
+      - file: doc/2_MAPDL_commands/203_Files/anstoasas
+      - file: doc/2_MAPDL_commands/203_Files/assign
+      - file: doc/2_MAPDL_commands/203_Files/copy
+      - file: doc/2_MAPDL_commands/203_Files/slashdelete
+      - file: doc/2_MAPDL_commands/203_Files/fcomp
+      - file: doc/2_MAPDL_commands/203_Files/lgwrite
+      - file: doc/2_MAPDL_commands/203_Files/starlist
+      - file: doc/2_MAPDL_commands/203_Files/slashclog
+      - file: doc/2_MAPDL_commands/203_Files/slashfdele
+      - file: doc/2_MAPDL_commands/203_Files/rename
+    - file: doc/2_MAPDL_commands/204_List_controls/204_List_controls
+      sections:
+      - file: doc/2_MAPDL_commands/204_List_controls/com
+      - file: doc/2_MAPDL_commands/204_List_controls/golist
+      - file: doc/2_MAPDL_commands/204_List_controls/gopr
+      - file: doc/2_MAPDL_commands/204_List_controls/nolist
+      - file: doc/2_MAPDL_commands/204_List_controls/nopr
+    - file: doc/2_MAPDL_commands/205_Setup/205_Setup
+      sections:
+      - file: doc/2_MAPDL_commands/205_Setup/clear
+      - file: doc/2_MAPDL_commands/205_Setup/resume
+      - file: doc/2_MAPDL_commands/205_Setup/save
+      - file: doc/2_MAPDL_commands/205_Setup/smbc
+      - file: doc/2_MAPDL_commands/205_Setup/stat
+      - file: doc/2_MAPDL_commands/205_Setup/stitle
+      - file: doc/2_MAPDL_commands/205_Setup/title
+      - file: doc/2_MAPDL_commands/205_Setup/units
+    - file: doc/2_MAPDL_commands/206_Selecting/206_Selecting
+      sections:
+      - file: doc/2_MAPDL_commands/206_Selecting/allsel
+      - file: doc/2_MAPDL_commands/206_Selecting/asel
+      - file: doc/2_MAPDL_commands/206_Selecting/asll
+      - file: doc/2_MAPDL_commands/206_Selecting/aslv
+      - file: doc/2_MAPDL_commands/206_Selecting/dofsel
+      - file: doc/2_MAPDL_commands/206_Selecting/esel
+      - file: doc/2_MAPDL_commands/206_Selecting/esla
+      - file: doc/2_MAPDL_commands/206_Selecting/esll
+      - file: doc/2_MAPDL_commands/206_Selecting/esln
+      - file: doc/2_MAPDL_commands/206_Selecting/eslv
+      - file: doc/2_MAPDL_commands/206_Selecting/ksel
+      - file: doc/2_MAPDL_commands/206_Selecting/ksll
+      - file: doc/2_MAPDL_commands/206_Selecting/ksln
+      - file: doc/2_MAPDL_commands/206_Selecting/lsel
+      - file: doc/2_MAPDL_commands/206_Selecting/lsla
+      - file: doc/2_MAPDL_commands/206_Selecting/lslk
+      - file: doc/2_MAPDL_commands/206_Selecting/nsel
+      - file: doc/2_MAPDL_commands/206_Selecting/nsla
+      - file: doc/2_MAPDL_commands/206_Selecting/nsle
+      - file: doc/2_MAPDL_commands/206_Selecting/nslk
+      - file: doc/2_MAPDL_commands/206_Selecting/nslv
+      - file: doc/2_MAPDL_commands/206_Selecting/partsel
+      - file: doc/2_MAPDL_commands/206_Selecting/vsel
+      - file: doc/2_MAPDL_commands/206_Selecting/vsla

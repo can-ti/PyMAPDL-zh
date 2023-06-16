@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; PyMAPDL 中文指南</title>
+    <title>MAPDL commands &#8212; PyMAPDL 中文指南</title>
   
   
   
@@ -64,6 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'doc/2_MAPDL_commands/200_intro';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Run controls" href="201_Run_controls/201_Run_controls.html" />
     <link rel="prev" title="16. PyMAPDL 故障排除" href="../1_User_guide/115_PyMAPDL%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -155,7 +156,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting_started</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/000_intro.html">1. 开始</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/001_%E5%AD%A6%E4%B9%A0PyMAPDL.html">2. 学习PyMAPDL</a></li>
@@ -168,7 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/008_%E5%88%9B%E5%BB%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84MAPDL%20docker%E5%AE%B9%E5%99%A8.html">9. 创建你自己的 MAPDL docker 容器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../0_Getting_started/009_%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%8A%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91.html">10. Develop on a container</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">User_guide</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User guide</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../1_User_guide/100_intro.html">1. 用户指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1_User_guide/101_MAPDL%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8.html">2. MAPDL 初始设置和本地启动</a></li>
@@ -186,6 +187,73 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../1_User_guide/113_%E4%BD%BF%E7%94%A8Python%E7%BC%96%E5%86%99UPF%E5%AD%90%E7%A8%8B%E5%BA%8F.html">14. 使用 Python 编写 UPF 子程序</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1_User_guide/114_%E4%BD%BF%E7%94%A8Krylov%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E8%B0%90%E6%B3%A2%E5%88%86%E6%9E%90.html">15. 使用Krylov方法进行谐波分析</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1_User_guide/115_PyMAPDL%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4.html">16. PyMAPDL 故障排除</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">MAPDL commands</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">MAPDL commands</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="201_Run_controls/201_Run_controls.html">Run controls</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="201_Run_controls/config.html">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="201_Run_controls/cwd.html">cwd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="201_Run_controls/exit.html">exit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="201_Run_controls/filname.html">filname</a></li>
+<li class="toctree-l2"><a class="reference internal" href="201_Run_controls/input.html">input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="201_Run_controls/keyw.html">keyw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="201_Run_controls/memm.html">memm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="201_Run_controls/nerr.html">nerr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="201_Run_controls/pause.html">pause</a></li>
+<li class="toctree-l2"><a class="reference internal" href="201_Run_controls/starstatus.html">starstatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="201_Run_controls/syp.html">syp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="201_Run_controls/sys.html">sys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="201_Run_controls/unpause.html">unpause</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="202_Processor_entry/202_Processor_entry.html">Processor entry</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="202_Processor_entry/aux2.html">aux2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="202_Processor_entry/aux3.html">aux3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="202_Processor_entry/aux12.html">aux12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="202_Processor_entry/aux15.html">aux15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="202_Processor_entry/finish.html">finish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="202_Processor_entry/map.html">map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="202_Processor_entry/post1.html">post1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="202_Processor_entry/post26.html">post26</a></li>
+<li class="toctree-l2"><a class="reference internal" href="202_Processor_entry/prep7.html">prep7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="202_Processor_entry/quit.html">quit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="202_Processor_entry/slashsolu.html">slashsolu</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="203_Files/203_Files.html">Files</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="203_Files/anstoaqwa.html">anstoaqwa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="203_Files/anstoasas.html">anstoasas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="203_Files/assign.html">assigin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="203_Files/copy.html">copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="203_Files/slashdelete.html">slashdelete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="203_Files/fcomp.html">fcomp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="203_Files/lgwrite.html">lgwrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="203_Files/starlist.html">starlist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="203_Files/slashclog.html">slashclog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="203_Files/slashfdele.html">slashfdele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="203_Files/rename.html">rename</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="204_List_controls/204_List_controls.html">List controls</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="204_List_controls/com.html">com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="204_List_controls/golist.html">golist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="204_List_controls/gopr.html">gopr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="204_List_controls/nolist.html">nolist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="204_List_controls/nopr.html">nopr</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="205_Setup/205_Setup.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="205_Setup/clear.html">clear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="205_Setup/resume.html">resume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="205_Setup/save.html">save</a></li>
+<li class="toctree-l2"><a class="reference internal" href="205_Setup/smbc.html">smbc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="205_Setup/stat.html">stat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="205_Setup/stitle.html">stitle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="205_Setup/title.html">title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="205_Setup/units.html">units</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -337,7 +405,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>MAPDL commands</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -346,9 +414,10 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session">Session</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database">Database</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -359,7 +428,29 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="mapdl-commands">
+<h1>MAPDL commands<a class="headerlink" href="#mapdl-commands" title="Permalink to this heading">#</a></h1>
+<p>本节概述了通过 PyMAPDL 以 Python 方式包装的经典 MAPDL 命令。大多数命令已经被包装，但是有一些命令本身不受支持，或者只在 PyMAPDL 中得到部分支持。有关更多详细信息，请参见 <a class="reference internal" href="../1_User_guide/102_PyMAPDL%E8%AF%AD%E6%B3%95%E5%92%8C%E7%94%A8%E6%B3%95.html"><span class="doc">不可用的命令</span></a>。</p>
+<section id="session">
+<h2>Session<a class="headerlink" href="#session" title="Permalink to this heading">#</a></h2>
+<p>这些命令为会话提供一般控制,且这些命令是按功能进行分组的。</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="201_Run_controls/201_Run_controls.html"><span class="doc">Run controls</span></a></p></li>
+<li><p><a class="reference internal" href="202_Processor_entry/202_Processor_entry.html"><span class="doc">Processor entry</span></a></p></li>
+<li><p><a class="reference internal" href="203_Files/203_Files.html"><span class="doc">Files</span></a></p></li>
+<li><p><a class="reference internal" href="204_List_controls/204_List_controls.html"><span class="doc">List controls</span></a></p></li>
+</ul>
+</section>
+<section id="database">
+<h2>Database<a class="headerlink" href="#database" title="Permalink to this heading">#</a></h2>
+<p>这些命令用于对数据库进行全局操作。</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="205_Setup/205_Setup.html"><span class="doc">Setup</span></a></p></li>
+<li><p><span class="xref std std-doc">..2_MAPDL_commands/206_Selecting/206_Selecting</span></p></li>
+</ul>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -400,6 +491,15 @@ document.write(`
         <p class="prev-next-title"><span class="section-number">16. </span>PyMAPDL 故障排除</p>
       </div>
     </a>
+    <a class="right-next"
+       href="201_Run_controls/201_Run_controls.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Run controls</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -417,9 +517,10 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session">Session</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database">Database</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

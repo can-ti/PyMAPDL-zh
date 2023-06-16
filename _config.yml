@@ -43,7 +43,7 @@ parse:
     - colon_fence # 可以使用三个冒号:::替换三个反引号```,好像:::对于markdown的兼容性会更好
     - deflist # definition lists,可以用来替换无序列表,挺好看的
     - dollarmath # dollar $ and $$ encapsulated math
-    - fieldlist # 字段列表,在 API docstrings中应用会很好看
+    - fieldlist  # 字段列表,在 API docstrings中应用会很好看
     - html_admonition
     - html_image
     - linkify  #自动识别“裸露”的网址并添加超链接,启用这项语法扩展需要安装`linkify-it-py`包:`pip install linkify-it-py`或`pip install myst-parser[linkify]`
@@ -99,8 +99,14 @@ repository:
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
 
-
-
+#######################################################################################
+# Advanced and power-user settings
+sphinx:
+  extra_extensions:
+  - 'sphinx.ext.autodoc'
+  - 'sphinx.ext.autosummary'
+  config:
+    autosummary_generate: True
 
 
 
