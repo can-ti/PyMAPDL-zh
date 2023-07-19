@@ -130,3 +130,19 @@ parts:
       - file: doc/2_MAPDL_commands/206_Selecting/partsel
       - file: doc/2_MAPDL_commands/206_Selecting/vsel
       - file: doc/2_MAPDL_commands/206_Selecting/vsla
+
+  - caption: API reference
+    numbered : false  # 这将为当前的 Part 添加标题序号
+    chapters: 
+    - file: doc/3_API_reference/300_intro
+    - file: doc/3_API_reference/301_Commands_output/301_Commands_output
+    - file: doc/3_API_reference/302_Database/302_Database
+      sections:
+      - file: doc/3_API_reference/302_Database/MapdlDb/MapdlDb
+      - file: doc/3_API_reference/302_Database/DbElems/DbElems
+      - file: doc/3_API_reference/302_Database/DbNodes/DbNodes
+
+  - caption: Examples
+    numbered : false  # 这将为当前的 Part 添加标题序号
+    chapters: 
+    - file: doc/4_Examples/400_intro
