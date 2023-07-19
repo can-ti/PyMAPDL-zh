@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; PyMAPDL 中文指南</title>
+    <title>eslv &#8212; PyMAPDL 中文指南</title>
   
   
   
@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="&lt;no title&gt;" href="ksel.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="esln.html" />
+    <link rel="prev" title="esln" href="esln.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,7 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/115_PyMAPDL%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4.html">16. PyMAPDL 故障排除</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">MAPDL commands</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../200_intro.html">MAPDL commands</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../201_Run_controls/201_Run_controls.html">Run controls</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../201_Run_controls/config.html">config</a></li>
@@ -255,7 +255,26 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../205_Setup/units.html">units</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="206_Selecting.html">Selecting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="206_Selecting.html">Selecting</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allsel.html">allsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asel.html">asel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asll.html">asll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aslv.html">aslv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dofsel.html">dofsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="esel.html">esel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="esla.html">esla</a></li>
+<li class="toctree-l2"><a class="reference internal" href="esll.html">esll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="esln.html">esln</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">eslv</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../3_API_reference/300_intro.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_API_reference/301_Commands_output/301_Commands_output.html">Commands output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_API_reference/302_Database/302_Database.html">Database</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_API_reference/302_Database/MapdlDb/MapdlDb.html">MapdlDb</a></li>
 </ul>
 </li>
 </ul>
@@ -396,9 +415,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -409,19 +426,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>eslv</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -431,7 +440,33 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="eslv">
+<h1>eslv<a class="headerlink" href="#eslv" title="Permalink to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="Mapdl.eslv">
+<span class="sig-prename descclassname"><span class="pre">Mapdl.</span></span><span class="sig-name descname"><span class="pre">eslv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Mapdl.eslv" title="Permalink to this definition">#</a></dt>
+<dd><p>Selects elements associated with the selected volumes.</p>
+<p>APDL Command: <code class="docutils literal notranslate"><span class="pre">ESLV</span></code></p>
+<p class="rubric">Parameters:</p>
+<dl class="simple myst">
+<dt><em>type_</em></dt><dd><p>Label identifying the type of element selected:</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>S - Select a new set (default).</p></li>
+<li><p>R - Reselect a set from the current set.</p></li>
+<li><p>A - Additionally select a set and extend the current set.</p></li>
+<li><p>U - Unselect a set from the current set.</p></li>
+</ul>
+<p class="rubric">Return type:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="docutils literal notranslate"><span class="pre">str</span></code>]</p>
+<p class="rubric">Notes</p>
+<p>Selects volume elements belonging to meshed [<code class="docutils literal notranslate"><span class="pre">VMESH</span></code>], selected [<code class="docutils literal notranslate"><span class="pre">VSEL</span></code>] volumes.</p>
+<p>This command is valid in any processor.</p>
+</dd></dl>
+
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -469,7 +504,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">esln</p>
       </div>
     </a>
     <a class="right-next"
@@ -490,20 +525,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

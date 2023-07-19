@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; PyMAPDL 中文指南</title>
+    <title>dofsel &#8212; PyMAPDL 中文指南</title>
   
   
   
@@ -64,8 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'doc/2_MAPDL_commands/206_Selecting/dofsel';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="esel.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="aslv.html" />
+    <link rel="next" title="esel" href="esel.html" />
+    <link rel="prev" title="aslv" href="aslv.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,7 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/115_PyMAPDL%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4.html">16. PyMAPDL 故障排除</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">MAPDL commands</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../200_intro.html">MAPDL commands</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../201_Run_controls/201_Run_controls.html">Run controls</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../201_Run_controls/config.html">config</a></li>
@@ -255,7 +255,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../205_Setup/units.html">units</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="206_Selecting.html">Selecting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="206_Selecting.html">Selecting</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allsel.html">allsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asel.html">asel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asll.html">asll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aslv.html">aslv</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">dofsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="esel.html">esel</a></li>
 </ul>
 </li>
 </ul>
@@ -396,9 +402,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -409,19 +413,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>dofsel</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -431,7 +427,54 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="dofsel">
+<h1>dofsel<a class="headerlink" href="#dofsel" title="Permalink to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="Mapdl.dofsel">
+<span class="sig-prename descclassname"><span class="pre">Mapdl.</span></span><span class="sig-name descname"><span class="pre">dofsel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dof1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dof2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dof3</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dof4</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dof5</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dof6</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Mapdl.dofsel" title="Permalink to this definition">#</a></dt>
+<dd><p>Selects a DOF label set for reference by other commands.<br />
+选择一个DOF标签集供其他命令参考。</p>
+<p>APDL Command: <code class="docutils literal notranslate"><span class="pre">DOFSEL</span></code></p>
+<p class="rubric">Parameters:</p>
+<dl class="simple myst">
+<dt><em>type_</em></dt><dd><p>Label identifying the type of select:</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>S - Select a new set of labels.</p></li>
+<li><p>A - Add labels to the current set.</p></li>
+<li><p>U - Unselect (remove) labels from the current set.</p></li>
+<li><p>ALL - Restore the full set of labels.</p></li>
+<li><p>STAT - Display the current select status.</p></li>
+</ul>
+<dl class="simple myst">
+<dt><em>dof1, dof2, dof3, … , dof6</em></dt><dd><p>Used only with <em>Type</em> = S, A, or U. Valid lables are:</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Structural labels: UX, UY, or UZ (displacements); U (UX, UY, and UZ) ; ROTX, ROTY, or ROTZ (rotations); ROT (ROTX, ROTY, and ROTZ); DISP (U and ROT); HDSP (Hydrostatic pressure 静水压力).\</p></li>
+<li><p>Thermal labels: TEMP, TBOT, TE2, TE3, …, TTOP (temperature).</p></li>
+<li><p>Acoustic（声学） labels: PRES (pressure); UX, UY, or UZ (displacements for FSI coupled elements).</p></li>
+<li><p>Electric labels: VOLT (voltage); EMF (electromotive force drop); CURR (current).</p></li>
+<li><p>Magnetic（磁学） labels: MAG (scalar magnetic potential); AZ (vector magnetic potential); A (AZ); CURR (current).</p></li>
+<li><p>Structural force labels: FX, FY, or FZ (forces); F (FX, FY, and FZ); MX, MY, or MZ (moments); M (MX, MY, and MZ); FORC (F and M); DVOL (fluid mass flow rate).</p></li>
+<li><p>Thermal force labels: HEAT, HBOT, HE2, HE3, …, HTOP (heat flow).</p></li>
+<li><p>Fluid flow force label: FLOW (fluid flow).</p></li>
+<li><p>Electric force labels: AMPS (current flow); CHRG (electric charge).</p></li>
+<li><p>Magnetic force labels: FLUX (scalar magnetic flux); CSGZ (magnetic current segment).</p></li>
+<li><p>Diffusion（扩散） labels: CONC (concentration); RATE (diffusion flow rate).</p></li>
+</ul>
+<p class="rubric">Command Default</p>
+<p>Degree of freedom (and the corresponding force) labels are determined from the model.、
+自由度（和相应的力）标签是由模型所决定的。</p>
+<p class="rubric">Notes</p>
+<p>Selects a degree of freedom label set for reference by other commands. The label set is used on certain commands where ALL is either input in the degree of freedom label field or implied. The active label set has no effect on the solution degrees of freedom. Specified labels which are not active in the model (from the <code class="docutils literal notranslate"><span class="pre">ET</span></code> or <code class="docutils literal notranslate"><span class="pre">DOF</span></code> command) are ignored. As a convenience, a set of force labels corresponding to the degree of freedom labels is also selected. For example, selecting UX also causes FX to be selected (and vice versa). The force label set is used on certain commands where ALL is input in the force label field.<br />
+选择一个自由度标签集供其他命令参考。该标签集在某些命令中使用，在这些命令中，ALL是在自由度标签字段中输入的或隐含的。活动标签集对解的自由度没有影响。指定的标签如果在模型中不活跃（来自<code class="docutils literal notranslate"><span class="pre">ET</span></code>或<code class="docutils literal notranslate"><span class="pre">DOF</span></code>命令），则被忽略。为方便起见，与自由度标签相对应的力的标签集也被选中。例如，选择UX也会导致FX被选中（反之亦然）。该力标集用于某些在力标栏中输入ALL的命令。</p>
+<p>This command is valid in any processor.</p>
+</dd></dl>
+
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -469,7 +512,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">aslv</p>
       </div>
     </a>
     <a class="right-next"
@@ -477,7 +520,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">esel</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -490,20 +533,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

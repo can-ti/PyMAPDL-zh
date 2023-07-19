@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; PyMAPDL 中文指南</title>
+    <title>esel &#8212; PyMAPDL 中文指南</title>
   
   
   
@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="&lt;no title&gt;" href="esla.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="dofsel.html" />
+    <link rel="prev" title="dofsel" href="dofsel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,7 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/115_PyMAPDL%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4.html">16. PyMAPDL 故障排除</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">MAPDL commands</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../200_intro.html">MAPDL commands</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../201_Run_controls/201_Run_controls.html">Run controls</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../201_Run_controls/config.html">config</a></li>
@@ -255,7 +255,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../205_Setup/units.html">units</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="206_Selecting.html">Selecting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="206_Selecting.html">Selecting</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allsel.html">allsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asel.html">asel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asll.html">asll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aslv.html">aslv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dofsel.html">dofsel</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">esel</a></li>
 </ul>
 </li>
 </ul>
@@ -396,9 +402,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -409,19 +413,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>esel</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -431,7 +427,248 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="esel">
+<h1>esel<a class="headerlink" href="#esel" title="Permalink to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="Mapdl.esel">
+<span class="sig-prename descclassname"><span class="pre">Mapdl.</span></span><span class="sig-name descname"><span class="pre">esel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vinc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kabs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Mapdl.esel" title="Permalink to this definition">#</a></dt>
+<dd><p>Selects a subset of elements.</p>
+<p>APDL Command: <code class="docutils literal notranslate"><span class="pre">ESEL</span></code></p>
+<p class="rubric">Parameters:</p>
+<dl class="simple myst">
+<dt><em>type_</em></dt><dd><p>Label identifying the type of select:</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>S - Select a new set (default).</p></li>
+<li><p>R - Reselect a set from the current set.</p></li>
+<li><p>A - Additionally select a set and extend the current set.</p></li>
+<li><p>U - Unselect a set from the current set.</p></li>
+<li><p>ALL - Restore the full set.</p></li>
+<li><p>NONE - Unselect the full set.</p></li>
+<li><p>INVE - Invert the current set (selected becomes unselected and vice versa(反之亦然)).</p></li>
+<li><p>STAT - Display the current select status.</p></li>
+</ul>
+<p>The following fields are used only with <em>Type</em> = S, R, A, or U:</p>
+<dl class="simple myst">
+<dt><em>item</em></dt><dd><p>Label identifying data, see <a class="reference internal" href="#valid-item-and-component-labels-of-esel"><span class="std std-ref">Table 7: <code class="docutils literal notranslate"><span class="pre">ESEL</span></code> - Valid Item and Component Labels</span></a> Some items also require a component label. Defaults to ELEM. If <em>Item</em> = STRA (straightened), elements are selected whose midside nodes do not conform to the curved line or non-flat area on which they should lie. (Such elements are sometimes formed during volume meshing (<code class="docutils literal notranslate"><span class="pre">VMESH</span></code>) in an attempt to avoid excessive element distortion.) You should graphically examine any such elements to evaluate their possible effect on solution accuracy.<br />
+标签识别数据，见<a class="reference internal" href="#valid-item-and-component-labels-of-esel"><span class="std std-ref">表7：<code class="docutils literal notranslate"><span class="pre">ESEL</span></code>-有效的 item 和 component 标签</span></a>。有些项目还需要一个组件标签。默认为 ELEM。如果 <em>Item</em> = STRA（straightened），则会选择那些中间节点不符合曲线或不平坦区域的元素。（这样的元素有时会在体积网格划分（<code class="docutils literal notranslate"><span class="pre">VMESH</span></code>）过程中形成，以试图避免过度的单元变形）。你应该以图形方式检查任何这样的单元，以评估它们对求解结果准确性的影响。</p>
+</dd>
+<dt><em>comp</em></dt><dd><p>Component of the item (if required). Valid component labels are shown in Table 110: ESEL - Valid Item and Component Labels below.</p>
+</dd>
+<dt><em>vmin</em></dt><dd><p>Minimum value of item range. Ranges are element numbers, attribute numbers, load values, or result values as appropriate for the item. A component name (as specified via the <code class="docutils literal notranslate"><span class="pre">CM</span></code> command) can also be substituted for <em>VMIN</em> (in which case <em>VMAX</em> and <em>VINC</em> are ignored).<br />
+<em>item</em> 范围的最小值。范围是元素数、属性数、加载值或结果值，视 <em>item</em> 的情况而定。一个组件名称（通过 <code class="docutils literal notranslate"><span class="pre">CM</span></code> 命令指定）也可以代替 <em>VMIN</em>（在这种情况下， <em>VMAX</em> 和 <em>VINC</em> 被忽略）。</p>
+</dd>
+<dt><em>vmax</em></dt><dd><p>Maximum value of item range. <em>VMAX</em> defaults to <em>VMIN</em> for input values. For result values, <em>VMAX</em> defaults to infinity if <em>VMIN</em> is positive, or to zero if <em>VMIN</em> is negative.</p>
+</dd>
+<dt><em>vinc</em></dt><dd><p>Value increment within range. Used only with integer ranges (such as for element and attribute numbers). Defaults to 1. <em>VINC</em> cannot be negative.</p>
+</dd>
+<dt><em>kabs</em></dt><dd><p>Absolute value key:</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>0 — Check sign of value during selection.\在选择过程中检查值的标志。</p></li>
+<li><p>1 — Use absolute value during selection (sign ignored).\选择时使用绝对值（忽略符号）。</p></li>
+</ul>
+<p class="rubric">Return type:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="docutils literal notranslate"><span class="pre">str</span></code>]</p>
+<p class="rubric">Notes</p>
+<p>The fields <em>item</em>, <em>comp</em>, <em>vmin</em>, <em>vmax</em>, <em>vinc</em> and <em>kabs</em> are used only with <em>type_ = “S”, “R”, “A”, or “U”</em>.</p>
+<p>Selects elements based on values of a labeled item and component. For example, to select a new set of elements based on element numbers 1 through 7, use</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">esel</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;ELEM&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The subset is used when the ALL label is entered (or implied) on other commands, such as<br />
+当在其他命令中输入（或隐含）ALL标签时，会使用该子集，例如</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">elist</span><span class="p">(</span><span class="s1">&#39;ALL&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Only data identified by element number are selected. Selected data are internally flagged; no actual removal of data from the database occurs. Different element subsets cannot be used for different load steps (<code class="docutils literal notranslate"><span class="pre">SOLVE</span></code>) in a <code class="docutils literal notranslate"><span class="pre">/SOLU</span></code> sequence. The subset used in the first load step is used for all subsequent load steps regardless of subsequent <code class="docutils literal notranslate"><span class="pre">ESEL</span></code> specifications.<br />
+只有按单元编号确定的数据被选中。被选择的数据在内部被标记，实际上并没有从数据库中删除数据。不同的单元子集不能用于 <code class="docutils literal notranslate"><span class="pre">/SOLU</span></code> 序列中的不同荷载步（<code class="docutils literal notranslate"><span class="pre">SOLVE</span></code>）。在第一个荷载步中使用的子集被用于所有后续的加载步骤，与后续的`ESEL’规格无关。</p>
+<p>This command is valid in any processor.</p>
+<p>Elements crossing the named path (<code class="docutils literal notranslate"><span class="pre">PATH</span></code>) are selected. This option is available only in <strong>PREP7</strong> and <strong>POST1</strong>. If no geometry data has been mapped to the path (via <code class="docutils literal notranslate"><span class="pre">PMAP</span></code> and <code class="docutils literal notranslate"><span class="pre">PDEF</span></code>, for example), the path assumes the default mapping option (<code class="docutils literal notranslate"><span class="pre">PMAP,UNIFORM</span></code>) to map the geometry prior to selecting the elements. If an invalid path name is given, the <code class="docutils literal notranslate"><span class="pre">ESEL</span></code> command is ignored (and the status of selected elements is unchanged). If no elements are crossing the path, the <code class="docutils literal notranslate"><span class="pre">ESEL</span></code> command returns zero elements selected.<br />
+越过指定路径（<code class="docutils literal notranslate"><span class="pre">PATH</span></code>）的元素被选中。这个选项只在 <strong>PREP7</strong> 和 <strong>POST1</strong> 中可用。如果没有几何数据被映射到路径上（例如通过 <code class="docutils literal notranslate"><span class="pre">PMAP'</span> <span class="pre">和</span> </code>PDEF’ ），路径会假定默认的映射选项（<code class="docutils literal notranslate"><span class="pre">PMAP,UNIFORM</span></code>），在选择元素之前映射几何。如果给了一个无效的路径名称，<code class="docutils literal notranslate"><span class="pre">ESEL</span></code> 命令将被忽略（所选元素的状态不变）。如果没有元素穿过路径，`ESEL’命令返回零个选择的元素。</p>
+<p>For selections based on non-integer numbers (coordinates, results, etc.), items that are within the range <em>VMIN</em> - <em>Toler</em> and <em>VMAX</em> + <em>Toler</em> are selected. The default tolerance <em>Toler</em> is based on the relative values of <em>VMIN</em> and <em>VMAX</em> as follows:<br />
+对于基于非整数的选择（坐标、结果等），在<em>VMIN</em>-<em>Toler</em>和<em>VMAX</em>+<em>Toler</em>范围内的<em>item</em>被选中。默认的公差<em>Toler</em>是基于<em>VMIN</em>和<em>VMAX</em>的相对值，如下所示：</p>
+<ul class="simple">
+<li><p>If <em>VMIN</em> = <em>VMAX</em>, <em>Toler</em> = 0.005 x <em>VMIN</em>.</p></li>
+<li><p>If <em>VMIN</em> = <em>VMAX</em> = 0.0, <em>Toler</em> = 1.0E-6.</p></li>
+<li><p>If <em>VMAX</em> ≠ <em>VMIN</em>, <em>Toler</em> = 1.0E-8 x (<em>VMAX</em> - <em>VMIN</em>).</p></li>
+</ul>
+<p>To override this default and specify <em>Toler</em> explicitly, issue the <code class="docutils literal notranslate"><span class="pre">SELTOL</span></code> command.<br />
+要更改这个默认值并明确指定的 <em>Toler</em>，请发出 <code class="docutils literal notranslate"><span class="pre">SELTOL</span></code> 命令。</p>
+<table class="table" id="valid-item-and-component-labels-of-esel">
+<caption><span class="caption-number">Table 7 </span><span class="caption-text">ESEL - Valid Item and Component Labels</span><a class="headerlink" href="#valid-item-and-component-labels-of-esel" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Item</p></th>
+<th class="head"><p>Comp</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ELEM</p></td>
+<td><p></p></td>
+<td><p>Element number.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ADJ</p></td>
+<td><p></p></td>
+<td><p>Elements adjacent(/əˈdʒeɪsnt/ 临近的) to element <em>VMIN</em> (<em>VMAX</em> and <em>VINC</em> fields are ignored). Only elements (of the same dimensionality) adjacent to lateral faces are considered. Progression continues until edge of model or until more than two elements are adjacent at a face.\与元素<em>VMIN</em>相邻的元素(<em>VMAX</em>和<em>VINC</em>区域被忽略)。只考虑与横向面相邻的元素（尺寸相同）。进展一直持续到模型的边缘或在一个面上有两个以上的元素相邻为止。</p></td>
+</tr>
+<tr class="row-even"><td><p>CENT</p></td>
+<td><p>X,Y,Z</p></td>
+<td><p>X, Y, or Z location in the active coordinate system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TYPE</p></td>
+<td><p></p></td>
+<td><p>Element type number.</p></td>
+</tr>
+<tr class="row-even"><td><p>ENAME</p></td>
+<td><p></p></td>
+<td><p>Element name (or identifying number).</p></td>
+</tr>
+<tr class="row-odd"><td><p>MAT</p></td>
+<td><p></p></td>
+<td><p>Material ID number.</p></td>
+</tr>
+<tr class="row-even"><td><p>REAL</p></td>
+<td><p>(blank)</p></td>
+<td><p>Real constant number.</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>GCN</p></td>
+<td><p>General contact/target elements (select all elements identified by real constant set number = 0). Remaining fields (<em>VMIN</em>, <em>VMAX</em>, etc.) are ignored.\一般接触/目标元素(选择所有由实数常数集编号=0确定的元素)。其余的字段（<em>VMIN</em>，<em>VMAX</em>，等等）被忽略。</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>BASE</p></td>
+<td><p>All split contact pairs (<code class="docutils literal notranslate"><span class="pre">CNCHECK,SPLIT/DMP</span></code>) that are associated with the current real constant set number.\所有与当前实数组编号相关的分割接触对（<code class="docutils literal notranslate"><span class="pre">CNCHECK,SPLIT/DMP</span></code>）。</p></td>
+</tr>
+<tr class="row-odd"><td><p>ESYS</p></td>
+<td><p></p></td>
+<td><p>Element coordinate system number.</p></td>
+</tr>
+<tr class="row-even"><td><p>OVER</p></td>
+<td><p></p></td>
+<td><p>Overlapping contact elements created during contact pair splitting (<code class="docutils literal notranslate"><span class="pre">CNCHECK,SPLIT/DMP</span></code>)\在拆分接触对时产生的重叠接触单元(<code class="docutils literal notranslate"><span class="pre">CNCHECK,SPLIT/DMP</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>LIVE</p></td>
+<td><p></p></td>
+<td><p>Active elements (<code class="docutils literal notranslate"><span class="pre">EALIVE</span></code>). <em>VMIN</em> and <em>VMAX</em> fields are ignored.</p></td>
+</tr>
+<tr class="row-even"><td><p>LAYER</p></td>
+<td><p></p></td>
+<td><p>Layer number (where only composite elements with a nonzero thickness for the requested layer number are included)(<code class="docutils literal notranslate"><span class="pre">LAYER</span></code>).\层编号（其中只包括所要求的层数的厚度不为零的复合元素）（<code class="docutils literal notranslate"><span class="pre">LAYER</span></code>）。</p></td>
+</tr>
+<tr class="row-odd"><td><p>SEC</p></td>
+<td><p>(blank)</p></td>
+<td><p>Cross section ID number (<code class="docutils literal notranslate"><span class="pre">SECNUM</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>MAT</p></td>
+<td><p>Selects the elements with the requested MAT ID specified via <em>VMIN</em> and <em>VMAX</em> as attached to the section.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STRA</p></td>
+<td><p></p></td>
+<td><p>Straightened. See the description of the <em>Item</em> argument above.</p></td>
+</tr>
+<tr class="row-even"><td><p>SFE</p></td>
+<td><p>PRES</p></td>
+<td><p>Element pressure.</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>CONV</p></td>
+<td><p>Element convection bulk temperature.元素对流体积温度。</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>HFLUX</p></td>
+<td><p>Element heat flux.单元热通量。</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>FSI</p></td>
+<td><p>Element (acoustic) fluid-structure interaction flag.元素（声学）流体-结构相互作用的标志。</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>IMPD</p></td>
+<td><p>Element (acoustic) impedance.</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>SHLD</p></td>
+<td><p>Surface normal velocity or acceleration (acoustic analysis).</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>MXWF</p></td>
+<td><p>Element Maxwell force flag.</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>CHRGS</p></td>
+<td><p>Electric surface charge density.</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>INF</p></td>
+<td><p>Element infinite surface flag.</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>DFLUX</p></td>
+<td><p>Element diffusion flux.</p></td>
+</tr>
+<tr class="row-even"><td><p>BFE</p></td>
+<td><p>TEMP</p></td>
+<td><p>Element temperature.</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>FLUE</p></td>
+<td><p>Element fluence.</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>HGEN</p></td>
+<td><p>Element heat generation rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>JS</p></td>
+<td><p>Element current density, magnitude only.</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>MVDI</p></td>
+<td><p>Element magnetic virtual displacements flag.</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>DGEN</p></td>
+<td><p>Element diffusing substance generation rate.</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>CHRGD</p></td>
+<td><p>Electric charge density.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PATH</p></td>
+<td><p><em>Lab</em></p></td>
+<td><p>Selects all elements being crossed by the path with name <em>Lab</em>(<code class="docutils literal notranslate"><span class="pre">PATH</span></code>). If <em>Lab</em> = ALL, all elements related to all defined paths are selected.</p></td>
+</tr>
+<tr class="row-even"><td><p>ETAB</p></td>
+<td><p><em>Lab</em></p></td>
+<td><p>Any user-defined element table label (<code class="docutils literal notranslate"><span class="pre">ETABLE</span></code>).</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Select elements using material numbers 2, 4 and 6.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">esel</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;MAT&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Of these, reselect SOLID185 element types</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">esel</span><span class="p">(</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;ENAME&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">185</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Select elements assigned to material property 2</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">esel</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;MAT&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note, this command is equivalent to:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">esel</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;MAT&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -469,7 +706,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">dofsel</p>
       </div>
     </a>
     <a class="right-next"
@@ -490,20 +727,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

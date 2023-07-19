@@ -256,8 +256,29 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="doc/2_MAPDL_commands/206_Selecting/allsel.html">allsel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc/2_MAPDL_commands/206_Selecting/asel.html">asel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc/2_MAPDL_commands/206_Selecting/asll.html">asll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/2_MAPDL_commands/206_Selecting/aslv.html">aslv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/2_MAPDL_commands/206_Selecting/dofsel.html">dofsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/2_MAPDL_commands/206_Selecting/esel.html">esel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/2_MAPDL_commands/206_Selecting/esla.html">esla</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/2_MAPDL_commands/206_Selecting/esll.html">esll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/2_MAPDL_commands/206_Selecting/esln.html">esln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/2_MAPDL_commands/206_Selecting/eslv.html">eslv</a></li>
 </ul>
 </li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="doc/3_API_reference/300_intro.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc/3_API_reference/301_Commands_output/301_Commands_output.html">Commands output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="doc/3_API_reference/302_Database/302_Database.html">Database</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc/3_API_reference/302_Database/MapdlDb/MapdlDb.html">MapdlDb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/3_API_reference/302_Database/DbElems/DbElems.html">DbElems</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="doc/4_Examples/400_intro.html">Examples</a></li>
 </ul>
 
     </div>
@@ -379,6 +400,7 @@ document.write(`
 <div class="genindex-jumpbox">
  <a href="#A"><strong>A</strong></a>
  | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
@@ -402,12 +424,22 @@ document.write(`
 </li>
       <li><a href="doc/2_MAPDL_commands/203_Files/anstoasas.html#Mapdl.anstoasas">anstoasas() (Mapdl method)</a>
 </li>
-      <li><a href="doc/2_MAPDL_commands/206_Selecting/asel.html#Mapdl.asel">asel() (Mapdl method)</a>
+      <li><a href="doc/3_API_reference/301_Commands_output/301_Commands_output.html#ansys.mapdl.core.commands.BoundaryConditionsListingOutput">ansys.mapdl.core.commands.BoundaryConditionsListingOutput (built-in class)</a>
 </li>
-      <li><a href="doc/2_MAPDL_commands/206_Selecting/asll.html#Mapdl.asll">asll() (Mapdl method)</a>
+      <li><a href="doc/3_API_reference/301_Commands_output/301_Commands_output.html#ansys.mapdl.core.commands.CommandListingOutput">ansys.mapdl.core.commands.CommandListingOutput (built-in class)</a>
+</li>
+      <li><a href="doc/3_API_reference/302_Database/DbElems/DbElems.html#ansys.mapdl.core.database.elems.DbElems">ansys.mapdl.core.database.elems.DbElems (built-in class)</a>
+</li>
+      <li><a href="doc/3_API_reference/302_Database/MapdlDb/MapdlDb.html#ansys.mapdl.core.database.MapdlDb">ansys.mapdl.core.database.MapdlDb (built-in class)</a>
+</li>
+      <li><a href="doc/2_MAPDL_commands/206_Selecting/asel.html#Mapdl.asel">asel() (Mapdl method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/2_MAPDL_commands/206_Selecting/asll.html#Mapdl.asll">asll() (Mapdl method)</a>
+</li>
+      <li><a href="doc/2_MAPDL_commands/206_Selecting/aslv.html#Mapdl.aslv">aslv() (Mapdl method)</a>
+</li>
       <li><a href="doc/2_MAPDL_commands/203_Files/assign.html#Mapdl.assign">assign() (Mapdl method)</a>
 </li>
       <li><a href="doc/2_MAPDL_commands/202_Processor_entry/aux12.html#Mapdl.aux12">aux12() (Mapdl method)</a>
@@ -425,7 +457,11 @@ document.write(`
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/2_MAPDL_commands/205_Setup/clear.html#Mapdl.clear">clear() (Mapdl method)</a>
+
+      <ul>
+        <li><a href="doc/3_API_reference/302_Database/MapdlDb/clear.html#MapdlDb.clear">(MapdlDb method)</a>
 </li>
+      </ul></li>
       <li><a href="doc/2_MAPDL_commands/204_List_controls/com.html#Mapdl.com">com() (Mapdl method)</a>
 </li>
   </ul></td>
@@ -439,9 +475,29 @@ document.write(`
   </ul></td>
 </tr></table>
 
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/2_MAPDL_commands/206_Selecting/dofsel.html#Mapdl.dofsel">dofsel() (Mapdl method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/2_MAPDL_commands/206_Selecting/esel.html#Mapdl.esel">esel() (Mapdl method)</a>
+</li>
+      <li><a href="doc/2_MAPDL_commands/206_Selecting/esla.html#Mapdl.esla">esla() (Mapdl method)</a>
+</li>
+      <li><a href="doc/2_MAPDL_commands/206_Selecting/esll.html#Mapdl.esll">esll() (Mapdl method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/2_MAPDL_commands/206_Selecting/esln.html#Mapdl.esln">esln() (Mapdl method)</a>
+</li>
+      <li><a href="doc/2_MAPDL_commands/206_Selecting/eslv.html#Mapdl.eslv">eslv() (Mapdl method)</a>
+</li>
       <li><a href="doc/2_MAPDL_commands/201_Run_controls/exit.html#Mapdl.exit">exit() (Mapdl method)</a>, <a href="doc/2_MAPDL_commands/201_Run_controls/exit.html#id0">[1]</a>
 </li>
   </ul></td>
@@ -452,11 +508,13 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/2_MAPDL_commands/203_Files/fcomp.html#Mapdl.fcomp">fcomp() (Mapdl method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/2_MAPDL_commands/201_Run_controls/filname.html#Mapdl.filname">filname() (Mapdl method)</a>, <a href="doc/2_MAPDL_commands/201_Run_controls/filname.html#id0">[1]</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/2_MAPDL_commands/202_Processor_entry/finish.html#Mapdl.finish">finish() (Mapdl method)</a>
+</li>
+      <li><a href="doc/3_API_reference/302_Database/DbElems/first.html#DbElems.first">first() (DbElems method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -464,10 +522,12 @@ document.write(`
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="doc/2_MAPDL_commands/204_List_controls/golist.html#Mapdl.golist">golist() (Mapdl method)</a>
+      <li><a href="doc/3_API_reference/302_Database/DbElems/get.html#DbElems.get">get() (DbElems method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/2_MAPDL_commands/204_List_controls/golist.html#Mapdl.golist">golist() (Mapdl method)</a>
+</li>
       <li><a href="doc/2_MAPDL_commands/204_List_controls/gopr.html#Mapdl.gopr">gopr() (Mapdl method)</a>
 </li>
   </ul></td>
@@ -475,6 +535,10 @@ document.write(`
 
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/3_API_reference/302_Database/DbElems/info.html#DbElems.info">info() (DbElems method)</a>
+</li>
+  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/2_MAPDL_commands/201_Run_controls/input.html#Mapdl.input">input() (Mapdl method)</a>
 </li>
@@ -493,6 +557,10 @@ document.write(`
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/2_MAPDL_commands/203_Files/lgwrite.html#Mapdl.lgwrite">lgwrite() (Mapdl method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/3_API_reference/302_Database/MapdlDb/load.html#MapdlDb.load">load() (MapdlDb method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -514,11 +582,15 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/2_MAPDL_commands/201_Run_controls/nerr.html#Mapdl.nerr">nerr() (Mapdl method)</a>
 </li>
+      <li><a href="doc/3_API_reference/302_Database/DbElems/next.html#DbElems.next">next() (DbElems method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/2_MAPDL_commands/204_List_controls/nolist.html#Mapdl.nolist">nolist() (Mapdl method)</a>
 </li>
       <li><a href="doc/2_MAPDL_commands/204_List_controls/nopr.html#Mapdl.nopr">nopr() (Mapdl method)</a>
+</li>
+      <li><a href="doc/3_API_reference/302_Database/DbElems/num.html#DbElems.num">num() (DbElems method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -535,6 +607,8 @@ document.write(`
       <li><a href="doc/2_MAPDL_commands/202_Processor_entry/post26.html#Mapdl.post26">post26() (Mapdl method)</a>
 </li>
       <li><a href="doc/2_MAPDL_commands/202_Processor_entry/prep7.html#Mapdl.prep7">prep7() (Mapdl method)</a>
+</li>
+      <li><a href="doc/3_API_reference/302_Database/DbElems/push.html#DbElems.push">push() (DbElems method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -563,7 +637,11 @@ document.write(`
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/2_MAPDL_commands/205_Setup/save.html#Mapdl.save">save() (Mapdl method)</a>
+
+      <ul>
+        <li><a href="doc/3_API_reference/302_Database/MapdlDb/save.html#MapdlDb.save">(MapdlDb method)</a>
 </li>
+      </ul></li>
       <li><a href="doc/2_MAPDL_commands/203_Files/slashclog.html#Mapdl.slashclog">slashclog() (Mapdl method)</a>
 </li>
       <li><a href="doc/2_MAPDL_commands/203_Files/slashdelete.html#Mapdl.slashdelete">slashdelete() (Mapdl method)</a>
@@ -574,17 +652,21 @@ document.write(`
 </li>
       <li><a href="doc/2_MAPDL_commands/201_Run_controls/slashstatus.html#Mapdl.slashstatus">slashstatus() (Mapdl method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/2_MAPDL_commands/205_Setup/smbc.html#Mapdl.smbc">smbc() (Mapdl method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="doc/2_MAPDL_commands/203_Files/starlist.html#Mapdl.starlist">starlist() (Mapdl method)</a>
 </li>
       <li><a href="doc/2_MAPDL_commands/201_Run_controls/starstatus.html#Mapdl.starstatus">starstatus() (Mapdl method)</a>
 </li>
+      <li><a href="doc/3_API_reference/302_Database/MapdlDb/start.html#MapdlDb.start">start() (MapdlDb method)</a>
+</li>
       <li><a href="doc/2_MAPDL_commands/205_Setup/stat.html#Mapdl.stat">stat() (Mapdl method)</a>
 </li>
       <li><a href="doc/2_MAPDL_commands/205_Setup/stitle.html#Mapdl.stitle">stitle() (Mapdl method)</a>
+</li>
+      <li><a href="doc/3_API_reference/302_Database/MapdlDb/stop.html#MapdlDb.stop">stop() (MapdlDb method)</a>
 </li>
       <li><a href="doc/2_MAPDL_commands/201_Run_controls/syp.html#Mapdl.syp">syp() (Mapdl method)</a>
 </li>
