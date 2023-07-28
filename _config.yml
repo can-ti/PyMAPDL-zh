@@ -1,6 +1,6 @@
-# 对于 nesting directives（嵌套指令）， 可以缩进内部的指令，但若缩进幅度超过 3 个空格，它们将被呈现为“raw code”（原始代码）。https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html#parameterizing-directives
-# jupyter book里引用标签label的写法和原本myst写法不太一样, {ref}`label-text` 或者 [](label-text) ,可以看到标签前不需要井字符`#`
-
+# 1.对于 nesting directives（嵌套指令）， 可以缩进内部的指令，但若缩进幅度超过 3 个空格，它们将被呈现为“raw code”（原始代码）。https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html#parameterizing-directives
+# 2.jupyter book里引用标签label的写法和原本myst写法不太一样, {ref}`label-text` 或者 [](label-text) ,可以看到标签前不需要井字符`#`
+# 3.引用页面的时候，相对链接最好不要超过两级，例如：{doc}`** <../Mapdl/add_file_handler>`，避免{doc}`** <../309_Mapdl_module/Mapdl/add_file_handler>`,因为链接层数多了，可能会失效
 
 
 #######################################################################################

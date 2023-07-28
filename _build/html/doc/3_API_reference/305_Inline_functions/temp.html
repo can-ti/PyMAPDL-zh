@@ -1,0 +1,617 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>&lt;no title&gt; &#8212; PyMAPDL 中文指南</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'doc/3_API_reference/305_Inline_functions/temp';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    PyMAPDL中文指南
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/000_intro.html">1. 开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/001_%E5%AD%A6%E4%B9%A0PyMAPDL.html">2. 学习PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/002_%E7%89%88%E6%9C%AC%E5%92%8C%E6%8E%A5%E5%8F%A3.html">3. 版本和接口</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/003_%E6%A0%87%E5%87%86%E5%AE%89%E8%A3%85.html">4. 标准安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/004_%E7%94%A8%E4%BA%8ELinux%E7%9A%84Windows%E5%AD%90%E7%B3%BB%E7%BB%9F.html">5. 用于Linux的Windows子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/005_Julia_and_PyMAPDL.html">6. Julia 和 PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/006_%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html">7. 常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/007_%E8%B4%A1%E7%8C%AE.html">8. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/008_%E5%88%9B%E5%BB%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84MAPDL%20docker%E5%AE%B9%E5%99%A8.html">9. 创建你自己的 MAPDL docker 容器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/009_%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%8A%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91.html">10. Develop on a container</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/100_intro.html">1. 用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/101_MAPDL%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8.html">2. MAPDL 初始设置和本地启动</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/102_PyMAPDL%E8%AF%AD%E6%B3%95%E5%92%8C%E7%94%A8%E6%B3%95.html">3. PyMAPDL 语法和用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/103_ANSYS_APDL%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%8E%A7%E5%88%B6%E7%A4%BA%E4%BE%8B.html">4. ANSYS APDL 交互式控制示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/104_%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BB%98%E5%9B%BE.html">5. 交互式绘图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/105_%E7%BD%91%E6%A0%BC%E5%92%8C%E5%87%A0%E4%BD%95.html">6. 网格和几何</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/106_%E5%90%8E%E5%A4%84%E7%90%86.html">7. 后处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/107_%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%A3%80%E7%B4%A2%E5%8F%82%E6%95%B0.html">8. 设置和检索参数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/108_%E8%AE%BF%E9%97%AEMAPDL%E6%95%B0%E6%8D%AE%E5%BA%93.html">9. 访问 MAPDL 数据库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/109_%E8%BD%AC%E6%8D%A2%E8%84%9A%E6%9C%AC.html">10. 转换脚本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/110_APDL_Math%E6%A6%82%E8%BF%B0.html">11. APDL Math 概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/111_%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAMAPDL%E5%AE%9E%E4%BE%8B%E6%B1%A0.html">12. 创建一个 MAPDL 实例池</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/112_%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%E6%A6%82%E8%BF%B0.html">13. 文件资源管理器概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/113_%E4%BD%BF%E7%94%A8Python%E7%BC%96%E5%86%99UPF%E5%AD%90%E7%A8%8B%E5%BA%8F.html">14. 使用 Python 编写 UPF 子程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/114_%E4%BD%BF%E7%94%A8Krylov%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E8%B0%90%E6%B3%A2%E5%88%86%E6%9E%90.html">15. 使用Krylov方法进行谐波分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/115_PyMAPDL%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4.html">16. PyMAPDL 故障排除</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">MAPDL commands</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../2_MAPDL_commands/200_intro.html">MAPDL commands</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/201_Run_controls.html">Run controls</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/config.html">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/cwd.html">cwd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/exit.html">exit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/filname.html">filname</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/input.html">input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/keyw.html">keyw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/memm.html">memm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/nerr.html">nerr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/pause.html">pause</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/slashstatus.html">slashstatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/starstatus.html">starstatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/syp.html">syp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/sys.html">sys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/unpause.html">unpause</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/202_Processor_entry.html">Processor entry</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux2.html">aux2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux3.html">aux3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux12.html">aux12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux15.html">aux15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/finish.html">finish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/map.html">map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/post1.html">post1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/post26.html">post26</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/prep7.html">prep7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/quit.html">quit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/slashsolu.html">slashsolu</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/203_Files.html">Files</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/anstoaqwa.html">anstoaqwa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/anstoasas.html">anstoasas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/assign.html">assigin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/copy.html">copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/slashdelete.html">slashdelete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/fcomp.html">fcomp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/lgwrite.html">lgwrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/starlist.html">starlist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/slashclog.html">slashclog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/slashfdele.html">slashfdele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/rename.html">rename</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/204_List_controls.html">List controls</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/com.html">com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/golist.html">golist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/gopr.html">gopr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/nolist.html">nolist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/nopr.html">nopr</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/205_Setup.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/clear.html">clear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/resume.html">resume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/save.html">save</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/smbc.html">smbc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/stat.html">stat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/stitle.html">stitle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/title.html">title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/units.html">units</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/206_Selecting.html">Selecting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/allsel.html">allsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/asel.html">asel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/asll.html">asll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/aslv.html">aslv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/dofsel.html">dofsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esel.html">esel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esla.html">esla</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esll.html">esll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esln.html">esln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/eslv.html">eslv</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../300_intro.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../301_Commands_output/301_Commands_output.html">Commands output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../302_Database/302_Database.html">Database</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../302_Database/MapdlDb/MapdlDb.html">MapdlDb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../302_Database/DbElems/DbElems.html">DbElems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../302_Database/DbNodes/DbNodes.html">DbNodes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../303_Geometry/303_Geometry.html">Geometry</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../303_Geometry/Geometry/Geometry.html">Geometry</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../304_Helper_functions/304_Helper_functions.html">Helper functions</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../304_Helper_functions/concert_apdl_block.html">convert_apdl_block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../304_Helper_functions/concert_script.html">convert_script</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="305_Inline_functions.html">Inline functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../4_Examples/400_intro.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_0.html">使用 PyMAPDL 的完整示例</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_1.html">MAPDL 2D Plane Stress Concentration Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_2.html">2D Pressure Vessel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_3.html">3D Stress Concentration Analysis for a Notched Plate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_4.html">Basic Thermal Analysis with pyMAPDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_6.html">Basic DPF-Core Usage with PyMAPDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_7.html">Static simulation of double cantilever beam test via cohesive elements</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_8.html">Contact Element Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_9.html">Cyclic Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_10.html">Static Cyclic Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_12.html">Plotting and Mesh Access</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/doc/3_API_reference/305_Inline_functions/temp.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p>| <span class="xref std std-doc">Query.kp(x, y, z)</span> | Return keypoint closest to coordinate (x, y, z). |
+| <span class="xref std std-doc">Query.centrx(e)</span> | Return the x coordinate of the element centroid. |
+| <span class="xref std std-doc">Query.centry(e)</span> | Return the y coordinate of the element centroid. |
+| <span class="xref std std-doc">Query.centrz(e)</span> | Return the z coordinate of the element centroid. |
+| <span class="xref std std-doc">Query.kx(k)</span> | Return the x coordinate of a keypont. |
+| <span class="xref std std-doc">Query.ky(k)</span> | Return the y coordinate of a keypont. |
+| <span class="xref std std-doc">Query.kz(k)</span> | Return the z coordinate of a keypont. |
+| <span class="xref std std-doc">Query.nx(n)</span> | Return the x coordinate of a node. |
+| <span class="xref std std-doc">Query.ny(n)</span> | Return the y coordinate of a node. |
+| <span class="xref std std-doc">Query.nz(n)</span> | Return the z coordinate of a node. |
+| <span class="xref std std-doc">Query.ux(n)</span> | Returns x-component of structural displacement at a node. |
+| <span class="xref std std-doc">Query.uy(n)</span> | Returns y-component of structural displacement at a node. |
+| <span class="xref std std-doc">Query.uz(n)</span> | Returns z-component of structural displacement at a node. |
+| <span class="xref std std-doc">Query.rotx(n)</span> | Returns x-component of rotational displacement at a node. |
+| <span class="xref std std-doc">Query.roty(n)</span> | Returns y-component of rotational displacement at a node. |
+| <span class="xref std std-doc">Query.rotz(n)</span> | Returns z-component of rotational displacement at a node. |
+| <span class="xref std std-doc">Query.lx(n, lfrac)</span> | X-coordinate of line n at length fraction lfrac. |
+| <span class="xref std std-doc">Query.ly(n, lfrac)</span> | Y-coordinate of line n at length fraction lfrac. |
+| <span class="xref std std-doc">Query.lz(n, lfrac)</span> | Z-coordinate of line n at length fraction lfrac. |
+| <span class="xref std std-doc">Query.lsx(n, lfrac)</span> | X-slope of line n at length fraction lfrac. |
+| <span class="xref std std-doc">Query.lsy(n, lfrac)</span> | Y-slope of line n at length fraction lfrac. |
+| <span class="xref std std-doc">Query.lsz(n, lfrac)</span> | Z-slope of line n at length fraction lfrac. |
+| <span class="xref std std-doc">Query.nsel(n)</span> | Returns selection status of a node. |
+| <span class="xref std std-doc">Query.ksel(k)</span> | Returns selection status of a keypoint. |
+| <span class="xref std std-doc">Query.lsel(n)</span> | Returns selection status of a line. |
+| <span class="xref std std-doc">Query.asel(a)</span> | Returns selection status of an area. |
+| <span class="xref std std-doc">Query.esel(e)</span> | Returns selection status of an element. |
+| <span class="xref std std-doc">Query.vsel(v)</span> | Returns selection status of a volume. |</p>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./doc\3_API_reference\305_Inline_functions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ff-郑州大学
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright  (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

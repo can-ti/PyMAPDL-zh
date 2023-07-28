@@ -1,0 +1,1284 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Cyclic Analysis &#8212; PyMAPDL 中文指南</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'doc/4_Examples/401_Full_examples_using_PyMAPDL/401_9';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Static Cyclic Analysis" href="401_10.html" />
+    <link rel="prev" title="Contact Element Example" href="401_8.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    PyMAPDL中文指南
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/000_intro.html">1. 开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/001_%E5%AD%A6%E4%B9%A0PyMAPDL.html">2. 学习PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/002_%E7%89%88%E6%9C%AC%E5%92%8C%E6%8E%A5%E5%8F%A3.html">3. 版本和接口</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/003_%E6%A0%87%E5%87%86%E5%AE%89%E8%A3%85.html">4. 标准安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/004_%E7%94%A8%E4%BA%8ELinux%E7%9A%84Windows%E5%AD%90%E7%B3%BB%E7%BB%9F.html">5. 用于Linux的Windows子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/005_Julia_and_PyMAPDL.html">6. Julia 和 PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/006_%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html">7. 常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/007_%E8%B4%A1%E7%8C%AE.html">8. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/008_%E5%88%9B%E5%BB%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84MAPDL%20docker%E5%AE%B9%E5%99%A8.html">9. 创建你自己的 MAPDL docker 容器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/009_%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%8A%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91.html">10. Develop on a container</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/100_intro.html">1. 用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/101_MAPDL%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8.html">2. MAPDL 初始设置和本地启动</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/102_PyMAPDL%E8%AF%AD%E6%B3%95%E5%92%8C%E7%94%A8%E6%B3%95.html">3. PyMAPDL 语法和用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/103_ANSYS_APDL%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%8E%A7%E5%88%B6%E7%A4%BA%E4%BE%8B.html">4. ANSYS APDL 交互式控制示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/104_%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BB%98%E5%9B%BE.html">5. 交互式绘图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/105_%E7%BD%91%E6%A0%BC%E5%92%8C%E5%87%A0%E4%BD%95.html">6. 网格和几何</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/106_%E5%90%8E%E5%A4%84%E7%90%86.html">7. 后处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/107_%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%A3%80%E7%B4%A2%E5%8F%82%E6%95%B0.html">8. 设置和检索参数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/108_%E8%AE%BF%E9%97%AEMAPDL%E6%95%B0%E6%8D%AE%E5%BA%93.html">9. 访问 MAPDL 数据库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/109_%E8%BD%AC%E6%8D%A2%E8%84%9A%E6%9C%AC.html">10. 转换脚本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/110_APDL_Math%E6%A6%82%E8%BF%B0.html">11. APDL Math 概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/111_%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAMAPDL%E5%AE%9E%E4%BE%8B%E6%B1%A0.html">12. 创建一个 MAPDL 实例池</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/112_%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%E6%A6%82%E8%BF%B0.html">13. 文件资源管理器概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/113_%E4%BD%BF%E7%94%A8Python%E7%BC%96%E5%86%99UPF%E5%AD%90%E7%A8%8B%E5%BA%8F.html">14. 使用 Python 编写 UPF 子程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/114_%E4%BD%BF%E7%94%A8Krylov%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E8%B0%90%E6%B3%A2%E5%88%86%E6%9E%90.html">15. 使用Krylov方法进行谐波分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/115_PyMAPDL%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4.html">16. PyMAPDL 故障排除</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">MAPDL commands</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../2_MAPDL_commands/200_intro.html">MAPDL commands</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/201_Run_controls.html">Run controls</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/config.html">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/cwd.html">cwd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/exit.html">exit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/filname.html">filname</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/input.html">input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/keyw.html">keyw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/memm.html">memm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/nerr.html">nerr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/pause.html">pause</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/slashstatus.html">slashstatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/starstatus.html">starstatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/syp.html">syp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/sys.html">sys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/unpause.html">unpause</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/202_Processor_entry.html">Processor entry</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux2.html">aux2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux3.html">aux3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux12.html">aux12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux15.html">aux15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/finish.html">finish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/map.html">map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/post1.html">post1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/post26.html">post26</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/prep7.html">prep7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/quit.html">quit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/slashsolu.html">slashsolu</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/203_Files.html">Files</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/anstoaqwa.html">anstoaqwa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/anstoasas.html">anstoasas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/assign.html">assigin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/copy.html">copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/slashdelete.html">slashdelete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/fcomp.html">fcomp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/lgwrite.html">lgwrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/starlist.html">starlist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/slashclog.html">slashclog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/slashfdele.html">slashfdele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/rename.html">rename</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/204_List_controls.html">List controls</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/com.html">com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/golist.html">golist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/gopr.html">gopr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/nolist.html">nolist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/nopr.html">nopr</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/205_Setup.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/clear.html">clear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/resume.html">resume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/save.html">save</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/smbc.html">smbc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/stat.html">stat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/stitle.html">stitle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/title.html">title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/units.html">units</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/206_Selecting.html">Selecting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/allsel.html">allsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/asel.html">asel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/asll.html">asll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/aslv.html">aslv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/dofsel.html">dofsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esel.html">esel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esla.html">esla</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esll.html">esll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esln.html">esln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/eslv.html">eslv</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../3_API_reference/300_intro.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_API_reference/301_Commands_output/301_Commands_output.html">Commands output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_API_reference/302_Database/302_Database.html">Database</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_API_reference/302_Database/MapdlDb/MapdlDb.html">MapdlDb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_API_reference/302_Database/DbElems/DbElems.html">DbElems</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../400_intro.html">Examples</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="401_0.html">使用 PyMAPDL 的完整示例</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="401_1.html">MAPDL 2D Plane Stress Concentration Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="401_2.html">2D Pressure Vessel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="401_3.html">3D Stress Concentration Analysis for a Notched Plate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="401_4.html">Basic Thermal Analysis with pyMAPDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="401_6.html">Basic DPF-Core Usage with PyMAPDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="401_7.html">Static simulation of double cantilever beam test via cohesive elements</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="401_8.html">Contact Element Example</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Cyclic Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="401_10.html">Static Cyclic Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="401_12.html">Plotting and Mesh Access</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/doc/4_Examples/401_Full_examples_using_PyMAPDL/401_9.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Cyclic Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-cyclic-sector">Create the Cyclic Sector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-the-model-cyclic">Make the Model Cyclic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-the-mesh">Generate the mesh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-material-properties">Apply Material Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-modal-analysis">Run the Modal Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-results-of-the-cyclic-modal-analysis">Get the Results of the Cyclic Modal Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-the-table-of-harmonic-indices">List the Table of Harmonic Indices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-an-animation-of-a-traveling-wave">Generate an Animation of a Traveling Wave</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-geometry">Parametric Geometry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">List the Table of Harmonic Indices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-first-bend-for-nodal-diameter-2">Plot First Bend for Nodal Diameter 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#animate-first-bend-for-nodal-diameter-2">Animate First Bend for Nodal Diameter 2</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cyclic-analysis">
+<h1>Cyclic Analysis<a class="headerlink" href="#cyclic-analysis" title="Permalink to this heading">#</a></h1>
+<p>此示例使用循环扇形的参数几何创建了一个叶盘，然后对该循环扇形进行模态分析。然后，我们使用传统的 MAPDL reader 对结果进行后处理，最后使用参数建模器生成另一个循环模型。</p>
+<p>我们的第一个任务是创建一个包含 7 个扇区的简单循环模型。</p>
+<figure class="align-center" id="id2">
+<img alt="../../../_images/cyclic_disc.png" src="../../../_images/cyclic_disc.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text"><strong>cyclic_disc</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>首先，将 MAPDL 作为服务器启动。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+
+<span class="kn">from</span> <span class="nn">ansys.mapdl.core</span> <span class="kn">import</span> <span class="n">launch_mapdl</span>
+
+<span class="n">mapdl</span> <span class="o">=</span> <span class="n">launch_mapdl</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="create-the-cyclic-sector">
+<h2>Create the Cyclic Sector<a class="headerlink" href="#create-the-cyclic-sector" title="Permalink to this heading">#</a></h2>
+<p>创建循环模型的单个“扇区”。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen_sector</span><span class="p">(</span><span class="n">mapdl</span><span class="p">,</span> <span class="n">sectors</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a single sector within MAPDL.&quot;&quot;&quot;</span>
+
+    <span class="c1"># thickness</span>
+    <span class="n">thickness</span> <span class="o">=</span> <span class="mf">0.003</span>  <span class="c1"># meters</span>
+    <span class="n">arc_end</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">sectors</span>
+    <span class="n">arc_cent</span> <span class="o">=</span> <span class="n">arc_end</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="c1"># radius</span>
+    <span class="n">rad</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># M</span>
+    <span class="n">arc</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">CircularArc</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">rad</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">arc_end</span><span class="p">)</span> <span class="o">*</span> <span class="n">rad</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">arc_end</span><span class="p">)</span> <span class="o">*</span> <span class="n">rad</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="c1"># interior circle</span>
+    <span class="n">kp_begin</span> <span class="o">=</span> <span class="p">[</span><span class="n">rad</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">kp_end</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">arc_end</span><span class="p">)</span> <span class="o">*</span> <span class="n">rad</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">arc_end</span><span class="p">)</span> <span class="o">*</span> <span class="n">rad</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">kp_center</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># exterior circle in (M)</span>
+    <span class="n">out_rad</span> <span class="o">=</span> <span class="mf">5.2e-2</span>
+
+    <span class="c1"># solve for angle to get same arc.length at the end</span>
+    <span class="n">cent_ang</span> <span class="o">=</span> <span class="n">arc</span><span class="o">.</span><span class="n">length</span> <span class="o">/</span> <span class="n">out_rad</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="c1"># interior circle</span>
+    <span class="n">kp_beg_outer</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">arc_cent</span> <span class="o">-</span> <span class="n">cent_ang</span><span class="p">)</span> <span class="o">*</span> <span class="n">out_rad</span><span class="p">,</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">arc_cent</span> <span class="o">-</span> <span class="n">cent_ang</span><span class="p">)</span> <span class="o">*</span> <span class="n">out_rad</span><span class="p">,</span>
+        <span class="mi">0</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="n">kp_end_outer</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">arc_cent</span> <span class="o">+</span> <span class="n">cent_ang</span><span class="p">)</span> <span class="o">*</span> <span class="n">out_rad</span><span class="p">,</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">arc_cent</span> <span class="o">+</span> <span class="n">cent_ang</span><span class="p">)</span> <span class="o">*</span> <span class="n">out_rad</span><span class="p">,</span>
+        <span class="mi">0</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">prep7</span><span class="p">()</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">k</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">kp_center</span><span class="p">)</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">k</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">kp_begin</span><span class="p">)</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">k</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">kp_end</span><span class="p">)</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">k</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">kp_beg_outer</span><span class="p">)</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">k</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">kp_end_outer</span><span class="p">)</span>
+
+    <span class="c1"># inner arc</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">l</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># left line</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">l</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># right line</span>
+    <span class="n">lnum_inter</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">l</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># internal line</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">al</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+
+    <span class="c1"># outer &quot;blade&quot;</span>
+    <span class="n">lnum</span> <span class="o">=</span> <span class="p">[</span><span class="n">lnum_inter</span><span class="p">,</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">l</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">l</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">l</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">al</span><span class="p">(</span><span class="o">*</span><span class="n">lnum</span><span class="p">)</span>
+
+    <span class="c1"># extrude the model in the Z direction by ``thickness``</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">vext</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">dz</span><span class="o">=</span><span class="n">thickness</span><span class="p">)</span>
+
+
+<span class="c1"># generate a single sector of a 7 sector model</span>
+<span class="n">sectors</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">gen_sector</span><span class="p">(</span><span class="n">mapdl</span><span class="p">,</span> <span class="n">sectors</span><span class="p">)</span>
+
+<span class="c1"># Volume plot</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">vplot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id3">
+<img alt="../../../_images/sphx_glr_cyclic_analysis_001.png" src="../../../_images/sphx_glr_cyclic_analysis_001.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text"><strong>sphx_glr_cyclic_analysis_001</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="make-the-model-cyclic">
+<h2>Make the Model Cyclic<a class="headerlink" href="#make-the-model-cyclic" title="Permalink to this heading">#</a></h2>
+<p>通过运行 <code class="docutils literal notranslate"><span class="pre">Mapdl.cyclic()</span></code> 使模型循环</p>
+<p>注意扇区数是如何匹配的</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">cyclic</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected Sectors: </span><span class="si">{</span><span class="n">sectors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Out:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Expected Sectors: 7
+USE EXISTING MODEL FOR CYCLIC SYMMETRY</p>
+<hr class="docutils" />
+<p class="sd-card-text">****** COMPUTED QUANTITIES ***************************</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p class="sd-card-text">NUMBER OF SECTORS =                  7            *</p></li>
+<li><p class="sd-card-text">SECTOR ANGLE =                  51.429            *</p></li>
+<li><p class="sd-card-text">CYCLIC COORDINATE SYSTEM =           1            *</p></li>
+<li><p class="sd-card-text">EDGE COMPONENTS CONTAIN AREAS                     *</p></li>
+<li><p class="sd-card-text">LOW  EDGE COMPONENT = CYCLIC_M01L       MATCHED   *</p></li>
+<li><p class="sd-card-text">HIGH EDGE COMPONENT = CYCLIC_M01H                 *</p></li>
+</ul>
+</div>
+</details></section>
+<hr class="docutils" />
+<section id="generate-the-mesh">
+<h2>Generate the mesh<a class="headerlink" href="#generate-the-mesh" title="Permalink to this heading">#</a></h2>
+<p>使用二次六面体 SOLID186 生成有限元网格。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># element size of 0.01</span>
+<span class="n">esize</span> <span class="o">=</span> <span class="mf">0.001</span>
+
+<span class="n">mapdl</span><span class="o">.</span><span class="n">et</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">186</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">esize</span><span class="p">(</span><span class="n">esize</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">vsweep</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+
+<span class="c1"># plot the finite element mesh</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">eplot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id4">
+<img alt="../../../_images/sphx_glr_cyclic_analysis_002.png" src="../../../_images/sphx_glr_cyclic_analysis_002.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text"><strong>sphx_glr_cyclic_analysis_002</strong></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="apply-material-properties">
+<h2>Apply Material Properties<a class="headerlink" href="#apply-material-properties" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a material (nominal steel in SI)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">mp</span><span class="p">(</span><span class="s2">&quot;EX&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">210e9</span><span class="p">)</span>  <span class="c1"># Elastic moduli in Pa (kg/(m*s**2))</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">mp</span><span class="p">(</span><span class="s2">&quot;DENS&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7800</span><span class="p">)</span>  <span class="c1"># Density in kg/m3</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">mp</span><span class="p">(</span><span class="s2">&quot;NUXY&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>  <span class="c1"># Poisson&#39;s Ratio</span>
+
+<span class="c1"># apply it to all elements</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">emodif</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">,</span> <span class="s2">&quot;MAT&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Out:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">MODIFY ALL SELECTED ELEMENTS TO HAVE  MAT  =         1</p>
+</div>
+</details></section>
+<section id="run-the-modal-analysis">
+<h2>Run the Modal Analysis<a class="headerlink" href="#run-the-modal-analysis" title="Permalink to this heading">#</a></h2>
+<p>让我们得到前 10 阶模态。请注意，这实际上将根据循环边界条件进行计算 <code class="docutils literal notranslate"><span class="pre">(sectors/2)*nmode</span></code> 。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">modal_analysis</span><span class="p">(</span><span class="n">nmode</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">freqb</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Out:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">*** NOTE ***                            CP =       0.000   TIME= 00:00:00
+There is no title defined for this analysis.</p>
+<p class="sd-card-text">*** WARNING ***                         CP =       0.000   TIME= 00:00:00
+No constraints have been defined using the D command.</p>
+<p class="sd-card-text">GENERATE CYCLIC SYMMETRY CONSTRAINT EQUATIONS</p>
+<p class="sd-card-text">*** WARNING ***                         CP =       0.000   TIME= 00:00:00
+There is no high edge node in a position to match low edge node 2515
+(location error = 4.55E-04, maximum for all nodes).  Cyclic symmetry
+constraint equations will be generated between the sector edges using
+a mapping procedure similar to the CEINTF command.  This may reduce
+solution accuracy, especially near the sector edges.</p>
+<p class="sd-card-text">NUMBER OF CONSTRAINT EQUATIONS GENERATED=   363
+(USING THE UNMATCHED NODES ALGORITHM)</p>
+<p class="sd-card-text">*****  MAPDL SOLVE    COMMAND  *****</p>
+<p class="sd-card-text">*** SELECTION OF ELEMENT TECHNOLOGIES FOR APPLICABLE ELEMENTS ***
+—GIVE SUGGESTIONS ONLY—</p>
+<p class="sd-card-text">ELEMENT TYPE         1 IS SOLID186. KEYOPT(2) IS ALREADY SET AS SUGGESTED.</p>
+<p class="sd-card-text"><em><strong><strong>MAPDL VERIFICATION RUN ONLY</strong></strong></em>
+DO NOT USE RESULTS FOR PRODUCTION</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                   S O L U T I O N   O P T I O N S
+</pre></div>
+</div>
+<p class="sd-card-text">PROBLEM DIMENSIONALITY… … … … .3-D
+CYCLIC SYMMETRY SECTOR ANGLE… … … .   51.429     DEGREES
+DEGREES OF FREEDOM… … UX   UY   UZ
+ANALYSIS TYPE … … … … … . .MODAL
+EXTRACTION METHOD… … … … . .BLOCK LANCZOS
+NUMBER OF MODES TO EXTRACT… … … . .    10
+USE CYCLIC MODES IN SUBSEQUENT MSUP ANALYSIS. .YES
+SHIFT POINT … … … … … …  1.0000
+GLOBALLY ASSEMBLED MATRIX … … … . .SYMMETRIC
+NUMBER OF MODES TO EXPAND … … … . .    10
+ELEMENT RESULTS CALCULATION … … … .OFF</p>
+<p class="sd-card-text">*** NOTE ***                            CP =       0.000   TIME= 00:00:00
+The conditions for direct assembly have been met.  No .emat or .erot
+files will be produced.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                  L O A D   S T E P   O P T I O N S
+</pre></div>
+</div>
+<p class="sd-card-text">LOAD STEP NUMBER… … … … … .     1
+CYCLIC SYMMETRY HARMONIC INDEX… … …     0
+THERMAL STRAINS INCLUDED IN THE LOAD VECTOR . .   YES
+PRINT OUTPUT CONTROLS … … … … .NO PRINTOUT
+DATABASE OUTPUT CONTROLS… … … …ALL DATA WRITTEN</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        **** CENTER OF MASS, MASS, AND MASS MOMENTS OF INERTIA ****
+</pre></div>
+</div>
+<p class="sd-card-text">CALCULATIONS ASSUME ELEMENT MASS AT ELEMENT CENTROID</p>
+<p class="sd-card-text">TOTAL MASS =  0.19205E-01</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                       MOM. OF INERTIA         MOM. OF INERTIA
+</pre></div>
+</div>
+<p class="sd-card-text">CENTER OF MASS            ABOUT ORIGIN        ABOUT CENTER OF MASS</p>
+<p class="sd-card-text">XC =  0.25304E-01      IXX =   0.3686E-05      IXX =   0.7910E-06
+YC =  0.12186E-01      IYY =   0.1533E-04      IYY =   0.2994E-05
+ZC =  0.15000E-02      IZZ =   0.1891E-04      IZZ =   0.3759E-05
+IXY =  -0.7303E-05      IXY =  -0.1381E-05
+IYZ =  -0.3510E-06      IYZ =   0.1426E-19
+IZX =  -0.7290E-06      IZX =   0.2680E-19</p>
+<p class="sd-card-text">*** MASS SUMMARY BY ELEMENT TYPE ***</p>
+<p class="sd-card-text">TYPE      MASS
+1  0.192050E-01</p>
+<p class="sd-card-text">Range of element maximum matrix coefficients in global coordinates
+Maximum = 266915922 at element 0.
+Minimum = 162779585 at element 0.</p>
+<p class="sd-card-text">*** ELEMENT MATRIX FORMULATION TIMES
+TYPE    NUMBER   ENAME      TOTAL CP  AVE CP</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    1      2628  SOLID186      0.000   0.000000
+</pre></div>
+</div>
+<p class="sd-card-text">Time at end of element matrix formulation CP = 0.</p>
+<p class="sd-card-text">BLOCK LANCZOS CALCULATION OF UP TO    10 EIGENVECTORS.
+NUMBER OF EQUATIONS              =        21235
+MAXIMUM WAVEFRONT                =            0
+MAXIMUM MODES STORED             =           10
+MINIMUM EIGENVALUE               =  0.10000E+01
+MAXIMUM EIGENVALUE               =  0.10000E+31</p>
+<p class="sd-card-text">Memory available (MB) =    0.0    ,  Memory required (MB) =    0.0</p>
+<p class="sd-card-text"><em><strong><strong>MAPDL VERIFICATION RUN ONLY</strong></strong></em>
+DO NOT USE RESULTS FOR PRODUCTION</p>
+<p class="sd-card-text">*** FREQUENCIES FROM BLOCK LANCZOS ITERATION ***</p>
+<p class="sd-card-text">MODE    FREQUENCY (HERTZ)</p>
+<p class="sd-card-text">FREQUENCY RANGE REQUESTED=   10 MODES ABOVE   1.00000     HERTZ</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1     1754.791682479
+2     9255.393113610
+3     10975.87855500
+4     11515.67522496
+5     21840.50658679
+6     26925.16420752
+7     33190.75844929
+8     34449.58546223
+9     38317.00950338
+</pre></div>
+</div>
+<p class="sd-card-text">10     56181.41341052</p>
+<p class="sd-card-text">GENERATE CYCLIC SYMMETRY CONSTRAINT EQUATIONS</p>
+<p class="sd-card-text">NUMBER OF CONSTRAINT EQUATIONS GENERATED=   740
+(USING THE UNMATCHED NODES ALGORITHM)</p>
+<p class="sd-card-text">*****  MAPDL SOLVE    COMMAND  *****
+<em><strong><strong>MAPDL VERIFICATION RUN ONLY</strong></strong></em>
+DO NOT USE RESULTS FOR PRODUCTION</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                  L O A D   S T E P   O P T I O N S
+</pre></div>
+</div>
+<p class="sd-card-text">LOAD STEP NUMBER… … … … … .     2
+CYCLIC SYMMETRY HARMONIC INDEX… … …     1
+THERMAL STRAINS INCLUDED IN THE LOAD VECTOR . .   YES
+PRINT OUTPUT CONTROLS … … … … .NO PRINTOUT
+DATABASE OUTPUT CONTROLS… … … …ALL DATA WRITTEN</p>
+<p class="sd-card-text">BLOCK LANCZOS CALCULATION OF UP TO    10 EIGENVECTORS.
+NUMBER OF EQUATIONS              =        42470
+MAXIMUM WAVEFRONT                =            0
+MAXIMUM MODES STORED             =           10
+MINIMUM EIGENVALUE               =  0.10000E+01
+MAXIMUM EIGENVALUE               =  0.10000E+31</p>
+<p class="sd-card-text">Memory available (MB) =    0.0    ,  Memory required (MB) =    0.0</p>
+<p class="sd-card-text"><em><strong><strong>MAPDL VERIFICATION RUN ONLY</strong></strong></em>
+DO NOT USE RESULTS FOR PRODUCTION</p>
+<p class="sd-card-text">*** FREQUENCIES FROM BLOCK LANCZOS ITERATION ***</p>
+<p class="sd-card-text">MODE    FREQUENCY (HERTZ)</p>
+<p class="sd-card-text">FREQUENCY RANGE REQUESTED=   10 MODES ABOVE   1.00000     HERTZ</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1     4016.683031961
+2     4016.683039662
+3     4064.737838333
+4     4064.737845252
+5     10313.66920894
+6     10313.66923827
+7     14213.07126639
+8     14213.07137038
+9     19293.02904243
+</pre></div>
+</div>
+<p class="sd-card-text">10     19293.02905279</p>
+<p class="sd-card-text">GENERATE CYCLIC SYMMETRY CONSTRAINT EQUATIONS</p>
+<p class="sd-card-text">NUMBER OF CONSTRAINT EQUATIONS GENERATED=   726
+(USING THE UNMATCHED NODES ALGORITHM)</p>
+<p class="sd-card-text">*****  MAPDL SOLVE    COMMAND  *****
+<em><strong><strong>MAPDL VERIFICATION RUN ONLY</strong></strong></em>
+DO NOT USE RESULTS FOR PRODUCTION</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                  L O A D   S T E P   O P T I O N S
+</pre></div>
+</div>
+<p class="sd-card-text">LOAD STEP NUMBER… … … … … .     3
+CYCLIC SYMMETRY HARMONIC INDEX… … …     2
+THERMAL STRAINS INCLUDED IN THE LOAD VECTOR . .   YES
+PRINT OUTPUT CONTROLS … … … … .NO PRINTOUT
+DATABASE OUTPUT CONTROLS… … … …ALL DATA WRITTEN</p>
+<p class="sd-card-text">BLOCK LANCZOS CALCULATION OF UP TO    10 EIGENVECTORS.
+NUMBER OF EQUATIONS              =        42456
+MAXIMUM WAVEFRONT                =            0
+MAXIMUM MODES STORED             =           10
+MINIMUM EIGENVALUE               =  0.10000E+01
+MAXIMUM EIGENVALUE               =  0.10000E+31</p>
+<p class="sd-card-text">Memory available (MB) =    0.0    ,  Memory required (MB) =    0.0</p>
+<p class="sd-card-text"><em><strong><strong>MAPDL VERIFICATION RUN ONLY</strong></strong></em>
+DO NOT USE RESULTS FOR PRODUCTION</p>
+<p class="sd-card-text">*** FREQUENCIES FROM BLOCK LANCZOS ITERATION ***</p>
+<p class="sd-card-text">MODE    FREQUENCY (HERTZ)</p>
+<p class="sd-card-text">FREQUENCY RANGE REQUESTED=   10 MODES ABOVE   1.00000     HERTZ</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1     1057.627660261
+2     1057.627660280
+3     3380.551787122
+4     3380.551787123
+5     6319.916392199
+6     6319.916392208
+7     10091.69582739
+8     10091.69582740
+9     18041.48697678
+</pre></div>
+</div>
+<p class="sd-card-text">10     18041.48697678</p>
+<p class="sd-card-text">GENERATE CYCLIC SYMMETRY CONSTRAINT EQUATIONS</p>
+<p class="sd-card-text">NUMBER OF CONSTRAINT EQUATIONS GENERATED=   726
+(USING THE UNMATCHED NODES ALGORITHM)</p>
+<p class="sd-card-text">*****  MAPDL SOLVE    COMMAND  *****
+<em><strong><strong>MAPDL VERIFICATION RUN ONLY</strong></strong></em>
+DO NOT USE RESULTS FOR PRODUCTION</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                  L O A D   S T E P   O P T I O N S
+</pre></div>
+</div>
+<p class="sd-card-text">LOAD STEP NUMBER… … … … … .     4
+CYCLIC SYMMETRY HARMONIC INDEX… … …     3
+THERMAL STRAINS INCLUDED IN THE LOAD VECTOR . .   YES
+PRINT OUTPUT CONTROLS … … … … .NO PRINTOUT
+DATABASE OUTPUT CONTROLS… … … …ALL DATA WRITTEN</p>
+<p class="sd-card-text">BLOCK LANCZOS CALCULATION OF UP TO    10 EIGENVECTORS.
+NUMBER OF EQUATIONS              =        42456
+MAXIMUM WAVEFRONT                =            0
+MAXIMUM MODES STORED             =           10
+MINIMUM EIGENVALUE               =  0.10000E+01
+MAXIMUM EIGENVALUE               =  0.10000E+31</p>
+<p class="sd-card-text">Memory available (MB) =    0.0    ,  Memory required (MB) =    0.0</p>
+<p class="sd-card-text"><em><strong><strong>MAPDL VERIFICATION RUN ONLY</strong></strong></em>
+DO NOT USE RESULTS FOR PRODUCTION</p>
+<p class="sd-card-text">*** FREQUENCIES FROM BLOCK LANCZOS ITERATION ***</p>
+<p class="sd-card-text">MODE    FREQUENCY (HERTZ)</p>
+<p class="sd-card-text">FREQUENCY RANGE REQUESTED=   10 MODES ABOVE   1.00000     HERTZ</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1     1193.652629340
+2     1193.652629356
+3     3319.553821209
+4     3319.553821212
+5     7336.402568777
+6     7336.402568784
+7     9979.988874667
+8     9979.988874670
+9     19188.49510780
+</pre></div>
+</div>
+<p class="sd-card-text">10     19188.49510780</p>
+</div>
+</details></section>
+<section id="get-the-results-of-the-cyclic-modal-analysis">
+<h2>Get the Results of the Cyclic Modal Analysis<a class="headerlink" href="#get-the-results-of-the-cyclic-modal-analysis" title="Permalink to this heading">#</a></h2>
+<p>模态分析中的行波可视化。</p>
+<p>有关更多详细信息，请参阅叶片盘强制响应分析的模态工作方法验证 <a class="reference external" href="https://www.mdpi.com/2076-3417/11/12/5437/pdf">Validation of a Modal Work Approach for Forced Response Analysis of Bladed Disks</a> 或 循环对称性分析指南 <a class="reference external" href="https://ansyshelp.ansys.com/Views/Secured/corp/v222/en/pdf/Ansys_Mechanical_APDL_Cyclic_Symmetry_Analysis_Guide.pdf">Cyclic Symmetry Analysis Guide</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>它使用传统的结果读取器(MAPDL reader)，但是注意该读取器将在某个时候被弃用，转而使用 DPF，但我们现在可以用它来制作一些精彩的动画。</p>
+</div>
+<p>有关循环结果后处理的更多详细信息，请参阅：</p>
+<ul class="simple">
+<li><p>从循环模型分析中了解节点直径<a class="reference external" href="https://reader.docs.pyansys.com/examples/01-cyclic_results/academic_sector_nd.html">Understanding Nodal Diameters from a Cyclic Model Analysis</a></p></li>
+<li><p>模态循环对称性示例<a class="reference external" href="https://dpf.docs.pyansys.com/examples/02-modal-harmonic/01-modal_cyclic.html">Modal Cyclic Symmetry Example</a></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># grab the result object from MAPDL</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">result</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Out:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">PyMAPDL Result
+Units       : User Defined
+Version     : 23.1
+Cyclic      : True
+Result Sets : 40
+Nodes       : 7204
+Elements    : 1314</p>
+<p class="sd-card-text">Available Results:
+NSL : Nodal displacements</p>
+</div>
+</details></section>
+<section id="list-the-table-of-harmonic-indices">
+<h2>List the Table of Harmonic Indices<a class="headerlink" href="#list-the-table-of-harmonic-indices" title="Permalink to this heading">#</a></h2>
+<p>这是谐波指数表。此表提供了每种累积模式的相应谐波指数。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C. Index   Harmonic Index&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">hindex</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">n_results</span><span class="p">),</span> <span class="n">result</span><span class="o">.</span><span class="n">harmonic_indices</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2">      </span><span class="si">{</span><span class="n">hindex</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="generate-an-animation-of-a-traveling-wave">
+<h2>Generate an Animation of a Traveling Wave<a class="headerlink" href="#generate-an-animation-of-a-traveling-wave" title="Permalink to this heading">#</a></h2>
+<p>Here’s the nodal diameter 1 of first bend on our cyclic analysis.<br />
+这是我们循环分析中第一个弯曲的节点直径 1。</p>
+<p>We can get the first mode (generally first bend for a bladed rotor) for nodal diameter 1 with:<br />
+在节点直径为 1 的情况下，我们可以用以下方法得到第一阶模态（通常是叶片转子的一阶弯曲模态）：</p>
+<p><code class="docutils literal notranslate"><span class="pre">mode_num</span> <span class="pre">=</span> <span class="pre">np.nonzero(result.harmonic_indices</span> <span class="pre">==</span> <span class="pre">1)[0][0]</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pv</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="s2">&quot;w&quot;</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">animate_nodal_displacement</span><span class="p">(</span>
+    <span class="mi">11</span><span class="p">,</span>
+    <span class="n">displacement_factor</span><span class="o">=</span><span class="mf">5e-4</span><span class="p">,</span>
+    <span class="n">movie_filename</span><span class="o">=</span><span class="s2">&quot;traveling_wave11.gif&quot;</span><span class="p">,</span>
+    <span class="n">n_frames</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">off_screen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">loop</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">add_text</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">show_scalar_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;jet&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id5">
+<img alt="../../../_images/sphx_glr_cyclic_analysis_003.gif" src="../../../_images/sphx_glr_cyclic_analysis_003.gif" />
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text"><strong>sphx_glr_cyclic_analysis_003</strong></span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>这是节点直径 3 的一阶扭转模态。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">animate_nodal_displacement</span><span class="p">(</span>
+    <span class="mi">36</span><span class="p">,</span>
+    <span class="n">displacement_factor</span><span class="o">=</span><span class="mf">2e-4</span><span class="p">,</span>
+    <span class="n">movie_filename</span><span class="o">=</span><span class="s2">&quot;traveling_wave36.gif&quot;</span><span class="p">,</span>
+    <span class="n">n_frames</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">off_screen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">loop</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">add_text</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">show_scalar_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;jet&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id6">
+<img alt="../../../_images/sphx_glr_cyclic_analysis_004.gif" src="../../../_images/sphx_glr_cyclic_analysis_004.gif" />
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text"><strong>sphx_glr_cyclic_analysis_004</strong></span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="parametric-geometry">
+<h2>Parametric Geometry<a class="headerlink" href="#parametric-geometry" title="Permalink to this heading">#</a></h2>
+<p>由于我们的几何体创建是脚本化的，因此可以创建任意数量的 “扇形 “结构。让我们用 20 个扇形创建一个更有趣的结构。</p>
+<p>首先，请务必清除 MAPDL，以便我们从头开始。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mapdl</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">prep7</span><span class="p">()</span>
+
+<span class="c1"># Generate a single sector of a 20 sector model</span>
+<span class="n">gen_sector</span><span class="p">(</span><span class="n">mapdl</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># make it cyclic</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">cyclic</span><span class="p">()</span>
+
+<span class="c1"># Mesh it</span>
+<span class="n">esize</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">et</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">186</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">esize</span><span class="p">(</span><span class="n">esize</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">vsweep</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+
+<span class="c1"># apply materials</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">mp</span><span class="p">(</span><span class="s2">&quot;EX&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">210e9</span><span class="p">)</span>  <span class="c1"># Elastic moduli in Pa (kg/(m*s**2))</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">mp</span><span class="p">(</span><span class="s2">&quot;DENS&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7800</span><span class="p">)</span>  <span class="c1"># Density in kg/m3</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">mp</span><span class="p">(</span><span class="s2">&quot;NUXY&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>  <span class="c1"># Poisson&#39;s Ratio</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">emodif</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">,</span> <span class="s2">&quot;MAT&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Run the modal analysis</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">modal_analysis</span><span class="p">(</span><span class="n">nmode</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">freqb</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># grab the result object from MAPDL</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">result</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Out:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">PyMAPDL Result
+Units       : User Defined
+Version     : 23.1
+Cyclic      : True
+Result Sets : 66
+Nodes       : 3496
+Elements    : 579</p>
+<p class="sd-card-text">Available Results:
+NSL : Nodal displacements</p>
+</div>
+</details></section>
+<section id="id1">
+<h2>List the Table of Harmonic Indices<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>请注意这些模态的谐波指数如何上升到 10 或 N/2 的，其中N是扇区数。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C. Index   Harmonic Index&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">hindex</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">n_results</span><span class="p">),</span> <span class="n">result</span><span class="o">.</span><span class="n">harmonic_indices</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2">    </span><span class="si">{</span><span class="n">hindex</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Out:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">C. Index   Harmonic Index
+0      0
+1      0
+2      0
+3      0
+4      0
+5      0
+6     -1
+7      1
+8      1
+9     -1
+10      1
+11     -1
+12      2
+13     -2
+14      2
+15     -2
+16      2
+17     -2
+18      3
+19     -3
+20      3
+21     -3
+22      3
+23     -3
+24      4
+25     -4
+26      4
+27     -4
+28      4
+29     -4
+30     -5
+31      5
+32     -5
+33      5
+34     -5
+35      5
+36      6
+37     -6
+38      6
+39     -6
+40      6
+41     -6
+42      7
+43     -7
+44      7
+45     -7
+46      7
+47     -7
+48      8
+49     -8
+50      8
+51     -8
+52      8
+53     -8
+54      9
+55     -9
+56      9
+57     -9
+58      9
+59     -9
+60     10
+61     10
+62     10
+63     10
+64     10
+65     10</p>
+</div>
+</details></section>
+<section id="plot-first-bend-for-nodal-diameter-2">
+<h2>Plot First Bend for Nodal Diameter 2<a class="headerlink" href="#plot-first-bend-for-nodal-diameter-2" title="Permalink to this heading">#</a></h2>
+<p>请注意，由于该振型的节点直径为 2，因此您可以清楚地看到该振型的两条节点线。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">plot_nodal_displacement</span><span class="p">(</span>
+    <span class="mi">12</span><span class="p">,</span> <span class="n">cpos</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;jet&quot;</span><span class="p">,</span> <span class="n">show_scalar_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">add_text</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id7">
+<img alt="../../../_images/sphx_glr_cyclic_analysis_005.png" src="../../../_images/sphx_glr_cyclic_analysis_005.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text"><strong>sphx_glr_cyclic_analysis_005</strong></span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="animate-first-bend-for-nodal-diameter-2">
+<h2>Animate First Bend for Nodal Diameter 2<a class="headerlink" href="#animate-first-bend-for-nodal-diameter-2" title="Permalink to this heading">#</a></h2>
+<p>最后，让我们以 12 阶模态的动画效果结束本示例，它对应于本示例模型第二个节点直径的一阶弯曲。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">animate_nodal_displacement</span><span class="p">(</span>
+    <span class="mi">12</span><span class="p">,</span>
+    <span class="n">displacement_factor</span><span class="o">=</span><span class="mf">2e-4</span><span class="p">,</span>
+    <span class="n">movie_filename</span><span class="o">=</span><span class="s2">&quot;traveling_wave12.gif&quot;</span><span class="p">,</span>
+    <span class="n">n_frames</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">off_screen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">loop</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">add_text</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">show_scalar_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;jet&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id8">
+<img alt="../../../_images/sphx_glr_cyclic_analysis_006.gif" src="../../../_images/sphx_glr_cyclic_analysis_006.gif" />
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text"><strong>sphx_glr_cyclic_analysis_006</strong></span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./doc\4_Examples\401_Full_examples_using_PyMAPDL"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="401_8.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Contact Element Example</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="401_10.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Static Cyclic Analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-cyclic-sector">Create the Cyclic Sector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-the-model-cyclic">Make the Model Cyclic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-the-mesh">Generate the mesh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-material-properties">Apply Material Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-modal-analysis">Run the Modal Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-results-of-the-cyclic-modal-analysis">Get the Results of the Cyclic Modal Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-the-table-of-harmonic-indices">List the Table of Harmonic Indices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-an-animation-of-a-traveling-wave">Generate an Animation of a Traveling Wave</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-geometry">Parametric Geometry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">List the Table of Harmonic Indices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-first-bend-for-nodal-diameter-2">Plot First Bend for Nodal Diameter 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#animate-first-bend-for-nodal-diameter-2">Animate First Bend for Nodal Diameter 2</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ff-郑州大学
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright  (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

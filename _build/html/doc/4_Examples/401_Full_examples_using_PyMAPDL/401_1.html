@@ -1,0 +1,1164 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>MAPDL 2D Plane Stress Concentration Analysis &#8212; PyMAPDL 中文指南</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'doc/4_Examples/401_Full_examples_using_PyMAPDL/401_1';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="2D Pressure Vessel" href="401_2.html" />
+    <link rel="prev" title="使用 PyMAPDL 的完整示例" href="401_0.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    PyMAPDL中文指南
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/000_intro.html">1. 开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/001_%E5%AD%A6%E4%B9%A0PyMAPDL.html">2. 学习PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/002_%E7%89%88%E6%9C%AC%E5%92%8C%E6%8E%A5%E5%8F%A3.html">3. 版本和接口</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/003_%E6%A0%87%E5%87%86%E5%AE%89%E8%A3%85.html">4. 标准安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/004_%E7%94%A8%E4%BA%8ELinux%E7%9A%84Windows%E5%AD%90%E7%B3%BB%E7%BB%9F.html">5. 用于Linux的Windows子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/005_Julia_and_PyMAPDL.html">6. Julia 和 PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/006_%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html">7. 常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/007_%E8%B4%A1%E7%8C%AE.html">8. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/008_%E5%88%9B%E5%BB%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84MAPDL%20docker%E5%AE%B9%E5%99%A8.html">9. 创建你自己的 MAPDL docker 容器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/009_%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%8A%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91.html">10. Develop on a container</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/100_intro.html">1. 用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/101_MAPDL%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8.html">2. MAPDL 初始设置和本地启动</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/102_PyMAPDL%E8%AF%AD%E6%B3%95%E5%92%8C%E7%94%A8%E6%B3%95.html">3. PyMAPDL 语法和用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/103_ANSYS_APDL%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%8E%A7%E5%88%B6%E7%A4%BA%E4%BE%8B.html">4. ANSYS APDL 交互式控制示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/104_%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BB%98%E5%9B%BE.html">5. 交互式绘图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/105_%E7%BD%91%E6%A0%BC%E5%92%8C%E5%87%A0%E4%BD%95.html">6. 网格和几何</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/106_%E5%90%8E%E5%A4%84%E7%90%86.html">7. 后处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/107_%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%A3%80%E7%B4%A2%E5%8F%82%E6%95%B0.html">8. 设置和检索参数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/108_%E8%AE%BF%E9%97%AEMAPDL%E6%95%B0%E6%8D%AE%E5%BA%93.html">9. 访问 MAPDL 数据库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/109_%E8%BD%AC%E6%8D%A2%E8%84%9A%E6%9C%AC.html">10. 转换脚本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/110_APDL_Math%E6%A6%82%E8%BF%B0.html">11. APDL Math 概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/111_%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAMAPDL%E5%AE%9E%E4%BE%8B%E6%B1%A0.html">12. 创建一个 MAPDL 实例池</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/112_%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%E6%A6%82%E8%BF%B0.html">13. 文件资源管理器概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/113_%E4%BD%BF%E7%94%A8Python%E7%BC%96%E5%86%99UPF%E5%AD%90%E7%A8%8B%E5%BA%8F.html">14. 使用 Python 编写 UPF 子程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/114_%E4%BD%BF%E7%94%A8Krylov%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E8%B0%90%E6%B3%A2%E5%88%86%E6%9E%90.html">15. 使用Krylov方法进行谐波分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/115_PyMAPDL%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4.html">16. PyMAPDL 故障排除</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">MAPDL commands</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../2_MAPDL_commands/200_intro.html">MAPDL commands</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/201_Run_controls.html">Run controls</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/config.html">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/cwd.html">cwd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/exit.html">exit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/filname.html">filname</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/input.html">input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/keyw.html">keyw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/memm.html">memm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/nerr.html">nerr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/pause.html">pause</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/slashstatus.html">slashstatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/starstatus.html">starstatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/syp.html">syp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/sys.html">sys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/unpause.html">unpause</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/202_Processor_entry.html">Processor entry</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux2.html">aux2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux3.html">aux3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux12.html">aux12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux15.html">aux15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/finish.html">finish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/map.html">map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/post1.html">post1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/post26.html">post26</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/prep7.html">prep7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/quit.html">quit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/slashsolu.html">slashsolu</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/203_Files.html">Files</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/anstoaqwa.html">anstoaqwa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/anstoasas.html">anstoasas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/assign.html">assigin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/copy.html">copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/slashdelete.html">slashdelete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/fcomp.html">fcomp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/lgwrite.html">lgwrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/starlist.html">starlist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/slashclog.html">slashclog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/slashfdele.html">slashfdele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/rename.html">rename</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/204_List_controls.html">List controls</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/com.html">com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/golist.html">golist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/gopr.html">gopr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/nolist.html">nolist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/nopr.html">nopr</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/205_Setup.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/clear.html">clear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/resume.html">resume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/save.html">save</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/smbc.html">smbc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/stat.html">stat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/stitle.html">stitle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/title.html">title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/units.html">units</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/206_Selecting.html">Selecting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/allsel.html">allsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/asel.html">asel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/asll.html">asll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/aslv.html">aslv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/dofsel.html">dofsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esel.html">esel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esla.html">esla</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esll.html">esll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esln.html">esln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/eslv.html">eslv</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../3_API_reference/300_intro.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_API_reference/301_Commands_output/301_Commands_output.html">Commands output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_API_reference/302_Database/302_Database.html">Database</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_API_reference/302_Database/MapdlDb/MapdlDb.html">MapdlDb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_API_reference/302_Database/DbElems/DbElems.html">DbElems</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../400_intro.html">Examples</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="401_0.html">使用 PyMAPDL 的完整示例</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">MAPDL 2D Plane Stress Concentration Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="401_2.html">2D Pressure Vessel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="401_3.html">3D Stress Concentration Analysis for a Notched Plate</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/doc/4_Examples/401_Full_examples_using_PyMAPDL/401_1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>MAPDL 2D Plane Stress Concentration Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#element-type-and-material-properties">Element Type and Material Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry">Geometry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#meshing">Meshing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">Boundary Conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-the-static-problem">Solve the Static Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-processing">Post-Processing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-stress-concentration">Compute the Stress Concentration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-analysis">Batch Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-comparison">Analytical Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-mapdl">Stop mapdl</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="mapdl-2d-plane-stress-concentration-analysis">
+<h1>MAPDL 2D Plane Stress Concentration Analysis<a class="headerlink" href="#mapdl-2d-plane-stress-concentration-analysis" title="Permalink to this heading">#</a></h1>
+<p>本教程展示了如何使用 PyMAPDL 确定和验证 “（stress concentration factor）应力集中系数”，先使用二维平面单元建模，然后使用三维单元进行验证。</p>
+<p>首先，将 MAPDL 作为服务启动。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># sphinx_gallery_thumbnail_number = 3</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">ansys.mapdl.core</span> <span class="kn">import</span> <span class="n">launch_mapdl</span>
+
+<span class="n">mapdl</span> <span class="o">=</span> <span class="n">launch_mapdl</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="element-type-and-material-properties">
+<h2>Element Type and Material Properties<a class="headerlink" href="#element-type-and-material-properties" title="Permalink to this heading">#</a></h2>
+<p>本示例将使用 PLANE183 单元，因为只要将 KEYOPTION(3)=3(考虑单元厚度的平面应力) 并提供厚度，就可以使用平面单元对薄板进行建模。</p>
+<p>此示例将使用 SI 单位。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mapdl</span><span class="o">.</span><span class="n">prep7</span><span class="p">()</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">units</span><span class="p">(</span><span class="s2">&quot;SI&quot;</span><span class="p">)</span>  <span class="c1"># SI - International system (m, kg, s, K).</span>
+
+<span class="c1"># define a PLANE183 element type with thickness</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">et</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;PLANE183&quot;</span><span class="p">,</span> <span class="n">kop3</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">)</span>  <span class="c1"># thickness of 0.001 meters)</span>
+
+<span class="c1"># Define a material (nominal steel in SI)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">mp</span><span class="p">(</span><span class="s2">&quot;EX&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">210e9</span><span class="p">)</span>  <span class="c1"># Elastic moduli in Pa (kg/(m*s**2))</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">mp</span><span class="p">(</span><span class="s2">&quot;DENS&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7800</span><span class="p">)</span>  <span class="c1"># Density in kg/m3</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">mp</span><span class="p">(</span><span class="s2">&quot;NUXY&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>  <span class="c1"># Poisson&#39;s Ratio</span>
+
+<span class="c1"># list currently defined material properties</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mapdl</span><span class="o">.</span><span class="n">mplist</span><span class="p">())</span>
+</pre></div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Out:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">LIST MATERIALS        1 TO        1 BY        1
+PROPERTY= ALL</p>
+<p class="sd-card-text">MATERIAL NUMBER        1</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  TEMP        EX
+           0.2100000E+12
+
+  TEMP        NUXY
+           0.3000000
+
+  TEMP        DENS
+            7800.000
+</pre></div>
+</div>
+</div>
+</details></section>
+<section id="geometry">
+<h2>Geometry<a class="headerlink" href="#geometry" title="Permalink to this heading">#</a></h2>
+<p>创建一个矩形区域，孔位于中间。要正确地近似无限长的板，最大应力必须发生在远离板边缘的地方。长宽系数可以近似实现这一点。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">length</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">ratio</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># diameter/width</span>
+<span class="n">diameter</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">ratio</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="n">diameter</span> <span class="o">*</span> <span class="mf">0.5</span>
+
+<span class="c1"># create the rectangle</span>
+<span class="n">rect_anum</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">blc4</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">length</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+
+<span class="c1"># create a circle in the middle of the rectangle</span>
+<span class="n">circ_anum</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">cyl4</span><span class="p">(</span><span class="n">length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
+
+<span class="c1"># Note how pymapdl parses the output and returns the area numbers</span>
+<span class="c1"># created by each command.  This can be used to execute a boolean</span>
+<span class="c1"># operation on these areas to cut the circle out of the rectangle.</span>
+<span class="n">plate_with_hole_anum</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">asba</span><span class="p">(</span><span class="n">rect_anum</span><span class="p">,</span> <span class="n">circ_anum</span><span class="p">)</span>
+
+<span class="c1"># finally, plot the lines of the plate</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">lplot</span><span class="p">(</span><span class="n">cpos</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">color_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../../_images/sphx_glr_2d_plate_with_a_hole_001.png"><img alt="../../../_images/sphx_glr_2d_plate_with_a_hole_001.png" src="../../../_images/sphx_glr_2d_plate_with_a_hole_001.png" style="width: 614.4px; height: 460.79999999999995px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text"><strong>sphx_glr_2d_plate_with_a_hole_001</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="meshing">
+<h2>Meshing<a class="headerlink" href="#meshing" title="Permalink to this heading">#</a></h2>
+<p>通过为孔附近的线设置 <code class="docutils literal notranslate"><span class="pre">LESIZE</span></code> 和为网格全局大小设置 <code class="docutils literal notranslate"><span class="pre">ESIZE</span></code>，使用较高的孔附近密度和较低的孔附近密度对板的其余部分进行网格划分。</p>
+<p>可使用 <code class="docutils literal notranslate"><span class="pre">lplot</span></code> 检查来确定 lines 的编号。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># ensure there are at 50 elements around the hole</span>
+<span class="n">hole_esize</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">diameter</span> <span class="o">/</span> <span class="mi">50</span>  <span class="c1"># 0.0002</span>
+<span class="n">plate_esize</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1"># increased the density of the mesh at the center</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">lsel</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;LINE&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">lesize</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">,</span> <span class="n">hole_esize</span><span class="p">,</span> <span class="n">kforc</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">lsel</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">)</span>
+
+<span class="c1"># Decrease the area mesh expansion.  This ensures that the mesh</span>
+<span class="c1"># remains fine nearby the hole</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">mopt</span><span class="p">(</span><span class="s2">&quot;EXPND&quot;</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>  <span class="c1"># default 1</span>
+
+<span class="n">mapdl</span><span class="o">.</span><span class="n">esize</span><span class="p">(</span><span class="n">plate_esize</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">amesh</span><span class="p">(</span><span class="n">plate_with_hole_anum</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">eplot</span><span class="p">(</span>
+    <span class="n">vtk</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">cpos</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">,</span>
+    <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">show_axes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">background</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+</pre></div>
+</div>
+<figure class="align-center" id="id2">
+<img alt="../../../_images/sphx_glr_2d_plate_with_a_hole_002.png" src="../../../_images/sphx_glr_2d_plate_with_a_hole_002.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text"><strong>sphx_glr_2d_plate_with_a_hole_002</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="boundary-conditions">
+<h2>Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Permalink to this heading">#</a></h2>
+<p>在 X 方向固定板的左侧，并在 X 正方向设置 1 kN 的力。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fix the left-hand side.</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">nsel</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;LOC&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">,</span> <span class="s2">&quot;UX&quot;</span><span class="p">)</span>
+
+<span class="c1"># 在板的左侧 Y 方向固定一个节点。否则，网格将被允许在 Y 方向移动，成为不适当的约束网格。</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">nsel</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="s2">&quot;LOC&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">n_node</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># 使用`assert`是学习python的一个非常好的习惯，在没完善一个程序之前，我们不知道程序在哪里会出错，此处是声明选中的只有一个节点。</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">,</span> <span class="s2">&quot;UY&quot;</span><span class="p">)</span>
+
+<span class="c1"># 在板的右侧施加一个力。  在本例中，我们选择板最右侧的节点。</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">nsel</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;LOC&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+
+<span class="c1"># 确认只选择了长度相同的节点：</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">mapdl</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">length</span><span class="p">)</span>
+
+<span class="c1"># 接下来，为这些节点耦合的 DOF。 这样，我们就可以为一个节点提供一个力，这个力将分散到耦合集的所有节点上。</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;UX&quot;</span><span class="p">,</span> <span class="s2">&quot;ALL&quot;</span><span class="p">)</span>
+
+<span class="c1"># 在该组中选择一个节点并对其施力 我们使用 &quot;R &quot;从当前节点组中重新选择。</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">nsel</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="s2">&quot;LOC&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">,</span> <span class="s2">&quot;FX&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># 最后，请务必再次选择所有节点，以进行求解</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">allsel</span><span class="p">(</span><span class="n">mute</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="solve-the-static-problem">
+<h2>Solve the Static Problem<a class="headerlink" href="#solve-the-static-problem" title="Permalink to this heading">#</a></h2>
+<p>求解这个静力分析。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;/SOLU&quot;</span><span class="p">)</span>
+<span class="n">mapdl</span><span class="o">.</span><span class="n">antype</span><span class="p">(</span><span class="s2">&quot;STATIC&quot;</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Out:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">*****  MAPDL SOLVE    COMMAND  *****</p>
+<p class="sd-card-text">*** NOTE ***                            CP =       1.304   TIME= 08:27:02
+There is no title defined for this analysis.</p>
+<p class="sd-card-text">*** SELECTION OF ELEMENT TECHNOLOGIES FOR APPLICABLE ELEMENTS ***
+—GIVE SUGGESTIONS ONLY—</p>
+<p class="sd-card-text">ELEMENT TYPE         1 IS PLANE183 WITH PLANE STRESS OPTION. NO SUGGESTION IS
+AVAILABLE.</p>
+<p class="sd-card-text">*** MAPDL - ENGINEERING ANALYSIS SYSTEM  RELEASE 2023 R1          23.1     ***
+Ansys Mechanical Enterprise
+00000000  VERSION=LINUX x64     08:27:02  JUN 02, 2023 CP=      1.328</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                   S O L U T I O N   O P T I O N S
+</pre></div>
+</div>
+<p class="sd-card-text">PROBLEM DIMENSIONALITY… … … … .2-D
+DEGREES OF FREEDOM… … UX   UY
+ANALYSIS TYPE … … … … … . .STATIC (STEADY-STATE)
+GLOBALLY ASSEMBLED MATRIX … … … . .SYMMETRIC</p>
+<p class="sd-card-text">*** NOTE ***                            CP =       1.337   TIME= 08:27:02
+Present time 0 is less than or equal to the previous time.  Time will
+default to 1.</p>
+<p class="sd-card-text">*** NOTE ***                            CP =       1.343   TIME= 08:27:02
+The conditions for direct assembly have been met.  No .emat or .erot
+files will be produced.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                  L O A D   S T E P   O P T I O N S
+</pre></div>
+</div>
+<p class="sd-card-text">LOAD STEP NUMBER… … … … … .     1
+TIME AT END OF THE LOAD STEP… … … .  1.0000
+NUMBER OF SUBSTEPS… … … … …     1
+STEP CHANGE BOUNDARY CONDITIONS … … . .    NO
+PRINT OUTPUT CONTROLS … … … … .NO PRINTOUT
+DATABASE OUTPUT CONTROLS… … … …ALL DATA WRITTEN
+FOR THE LAST SUBSTEP</p>
+<p class="sd-card-text">SOLUTION MONITORING INFO IS WRITTEN TO FILE= file.mntr</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        **** CENTER OF MASS, MASS, AND MASS MOMENTS OF INERTIA ****
+</pre></div>
+</div>
+<p class="sd-card-text">CALCULATIONS ASSUME ELEMENT MASS AT ELEMENT CENTROID</p>
+<p class="sd-card-text">TOTAL MASS =  0.30649</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                       MOM. OF INERTIA         MOM. OF INERTIA
+</pre></div>
+</div>
+<p class="sd-card-text">CENTER OF MASS            ABOUT ORIGIN        ABOUT CENTER OF MASS</p>
+<p class="sd-card-text">XC =  0.20000          IXX =   0.1024E-02      IXX =   0.2576E-03
+YC =  0.49997E-01      IYY =   0.1642E-01      IYY =   0.4156E-02
+ZC =   0.0000          IZZ =   0.1744E-01      IZZ =   0.4414E-02
+IXY =  -0.3065E-02      IXY =   0.8905E-09
+IYZ =    0.000          IYZ =    0.000
+IZX =    0.000          IZX =    0.000</p>
+<p class="sd-card-text">*** MASS SUMMARY BY ELEMENT TYPE ***</p>
+<p class="sd-card-text">TYPE      MASS
+1  0.306487</p>
+<p class="sd-card-text">Range of element maximum matrix coefficients in global coordinates
+Maximum = 1.265116826E+09 at element 67.
+Minimum = 359465553 at element 773.</p>
+<p class="sd-card-text">*** ELEMENT MATRIX FORMULATION TIMES
+TYPE    NUMBER   ENAME      TOTAL CP  AVE CP</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    1       977  PLANE183      0.107   0.000109
+</pre></div>
+</div>
+<p class="sd-card-text">Time at end of element matrix formulation CP = 1.49750602.</p>
+<p class="sd-card-text">SPARSE MATRIX DIRECT SOLVER.
+Number of equations =        6124,    Maximum wavefront =     48
+Memory allocated for solver              =     8.435 MB
+Memory required for in-core solution     =     8.134 MB
+Memory required for out-of-core solution =     4.318 MB</p>
+<p class="sd-card-text">*** NOTE ***                            CP =       1.634   TIME= 08:27:02
+The Sparse Matrix Solver is currently running in the in-core memory
+mode.  This memory mode uses the most amount of memory in order to
+avoid using the hard drive as much as possible, which most often
+results in the fastest solution time.  This mode is recommended if
+enough physical memory is present to accommodate all of the solver
+data.
+Sparse solver maximum pivot= 1.958386732E+09 at node 1937 UY.
+Sparse solver minimum pivot= 3839644.71 at node 960 UY.
+Sparse solver minimum pivot in absolute value= 3839644.71 at node 960
+UY.</p>
+<p class="sd-card-text">*** ELEMENT RESULT CALCULATION TIMES
+TYPE    NUMBER   ENAME      TOTAL CP  AVE CP</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    1       977  PLANE183      0.153   0.000157
+</pre></div>
+</div>
+<p class="sd-card-text">*** NODAL LOAD CALCULATION TIMES
+TYPE    NUMBER   ENAME      TOTAL CP  AVE CP</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    1       977  PLANE183      0.051   0.000052
+</pre></div>
+</div>
+<p class="sd-card-text">*** LOAD STEP     1   SUBSTEP     1  COMPLETED.    CUM ITER =      1
+*** TIME =   1.00000         TIME INC =   1.00000      NEW TRIANG MATRIX</p>
+<p class="sd-card-text">*** MAPDL BINARY FILE STATISTICS
+BUFFER SIZE USED= 16384
+1.562 MB WRITTEN ON ASSEMBLED MATRIX FILE: file.full
+1.000 MB WRITTEN ON RESULTS FILE: file.rst</p>
+</div>
+</details></section>
+<section id="post-processing">
+<h2>Post-Processing<a class="headerlink" href="#post-processing" title="Permalink to this heading">#</a></h2>
+<p>静态结果既可以在 MAPDL 内部进行后处理，也可以使用 <code class="docutils literal notranslate"><span class="pre">pyansys</span></code> 在 MAPDL 外部进行后处理。本示例展示了如何提取 von Mises 应力并使用 <code class="docutils literal notranslate"><span class="pre">pyansys</span></code> result reader 绘制曲线。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 从 `mapdl` 实例中抓取结果</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">result</span>
+<span class="n">result</span><span class="o">.</span><span class="n">plot_principal_nodal_stress</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;SEQV&quot;</span><span class="p">,</span>
+    <span class="n">lighting</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">cpos</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">,</span>
+    <span class="n">background</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span>
+    <span class="n">text_color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
+    <span class="n">add_text</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">nnum</span><span class="p">,</span> <span class="n">stress</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">principal_nodal_stress</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">von_mises</span> <span class="o">=</span> <span class="n">stress</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># von-Mises 应力是最右边的一列</span>
+
+<span class="c1"># 必须使用 nanmax，因为中间节点不计算应力</span>
+<span class="n">max_stress</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">von_mises</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id3">
+<img alt="../../../_images/sphx_glr_2d_plate_with_a_hole_003.png" src="../../../_images/sphx_glr_2d_plate_with_a_hole_003.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text"><strong>sphx_glr_2d_plate_with_a_hole_003</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="compute-the-stress-concentration">
+<h2>Compute the Stress Concentration<a class="headerlink" href="#compute-the-stress-concentration" title="Permalink to this heading">#</a></h2>
+<p>应力集中度 <span class="math notranslate nohighlight">\(K_t\)</span> 是孔洞处最大应力与远场应力或远离孔洞处平均截面应力之比。从分析角度看，可以用以下方法计算：</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma _{nom}=\frac{F}{\omega t}
+\]</div>
+<p>Where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F\)</span> is the force</p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega\)</span> is the width of the plate</p></li>
+<li><p><span class="math notranslate nohighlight">\(t\)</span> is the thickness of the plate.</p></li>
+</ul>
+<p>实验中，计算方法是取平板最右侧节点的平均值。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 我们在这里使用 nanmean(np的一个函数，用于</span>
+<span class="c1"># 取均值时忽略NaN类型)，因为中间节点没有应力</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">length</span>
+<span class="n">far_field_stress</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">von_mises</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Far field von mises stress: </span><span class="si">%e</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">far_field_stress</span><span class="p">)</span>
+<span class="c1"># 这几乎正好等于 10000000.0 Pa 的分析值</span>
+</pre></div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Out:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Far field von mises stress: 9.999966e+06</p>
+</div>
+</details><p>由于孔横截面上的预期标称应力会随着孔尺寸的增大而增大，无论应力集中与否，都必须对应力进行调整，以获得正确的应力。该应力根据宽度与修正截面宽度之比进行调整。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adj</span> <span class="o">=</span> <span class="n">width</span> <span class="o">/</span> <span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="n">diameter</span><span class="p">)</span>
+<span class="n">stress_adj</span> <span class="o">=</span> <span class="n">far_field_stress</span> <span class="o">*</span> <span class="n">adj</span>
+
+<span class="c1"># 然后，应力集度就是最大应力除以调整后的远场应力。</span>
+<span class="n">stress_con</span> <span class="o">=</span> <span class="n">max_stress</span> <span class="o">/</span> <span class="n">stress_adj</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stress Concentration: </span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stress_con</span><span class="p">)</span>
+</pre></div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Out:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Stress Concentration: 2.34</p>
+</div>
+</details></section>
+<section id="batch-analysis">
+<h2>Batch Analysis<a class="headerlink" href="#batch-analysis" title="Permalink to this heading">#</a></h2>
+<p>上述脚本可用于计算各种孔径的应力集中。对于每个 batch，MAPDL 都会重置，并重新生成对应的几何体。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_stress_con</span><span class="p">(</span><span class="n">ratio</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the stress concentration for plate with a hole loaded</span>
+<span class="sd">    with a uniaxial force.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="s2">&quot;NOSTART&quot;</span><span class="p">)</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">prep7</span><span class="p">()</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">units</span><span class="p">(</span><span class="s2">&quot;SI&quot;</span><span class="p">)</span>  <span class="c1"># SI - International system (m, kg, s, K).</span>
+
+    <span class="c1"># define a PLANE183 element type with thickness</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">et</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;PLANE183&quot;</span><span class="p">,</span> <span class="n">kop3</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">)</span>  <span class="c1"># thickness of 0.001 meters)</span>
+
+    <span class="c1"># Define a material (nominal steel in SI)</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">mp</span><span class="p">(</span><span class="s2">&quot;EX&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">210e9</span><span class="p">)</span>  <span class="c1"># Elastic moduli in Pa (kg/(m*s**2))</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">mp</span><span class="p">(</span><span class="s2">&quot;DENS&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7800</span><span class="p">)</span>  <span class="c1"># Density in kg/m3</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">mp</span><span class="p">(</span><span class="s2">&quot;NUXY&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>  <span class="c1"># Poisson&#39;s Ratio</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">emodif</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">,</span> <span class="s2">&quot;MAT&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Geometry</span>
+    <span class="c1"># ~~~~~~~~</span>
+    <span class="c1"># Create a rectangular area with the hole in the middle</span>
+    <span class="n">diameter</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">ratio</span>
+    <span class="n">radius</span> <span class="o">=</span> <span class="n">diameter</span> <span class="o">*</span> <span class="mf">0.5</span>
+
+    <span class="c1"># create the rectangle</span>
+    <span class="n">rect_anum</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">blc4</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">length</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+
+    <span class="c1"># create a circle in the middle of the rectangle</span>
+    <span class="n">circ_anum</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">cyl4</span><span class="p">(</span><span class="n">length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
+
+    <span class="c1"># Note how pyansys parses the output and returns the area numbers</span>
+    <span class="c1"># created by each command.  This can be used to execute a boolean</span>
+    <span class="c1"># operation on these areas to cut the circle out of the rectangle.</span>
+    <span class="n">plate_with_hole_anum</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">asba</span><span class="p">(</span><span class="n">rect_anum</span><span class="p">,</span> <span class="n">circ_anum</span><span class="p">)</span>
+
+    <span class="c1"># Meshing</span>
+    <span class="c1"># ~~~~~~~</span>
+    <span class="c1"># Mesh the plate using a higher density near the hole and a lower</span>
+    <span class="c1"># density for the remainder of the plate</span>
+
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">aclear</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+
+    <span class="c1"># ensure there are at least 100 elements around the hole</span>
+    <span class="n">hole_esize</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">diameter</span> <span class="o">/</span> <span class="mi">100</span>  <span class="c1"># 0.0002</span>
+    <span class="n">plate_esize</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+    <span class="c1"># increased the density of the mesh at the center</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">lsel</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;LINE&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">lesize</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">,</span> <span class="n">hole_esize</span><span class="p">,</span> <span class="n">kforc</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">lsel</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Decrease the area mesh expansion.  This ensures that the mesh</span>
+    <span class="c1"># remains fine nearby the hole</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">mopt</span><span class="p">(</span><span class="s2">&quot;EXPND&quot;</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>  <span class="c1"># default 1</span>
+
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">esize</span><span class="p">(</span><span class="n">plate_esize</span><span class="p">)</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">amesh</span><span class="p">(</span><span class="n">plate_with_hole_anum</span><span class="p">)</span>
+
+    <span class="c1">###############################################################################</span>
+    <span class="c1"># Boundary Conditions</span>
+    <span class="c1"># ~~~~~~~~~~~~~~~~~~~</span>
+    <span class="c1"># Fix the left-hand side of the plate in the X direction</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">nsel</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;LOC&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">,</span> <span class="s2">&quot;UX&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Fix a single node on the left-hand side of the plate in the Y direction</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">nsel</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="s2">&quot;LOC&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">n_node</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">,</span> <span class="s2">&quot;UY&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Apply a force on the right-hand side of the plate.  For this</span>
+    <span class="c1"># example, we select the right-hand side of the plate.</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">nsel</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;LOC&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+
+    <span class="c1"># Next, couple the DOF for these nodes</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;UX&quot;</span><span class="p">,</span> <span class="s2">&quot;ALL&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Again, select a single node in this set and apply a force to it</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">nsel</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;loc&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">,</span> <span class="s2">&quot;FX&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+    <span class="c1"># finally, be sure to select all nodes again to solve the entire solution</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">allsel</span><span class="p">()</span>
+
+    <span class="c1"># Solve the Static Problem</span>
+    <span class="c1"># ~~~~~~~~~~~~~~~~~~~~~~~~</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;/SOLU&quot;</span><span class="p">)</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">antype</span><span class="p">(</span><span class="s2">&quot;STATIC&quot;</span><span class="p">)</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+    <span class="c1"># Post-Processing</span>
+    <span class="c1"># ~~~~~~~~~~~~~~~</span>
+    <span class="c1"># grab the stress from the result</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">mapdl</span><span class="o">.</span><span class="n">result</span>
+    <span class="n">nnum</span><span class="p">,</span> <span class="n">stress</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">principal_nodal_stress</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">von_mises</span> <span class="o">=</span> <span class="n">stress</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">max_stress</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">von_mises</span><span class="p">)</span>
+
+    <span class="c1"># compare to the &quot;far field&quot; stress by getting the mean value of the</span>
+    <span class="c1"># stress at the wall</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">length</span>
+    <span class="n">far_field_stress</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">von_mises</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
+
+    <span class="c1"># adjust by the cross sectional area at the hole</span>
+    <span class="n">adj</span> <span class="o">=</span> <span class="n">width</span> <span class="o">/</span> <span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="n">diameter</span><span class="p">)</span>
+    <span class="n">stress_adj</span> <span class="o">=</span> <span class="n">far_field_stress</span> <span class="o">*</span> <span class="n">adj</span>
+
+    <span class="c1"># finally, compute the stress concentration</span>
+    <span class="k">return</span> <span class="n">max_stress</span> <span class="o">/</span> <span class="n">stress_adj</span>
+</pre></div>
+</div>
+<p>运行 batch 并记录应力集中：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">k_t_exp</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ratios</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Ratio  : Stress Concentration (K_t)&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ratio</span> <span class="ow">in</span> <span class="n">ratios</span><span class="p">:</span>
+    <span class="n">stress_con</span> <span class="o">=</span> <span class="n">compute_stress_con</span><span class="p">(</span><span class="n">ratio</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%10.4f</span><span class="s2"> : </span><span class="si">%10.4f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ratio</span><span class="p">,</span> <span class="n">stress_con</span><span class="p">))</span>
+    <span class="n">k_t_exp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stress_con</span><span class="p">)</span>
+</pre></div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Out:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Ratio</p></th>
+<th class="head"><p class="sd-card-text">Stress Concentration (<span class="math notranslate nohighlight">\(K_t\)</span>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">0.0100</p></td>
+<td><p class="sd-card-text">2.9660</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">0.0644</p></td>
+<td><p class="sd-card-text">2.8119</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">0.1189</p></td>
+<td><p class="sd-card-text">2.6808</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">0.1733</p></td>
+<td><p class="sd-card-text">2.5607</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">0.2278</p></td>
+<td><p class="sd-card-text">2.4619</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">0.2822</p></td>
+<td><p class="sd-card-text">2.3766</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">0.3367</p></td>
+<td><p class="sd-card-text">2.3058</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">0.3911</p></td>
+<td><p class="sd-card-text">2.2479</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">0.4456</p></td>
+<td><p class="sd-card-text">2.2011</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">0.5000</p></td>
+<td><p class="sd-card-text">2.1609</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details></section>
+<section id="analytical-comparison">
+<h2>Analytical Comparison<a class="headerlink" href="#analytical-comparison" title="Permalink to this heading">#</a></h2>
+<p>应力集中通常是通过参考各种几何形状的表格结果或多项式拟合得到的。根据 Peterson 的《应力集中系数》（ISBN 0470048247），单轴拉伸薄板上的孔的分析方程为:</p>
+<div class="math notranslate nohighlight">
+\[
+k_{t}=3-3.14 \frac{d}{h}+3.667(\frac{d}{h})^{2}-1.527(\frac{d}{h})^{3}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(k_t\)</span> is the stress concentration</p></li>
+<li><p><span class="math notranslate nohighlight">\(d\)</span> is the diameter of the circle</p></li>
+<li><p><span class="math notranslate nohighlight">\(h\)</span> is the height of the plate</p></li>
+</ul>
+<p>如下图所示，使用 PLANE183 元素，ANSYS 与该几何形状的已知表格结果非常吻合。根据板的高度和宽度之间的比例，结果的拟合程度可能会有所不同。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># whrer ratio is (d/h)</span>
+<span class="n">k_t_anl</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">-</span> <span class="mf">3.14</span> <span class="o">*</span> <span class="n">ratios</span> <span class="o">+</span> <span class="mf">3.667</span> <span class="o">*</span> <span class="n">ratios</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.527</span> <span class="o">*</span> <span class="n">ratios</span><span class="o">**</span><span class="mi">3</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ratios</span><span class="p">,</span> <span class="n">k_t_anl</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$K_t$ Analytical&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ratios</span><span class="p">,</span> <span class="n">k_t_exp</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$K_t$ ANSYS&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Ratio of Hole Diameter to Width of Plate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Stress Concentration&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id4">
+<img alt="../../../_images/sphx_glr_2d_plate_with_a_hole_004.png" src="../../../_images/sphx_glr_2d_plate_with_a_hole_004.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text"><strong>sphx_glr_2d_plate_with_a_hole_004</strong></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="stop-mapdl">
+<h2>Stop mapdl<a class="headerlink" href="#stop-mapdl" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mapdl</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Total running time of the script: ( 0 minutes 18.152 seconds)</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./doc\4_Examples\401_Full_examples_using_PyMAPDL"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="401_0.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">使用 PyMAPDL 的完整示例</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="401_2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2D Pressure Vessel</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#element-type-and-material-properties">Element Type and Material Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry">Geometry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#meshing">Meshing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">Boundary Conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-the-static-problem">Solve the Static Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-processing">Post-Processing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-stress-concentration">Compute the Stress Concentration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-analysis">Batch Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-comparison">Analytical Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-mapdl">Stop mapdl</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ff-郑州大学
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright  (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

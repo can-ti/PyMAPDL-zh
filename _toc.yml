@@ -41,6 +41,7 @@ parts:
     - file: doc/1_User_guide/114_使用Krylov方法进行谐波分析
     - file: doc/1_User_guide/115_PyMAPDL故障排除
 
+
   - caption: MAPDL commands
     numbered : false  # 这将为当前的 Part 添加标题序号
     chapters: 
@@ -131,6 +132,7 @@ parts:
       - file: doc/2_MAPDL_commands/206_Selecting/vsel
       - file: doc/2_MAPDL_commands/206_Selecting/vsla
 
+
   - caption: API reference
     numbered : false  # 这将为当前的 Part 添加标题序号
     chapters: 
@@ -141,8 +143,42 @@ parts:
       - file: doc/3_API_reference/302_Database/MapdlDb/MapdlDb
       - file: doc/3_API_reference/302_Database/DbElems/DbElems
       - file: doc/3_API_reference/302_Database/DbNodes/DbNodes
+    - file: doc/3_API_reference/303_Geometry/303_Geometry
+      sections:
+      - file: doc/3_API_reference/303_Geometry/Geometry/Geometry
+    - file: doc/3_API_reference/304_Helper_functions/304_Helper_functions
+      sections:
+      - file: doc/3_API_reference/304_Helper_functions/concert_apdl_block
+      - file: doc/3_API_reference/304_Helper_functions/concert_script
+    - file: doc/3_API_reference/305_Inline_functions/305_Inline_functions
+    - file: doc/3_API_reference/306_KrylovSolver_module/306_KrylovSolver_module
+    - file: doc/3_API_reference/307_Launcher/307_Launcher
+      sections:
+      - file: doc/3_API_reference/307_Launcher/get_default_ansys_path
+      - file: doc/3_API_reference/307_Launcher/get_default_ansys_version
+      - file: doc/3_API_reference/307_Launcher/get_default_ansys
+      - file: doc/3_API_reference/307_Launcher/launch_mapdl
+    - file: doc/3_API_reference/308_Logging/308_Logging
+      sections:
+      - file: doc/3_API_reference/308_Logging/Logger/Logger
+    - file: doc/3_API_reference/309_Mapdl_module/309_Mapdl_module
+      sections:
+      - file: doc/3_API_reference/309_Mapdl_module/Mapdl/Mapdl
+
 
   - caption: Examples
     numbered : false  # 这将为当前的 Part 添加标题序号
     chapters: 
     - file: doc/4_Examples/400_intro
+    - file: doc/4_Examples/401_Full_examples_using_PyMAPDL/401_0
+      sections:
+      - file: doc/4_Examples/401_Full_examples_using_PyMAPDL/401_1
+      - file: doc/4_Examples/401_Full_examples_using_PyMAPDL/401_2
+      - file: doc/4_Examples/401_Full_examples_using_PyMAPDL/401_3
+      - file: doc/4_Examples/401_Full_examples_using_PyMAPDL/401_4
+      - file: doc/4_Examples/401_Full_examples_using_PyMAPDL/401_6
+      - file: doc/4_Examples/401_Full_examples_using_PyMAPDL/401_7
+      - file: doc/4_Examples/401_Full_examples_using_PyMAPDL/401_8
+      - file: doc/4_Examples/401_Full_examples_using_PyMAPDL/401_9
+      - file: doc/4_Examples/401_Full_examples_using_PyMAPDL/401_10
+      - file: doc/4_Examples/401_Full_examples_using_PyMAPDL/401_12
