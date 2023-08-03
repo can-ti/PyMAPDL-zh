@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Unit Testing &#8212; PyMAPDL 中文指南</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=351a2e83"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'doc/3_API_reference/319_Unit_Testing/319_Unit_Testing';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Examples" href="../../4_Examples/400_intro.html" />
+    <link rel="prev" title="Building an example" href="../318_Buliding_an_example/318_Buliding_an_example.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    PyMAPDL中文指南
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/000_intro.html">1. 开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/001_%E5%AD%A6%E4%B9%A0PyMAPDL.html">2. 学习PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/002_%E7%89%88%E6%9C%AC%E5%92%8C%E6%8E%A5%E5%8F%A3.html">3. 版本和接口</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/003_%E6%A0%87%E5%87%86%E5%AE%89%E8%A3%85.html">4. 标准安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/004_%E7%94%A8%E4%BA%8ELinux%E7%9A%84Windows%E5%AD%90%E7%B3%BB%E7%BB%9F.html">5. 用于Linux的Windows子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/005_Julia_and_PyMAPDL.html">6. Julia 和 PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/006_%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html">7. 常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/007_%E8%B4%A1%E7%8C%AE.html">8. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/008_%E5%88%9B%E5%BB%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84MAPDL%20docker%E5%AE%B9%E5%99%A8.html">9. 创建你自己的 MAPDL docker 容器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Getting_started/009_%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%8A%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91.html">10. Develop on a container</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/100_intro.html">1. 用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/101_MAPDL%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8.html">2. MAPDL 初始设置和本地启动</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/102_PyMAPDL%E8%AF%AD%E6%B3%95%E5%92%8C%E7%94%A8%E6%B3%95.html">3. PyMAPDL 语法和用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/103_ANSYS_APDL%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%8E%A7%E5%88%B6%E7%A4%BA%E4%BE%8B.html">4. ANSYS APDL 交互式控制示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/104_%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BB%98%E5%9B%BE.html">5. 交互式绘图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/105_%E7%BD%91%E6%A0%BC%E5%92%8C%E5%87%A0%E4%BD%95.html">6. 网格和几何</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/106_%E5%90%8E%E5%A4%84%E7%90%86.html">7. 后处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/107_%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%A3%80%E7%B4%A2%E5%8F%82%E6%95%B0.html">8. 设置和检索参数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/108_%E8%AE%BF%E9%97%AEMAPDL%E6%95%B0%E6%8D%AE%E5%BA%93.html">9. 访问 MAPDL 数据库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/109_%E8%BD%AC%E6%8D%A2%E8%84%9A%E6%9C%AC.html">10. 转换脚本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/110_APDL_Math%E6%A6%82%E8%BF%B0.html">11. APDL Math 概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/111_%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAMAPDL%E5%AE%9E%E4%BE%8B%E6%B1%A0.html">12. 创建一个 MAPDL 实例池</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/112_%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%E6%A6%82%E8%BF%B0.html">13. 文件资源管理器概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/113_%E4%BD%BF%E7%94%A8Python%E7%BC%96%E5%86%99UPF%E5%AD%90%E7%A8%8B%E5%BA%8F.html">14. 使用 Python 编写 UPF 子程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/114_%E4%BD%BF%E7%94%A8Krylov%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E8%B0%90%E6%B3%A2%E5%88%86%E6%9E%90.html">15. 使用Krylov方法进行谐波分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_User_guide/115_PyMAPDL%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4.html">16. PyMAPDL 故障排除</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">MAPDL commands</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../2_MAPDL_commands/200_intro.html">MAPDL commands</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/201_Run_controls.html">Run controls</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/config.html">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/cwd.html">cwd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/exit.html">exit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/filname.html">filname</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/input.html">input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/keyw.html">keyw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/memm.html">memm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/nerr.html">nerr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/pause.html">pause</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/slashstatus.html">slashstatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/starstatus.html">starstatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/syp.html">syp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/sys.html">sys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/201_Run_controls/unpause.html">unpause</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/202_Processor_entry.html">Processor entry</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux2.html">aux2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux3.html">aux3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux12.html">aux12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/aux15.html">aux15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/finish.html">finish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/map.html">map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/post1.html">post1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/post26.html">post26</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/prep7.html">prep7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/quit.html">quit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/202_Processor_entry/slashsolu.html">slashsolu</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/203_Files.html">Files</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/anstoaqwa.html">anstoaqwa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/anstoasas.html">anstoasas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/assign.html">assigin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/copy.html">copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/slashdelete.html">slashdelete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/fcomp.html">fcomp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/lgwrite.html">lgwrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/starlist.html">starlist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/slashclog.html">slashclog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/slashfdele.html">slashfdele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/203_Files/rename.html">rename</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/204_List_controls.html">List controls</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/com.html">com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/golist.html">golist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/gopr.html">gopr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/nolist.html">nolist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/204_List_controls/nopr.html">nopr</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/205_Setup.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/clear.html">clear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/resume.html">resume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/save.html">save</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/smbc.html">smbc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/stat.html">stat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/stitle.html">stitle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/title.html">title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/205_Setup/units.html">units</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/206_Selecting.html">Selecting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/allsel.html">allsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/asel.html">asel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/asll.html">asll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/aslv.html">aslv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/dofsel.html">dofsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esel.html">esel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esla.html">esla</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esll.html">esll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/esln.html">esln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_MAPDL_commands/206_Selecting/eslv.html">eslv</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../300_intro.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../301_Commands_output/301_Commands_output.html">Commands output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../302_Database/302_Database.html">Database</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../302_Database/MapdlDb/MapdlDb.html">MapdlDb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../302_Database/DbElems/DbElems.html">DbElems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../302_Database/DbNodes/DbNodes.html">DbNodes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../303_Geometry/303_Geometry.html">Geometry</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../303_Geometry/Geometry/Geometry.html">Geometry</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../304_Helper_functions/304_Helper_functions.html">Helper functions</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../304_Helper_functions/concert_apdl_block.html">convert_apdl_block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../304_Helper_functions/concert_script.html">convert_script</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../305_Inline_functions/305_Inline_functions.html">Inline functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../306_KrylovSolver_module/306_KrylovSolver_module.html">KrylovSolver</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../307_Launcher/307_Launcher.html">Launcher</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../307_Launcher/get_default_ansys_path.html">get_default_ansys_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../307_Launcher/get_default_ansys_version.html">get_default_ansys_version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../307_Launcher/get_default_ansys.html">get_default_ansys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../307_Launcher/launch_mapdl.html">launch_mapdl</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../308_Logging/308_Logging.html">Logging</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../308_Logging/Logger/Logger.html">Logger</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../309_Mapdl_module/309_Mapdl_module.html">Mapdl module</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../309_Mapdl_module/Mapdl/Mapdl.html">Mapdl methods and attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../311_Mesh/311_Mesh.html">Mesh</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../311_Mesh/MeshGrpc/MeshGrpc.html">MeshGrpc</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../312_Parameters/312_Parameters.html">Parameters</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../312_Parameters/Parameters/Parameters.html">Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../313_Plotting/313_Plotting.html">Plotting</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../314_Loacl_MAPDL_pool/314_Loacl_MAPDL_pool.html">Local MAPDL pool</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../314_Loacl_MAPDL_pool/LocalMapdlPool/LocalMapdlPool.html">LocalMapdlPool</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../315_PostProcessing_class/315_PostProcessing_class.html">PostProcessing class</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../315_PostProcessing_class/PostProcessing/PostProcessing.html">PostProcessing</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../316_Solution/316_Solution.html">Solution</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../316_Solution/Solution/Solution.html">Solution</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../317_Database_explorer/317_Database_explorer.html">Database explorer</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../317_Database_explorer/ansXpl/ansXpl.html">ansXpl</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../318_Buliding_an_example/318_Buliding_an_example.html">Building an example</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit Testing</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../4_Examples/400_intro.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_0.html">使用 PyMAPDL 的完整示例</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_1.html">MAPDL 2D Plane Stress Concentration Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_2.html">2D Pressure Vessel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_3.html">3D Stress Concentration Analysis for a Notched Plate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_4.html">Basic Thermal Analysis with pyMAPDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_6.html">Basic DPF-Core Usage with PyMAPDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_7.html">Static simulation of double cantilever beam test via cohesive elements</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_8.html">Contact Element Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_9.html">Cyclic Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_10.html">Static Cyclic Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Examples/401_Full_examples_using_PyMAPDL/401_12.html">Plotting and Mesh Access</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/doc/3_API_reference/319_Unit_Testing/319_Unit_Testing.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit Testing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coverage-example">Coverage example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#my-awesome-library">My awesome library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration-and-continuous-deployment-ci-cd-approach-ci-cd">Continuous Integration and Continuous Deployment (CI/CD) approach 持续集成和持续部署（CI/CD）方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-of-a-unit-test">Creation of a unit test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-testing">
+<h1>Unit Testing<a class="headerlink" href="#unit-testing" title="Permalink to this heading">#</a></h1>
+<p>Unit tests validate the software by testing that the logic implemented inside a certain method, class, or module is working as expected. They should be as atomic and independent as possible.<br />
+单元测试通过测试某个方法、类或模块内部实现的逻辑是否按预期运行来验证软件。单元测试应尽可能具有独立性。</p>
+<p>Unit testing is highly important. The tests check that code changes are consistent with other parts of the code and verify that these changes are implemented properly.<br />
+单元测试非常重要。单元测试检查代码更改是否与代码的其他部分保持一致，并验证这些更改是否正确实施。</p>
+<p>Unit tests are in the <a class="reference external" href="https://github.com/pyansys/pymapdl/tree/main/tests">tests</a> directory in this repository, along with integration tests. The difference between a unit test and an integration test is that the latter tests several units of the code to ensure that they all work together.<br />
+单元测试和集成测试都在该版本库的 <a class="reference external" href="https://github.com/pyansys/pymapdl/tree/main/tests">tests</a> 目录中。单元测试与集成测试的区别在于，后者测试多个单元的代码，以确保它们都能协同工作。</p>
+<p>To verify that all code is properly tested, you must ensure that every piece of code is used (covered) in at least one unit test. In this repository, the <a class="reference external" href="https://github.com/codecov">Codecov</a> tool generates a coverage report of the committed code. It details how merging a pull request would impact coverage. It is one of the checks that must run successfully to merge code changes.<br />
+为了验证所有代码都经过了正确测试，您必须确保每一段代码都至少在一个单元测试中使用（覆盖）过。在该版本库中，<a class="reference external" href="https://github.com/codecov">Codecov</a> 工具会生成已提交代码的覆盖率报告。它详细说明了合并拉取请求会如何影响覆盖率。这是合并代码变更时必须成功运行的检查之一。</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../../_images/codecov_increase.png"><img alt="../../../_images/codecov_increase.png" src="../../../_images/codecov_increase.png" style="width: 676.1999999999999px; height: 299.4px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text"><strong>codecov_increase</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="coverage-example">
+<h2>Coverage example<a class="headerlink" href="#coverage-example" title="Permalink to this heading">#</a></h2>
+<p>To show how the coverage works, assume that you have this library:<br />
+为了说明覆盖范围是如何工作的，假设您拥有这个库：</p>
+<section id="my-awesome-library">
+<h3>My awesome library<a class="headerlink" href="#my-awesome-library" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_report_colors</span><span class="p">(</span><span class="n">theme</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">theme</span> <span class="o">==</span> <span class="s2">&quot;weather&quot;</span><span class="p">:</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">theme</span> <span class="o">==</span> <span class="s2">&quot;traffic&quot;</span><span class="p">:</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">colors</span>
+</pre></div>
+</div>
+</section>
+<section id="tests">
+<h3>Tests<a class="headerlink" href="#tests" title="Permalink to this heading">#</a></h3>
+<p>You can opt to run the tests with this configuration:<br />
+您可以选择以这种配置运行测试：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_get_report_colors</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">get_report_colors</span><span class="p">(</span><span class="s2">&quot;weather&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">get_report_colors</span><span class="p">(</span><span class="s2">&quot;traffic&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">get_report_colors</span><span class="p">(</span><span class="s2">&quot;other&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Or, if a method is a bit more complex, you can split the case in different tests:<br />
+或者，如果某个方法比较复杂，也可以将案例分成不同的测试：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_get_report_colors_weather</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">get_report_colors</span><span class="p">(</span><span class="s2">&quot;weather&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">test_get_report_colors_traffic</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">get_report_colors</span><span class="p">(</span><span class="s2">&quot;traffic&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">test_get_report_colors_other</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">get_report_colors</span><span class="p">(</span><span class="s2">&quot;other&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>While the code coverage in either case is 100% for the function, the second case is more useful for debugging the function.<br />
+虽然两种情况下的代码覆盖率对函数来说都是 100%，但第二种情况对调试函数更有用。</p>
+</section>
+</section>
+<section id="continuous-integration-and-continuous-deployment-ci-cd-approach-ci-cd">
+<h2>Continuous Integration and Continuous Deployment (CI/CD) approach 持续集成和持续部署（CI/CD）方法<a class="headerlink" href="#continuous-integration-and-continuous-deployment-ci-cd-approach-ci-cd" title="Permalink to this heading">#</a></h2>
+<p>Unit tests and integration tests are part of Continuous Integration (CI). The automation of testing, monitoring, and deployment of newly added code allows Continuous Deployment (CD) throughout the application lifecycle, providing a comprehensive CI/CD approach.<br />
+单元测试和集成测试是持续集成（CI）的一部分。通过自动化测试、监控和部署新添加的代码，可以在整个应用程序生命周期内实现持续部署（CD），提供全面的 CI/CD 方法。</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../../_images/cicd.jpg"><img alt="../../../_images/cicd.jpg" src="../../../_images/cicd.jpg" style="width: 600.0px; height: 373.8px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text"><strong>cicd</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="creation-of-a-unit-test">
+<h2>Creation of a unit test<a class="headerlink" href="#creation-of-a-unit-test" title="Permalink to this heading">#</a></h2>
+<p>In the PyMAPDL repository, <a class="reference external" href="https://docs.pytest.org/en/7.2.x/">pytest</a> is used to run tests.<br />
+在 PyMAPDL 代码库中，<a class="reference external" href="https://docs.pytest.org/en/7.2.x/">pytest</a> 用于运行测试。</p>
+<p>The name of a <code class="docutils literal notranslate"><span class="pre">pytest</span></code> file must be in the form <code class="docutils literal notranslate"><span class="pre">test_XXX.py</span></code>, where <code class="docutils literal notranslate"><span class="pre">XXX</span></code> is either the function, method, or class that you are testing or some other explicative name. In the command line, the <code class="docutils literal notranslate"><span class="pre">-k</span></code> argument can be used to filter the tests to run. For more information, see <a class="reference external" href="https://docs.pytest.org/en/7.2.x/how-to/usage.html#specifying-which-tests-to-run">pytest usage</a>.<br />
+<code class="docutils literal notranslate"><span class="pre">pytest</span></code> 文件的名称必须是 <code class="docutils literal notranslate"><span class="pre">test_XXX.py</span></code> 形式，其中 <code class="docutils literal notranslate"><span class="pre">XXX</span></code> 可以是要测试的函数、方法或类，也可以是其他说明性名称。在命令行中，<code class="docutils literal notranslate"><span class="pre">-k</span></code> 参数可用于过滤要运行的测试。更多信息，请参阅 <a class="reference external" href="https://docs.pytest.org/en/7.2.x/how-to/usage.html#specifying-which-tests-to-run">pytest usage</a>。</p>
+<p>Here are some guidelines for creating good unit tests:<br />
+下面是一些创建良好单元测试的指导原则：</p>
+<ul class="simple">
+<li><p>Assign long and descriptive names to tests.\为测试指定较长而具有描述性的名称。</p></li>
+<li><p>Use the <a class="reference external" href="https://github.com/codecov">Codecov</a> tool to ensure all implemented code is tested.\使用 <a class="reference external" href="https://github.com/codecov">Codecov</a> 工具确保所有执行的代码都经过测试。</p></li>
+<li><p>Check that tests return the same results each time.\检查每次测试的结果是否相同。</p></li>
+<li><p>Verify that tests are independent.\验证测试的独立性。</p></li>
+<li><p>Write tests that verify only one part of the code at a time.\编写测试，每次只验证代码的一部分。</p></li>
+<li><p>Make tests as short and fast as possible.\尽可能缩短测试时间，加快测试速度。</p></li>
+</ul>
+<p><a class="reference external" href="https://stackoverflow.com/questions/61400/what-makes-a-good-unit-test">What makes a good unit test</a> is an exhaustive list of tips for creating good unit tests.<br />
+<code class="docutils literal notranslate"><span class="pre">什么是好的单元测试</span></code> 详尽列举了创建好的单元测试的技巧。</p>
+<p>Most PyMAPDL tests require a connection to a running instance of MAPDL, which makes them integration tests. If your test requires a running MAPDL instance, you can use the PyMAPDL <a class="reference external" href="https://github.com/pyansys/pymapdl/blob/fb5fb8b6201253f1bd56bdabee60a29abee8c7d8/tests/conftest.py#L254">mapdl</a> method in your function signature. It will be executed upstream of each test and not within all tests.<br />
+大多数 PyMAPDL 测试都需要连接到一个正在运行的 MAPDL 实例，这使得它们成为集成测试。如果您的测试需要一个运行中的 MAPDL 实例，您可以在函数签名中使用 PyMAPDL <a class="reference external" href="https://github.com/pyansys/pymapdl/blob/fb5fb8b6201253f1bd56bdabee60a29abee8c7d8/tests/conftest.py#L254">mapdl</a> 方法。它将在每个测试的上游执行，而不是在所有测试中执行。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_my_new_feature</span><span class="p">(</span><span class="n">mapdl</span><span class="p">):</span>  <span class="c1"># pass the &#39;mapdl&#39; fixture as an argument.</span>
+    <span class="n">mapdl</span><span class="o">.</span><span class="n">prep7</span><span class="p">()</span>
+    <span class="c1"># .... more code</span>
+
+    <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># if everything goes ok until here</span>
+</pre></div>
+</div>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://github.com/pyansys/pymapdl/blob/main/tests/test_math.py">test_math.py</a> file contains the unit tests and integration tests of the <a class="reference external" href="https://mapdl.docs.pyansys.com/version/dev/user_guide/math.html">ansys.mapdl.core.math module</a>. These are just some of the many tests that you can find in the <a class="reference external" href="https://github.com/pyansys/pymapdl/tree/main/tests">test directory</a>.<br />
+test_math.py 文件包含 ansys.mapdl.core.math 模块的单元测试和集成测试。这些只是测试目录中众多测试的一部分。</p>
+<p>Here are some examples of how you use <code class="docutils literal notranslate"><span class="pre">pytest</span></code>:</p>
+<div class="highlight-pythoin notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import ansys.mapdl.core.math as apdl_math
+
+
+@pytest.fixture(scope=&quot;module&quot;)
+def mm(mapdl):  # pass the &#39;mapdl&#39; fixture as an argument.
+    return mapdl.math
+
+
+def test_rand(mm):  # pass the &#39;mm&#39; fixture as an argument.
+    w = mm.rand(10)
+    assert w.size == 10  # if it is False, AssertionError is raised
+
+
+def test_matrix_addition(mm):
+    m1 = mm.rand(10, 10)
+    m2 = mm.rand(10, 10)
+    m3 = m1 + m2
+    assert np.allclose(m1.asarray() + m2.asarray(), m3.asarray())
+    # if it is False, AssertionError is raised
+</pre></div>
+</div>
+<p>For further explanations, see the <a class="reference external" href="https://docs.pytest.org/en/7.2.x/">pytest documentation</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./doc\3_API_reference\319_Unit_Testing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../318_Buliding_an_example/318_Buliding_an_example.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Building an example</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../4_Examples/400_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coverage-example">Coverage example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#my-awesome-library">My awesome library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration-and-continuous-deployment-ci-cd-approach-ci-cd">Continuous Integration and Continuous Deployment (CI/CD) approach 持续集成和持续部署（CI/CD）方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-of-a-unit-test">Creation of a unit test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ff-郑州大学
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright  (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
