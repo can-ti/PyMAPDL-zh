@@ -68,9 +68,23 @@ General Items
 Examples
 -------
 
+Retrieve the number of nodes\
+读取节点数
 
+```python
+>>> value = mapdl.get('val', 'node', '', 'count')
+>>> value
+3003
+```
 
+Retrieve the number of nodes using keywords. Note that the parameter name is optional.\
+使用关键字参数读取节点数。请注意，参数名称是可选的。
 
+```python
+>>> value = mapdl.get(entity='node', item1='count')
+>>> value
+3003
+```
 
 
 ````

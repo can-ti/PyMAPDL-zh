@@ -1,0 +1,755 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>modal_analysis &#8212; PyMAPDL 中文指南</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=351a2e83"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'doc/3_API_reference/309_Mapdl_module/Mapdl/modal_analysis';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    PyMAPDL中文指南
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../0_Getting_started/000_intro.html">1. 开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../0_Getting_started/001_%E5%AD%A6%E4%B9%A0PyMAPDL.html">2. 学习PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../0_Getting_started/002_%E7%89%88%E6%9C%AC%E5%92%8C%E6%8E%A5%E5%8F%A3.html">3. 版本和接口</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../0_Getting_started/003_%E6%A0%87%E5%87%86%E5%AE%89%E8%A3%85.html">4. 标准安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../0_Getting_started/004_%E7%94%A8%E4%BA%8ELinux%E7%9A%84Windows%E5%AD%90%E7%B3%BB%E7%BB%9F.html">5. 用于Linux的Windows子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../0_Getting_started/005_Julia_and_PyMAPDL.html">6. Julia 和 PyMAPDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../0_Getting_started/006_%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html">7. 常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../0_Getting_started/007_%E8%B4%A1%E7%8C%AE.html">8. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../0_Getting_started/008_%E5%88%9B%E5%BB%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84MAPDL%20docker%E5%AE%B9%E5%99%A8.html">9. 创建你自己的 MAPDL docker 容器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../0_Getting_started/009_%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%8A%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91.html">10. Develop on a container</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/100_intro.html">1. 用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/101_MAPDL%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8.html">2. MAPDL 初始设置和本地启动</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/102_PyMAPDL%E8%AF%AD%E6%B3%95%E5%92%8C%E7%94%A8%E6%B3%95.html">3. PyMAPDL 语法和用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/103_ANSYS_APDL%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%8E%A7%E5%88%B6%E7%A4%BA%E4%BE%8B.html">4. ANSYS APDL 交互式控制示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/104_%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BB%98%E5%9B%BE.html">5. 交互式绘图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/105_%E7%BD%91%E6%A0%BC%E5%92%8C%E5%87%A0%E4%BD%95.html">6. 网格和几何</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/106_%E5%90%8E%E5%A4%84%E7%90%86.html">7. 后处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/107_%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%A3%80%E7%B4%A2%E5%8F%82%E6%95%B0.html">8. 设置和检索参数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/108_%E8%AE%BF%E9%97%AEMAPDL%E6%95%B0%E6%8D%AE%E5%BA%93.html">9. 访问 MAPDL 数据库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/109_%E8%BD%AC%E6%8D%A2%E8%84%9A%E6%9C%AC.html">10. 转换脚本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/110_APDL_Math%E6%A6%82%E8%BF%B0.html">11. APDL Math 概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/111_%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAMAPDL%E5%AE%9E%E4%BE%8B%E6%B1%A0.html">12. 创建一个 MAPDL 实例池</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/112_%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%E6%A6%82%E8%BF%B0.html">13. 文件资源管理器概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/113_%E4%BD%BF%E7%94%A8Python%E7%BC%96%E5%86%99UPF%E5%AD%90%E7%A8%8B%E5%BA%8F.html">14. 使用 Python 编写 UPF 子程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/114_%E4%BD%BF%E7%94%A8Krylov%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E8%B0%90%E6%B3%A2%E5%88%86%E6%9E%90.html">15. 使用Krylov方法进行谐波分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_User_guide/115_PyMAPDL%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4.html">16. PyMAPDL 故障排除</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">MAPDL commands</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../2_MAPDL_commands/200_intro.html">MAPDL commands</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/201_Run_controls.html">Run controls</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/config.html">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/cwd.html">cwd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/exit.html">exit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/filname.html">filname</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/input.html">input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/keyw.html">keyw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/memm.html">memm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/nerr.html">nerr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/pause.html">pause</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/slashstatus.html">slashstatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/starstatus.html">starstatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/syp.html">syp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/sys.html">sys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/201_Run_controls/unpause.html">unpause</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../2_MAPDL_commands/202_Processor_entry/202_Processor_entry.html">Processor entry</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/202_Processor_entry/aux2.html">aux2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/202_Processor_entry/aux3.html">aux3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/202_Processor_entry/aux12.html">aux12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/202_Processor_entry/aux15.html">aux15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/202_Processor_entry/finish.html">finish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/202_Processor_entry/map.html">map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/202_Processor_entry/post1.html">post1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/202_Processor_entry/post26.html">post26</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/202_Processor_entry/prep7.html">prep7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/202_Processor_entry/quit.html">quit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/202_Processor_entry/slashsolu.html">slashsolu</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../2_MAPDL_commands/203_Files/203_Files.html">Files</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/203_Files/anstoaqwa.html">anstoaqwa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/203_Files/anstoasas.html">anstoasas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/203_Files/assign.html">assigin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/203_Files/copy.html">copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/203_Files/slashdelete.html">slashdelete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/203_Files/fcomp.html">fcomp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/203_Files/lgwrite.html">lgwrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/203_Files/starlist.html">starlist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/203_Files/slashclog.html">slashclog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/203_Files/slashfdele.html">slashfdele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/203_Files/rename.html">rename</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../2_MAPDL_commands/204_List_controls/204_List_controls.html">List controls</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/204_List_controls/com.html">com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/204_List_controls/golist.html">golist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/204_List_controls/gopr.html">gopr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/204_List_controls/nolist.html">nolist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/204_List_controls/nopr.html">nopr</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../2_MAPDL_commands/205_Setup/205_Setup.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/205_Setup/clear.html">clear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/205_Setup/resume.html">resume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/205_Setup/save.html">save</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/205_Setup/smbc.html">smbc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/205_Setup/stat.html">stat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/205_Setup/stitle.html">stitle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/205_Setup/title.html">title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/205_Setup/units.html">units</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../2_MAPDL_commands/206_Selecting/206_Selecting.html">Selecting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/206_Selecting/allsel.html">allsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/206_Selecting/asel.html">asel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/206_Selecting/asll.html">asll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/206_Selecting/aslv.html">aslv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/206_Selecting/dofsel.html">dofsel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/206_Selecting/esel.html">esel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/206_Selecting/esla.html">esla</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/206_Selecting/esll.html">esll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/206_Selecting/esln.html">esln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../2_MAPDL_commands/206_Selecting/eslv.html">eslv</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../300_intro.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../301_Commands_output/301_Commands_output.html">Commands output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../302_Database/302_Database.html">Database</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../302_Database/MapdlDb/MapdlDb.html">MapdlDb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../302_Database/DbElems/DbElems.html">DbElems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../302_Database/DbNodes/DbNodes.html">DbNodes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../303_Geometry/303_Geometry.html">Geometry</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../303_Geometry/Geometry/Geometry.html">Geometry</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../304_Helper_functions/304_Helper_functions.html">Helper functions</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../304_Helper_functions/concert_apdl_block.html">convert_apdl_block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../304_Helper_functions/concert_script.html">convert_script</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../305_Inline_functions/305_Inline_functions.html">Inline functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../306_KrylovSolver_module/306_KrylovSolver_module.html">KrylovSolver</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../307_Launcher/307_Launcher.html">Launcher</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../307_Launcher/get_default_ansys_path.html">get_default_ansys_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../307_Launcher/get_default_ansys_version.html">get_default_ansys_version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../307_Launcher/get_default_ansys.html">get_default_ansys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../307_Launcher/launch_mapdl.html">launch_mapdl</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../308_Logging/308_Logging.html">Logging</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../308_Logging/Logger/Logger.html">Logger</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../309_Mapdl_module.html">Mapdl module</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Mapdl.html">Mapdl methods and attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../311_Mesh/311_Mesh.html">Mesh</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../311_Mesh/MeshGrpc/MeshGrpc.html">MeshGrpc</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../312_Parameters/312_Parameters.html">Parameters</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../312_Parameters/Parameters/Parameters.html">Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../313_Plotting/313_Plotting.html">Plotting</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../314_Loacl_MAPDL_pool/314_Loacl_MAPDL_pool.html">Local MAPDL pool</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../314_Loacl_MAPDL_pool/LocalMapdlPool/LocalMapdlPool.html">LocalMapdlPool</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../315_PostProcessing_class/315_PostProcessing_class.html">PostProcessing class</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../315_PostProcessing_class/PostProcessing/PostProcessing.html">PostProcessing</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../316_Solution/316_Solution.html">Solution</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../316_Solution/Solution/Solution.html">Solution</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../317_Database_explorer/317_Database_explorer.html">Database explorer</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../317_Database_explorer/ansXpl/ansXpl.html">ansXpl</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../318_Buliding_an_example/318_Buliding_an_example.html">Building an example</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../319_Unit_Testing/319_Unit_Testing.html">Unit Testing</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../4_Examples/400_intro.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../4_Examples/401_Full_examples_using_PyMAPDL/401_0.html">使用 PyMAPDL 的完整示例</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../4_Examples/401_Full_examples_using_PyMAPDL/401_1.html">MAPDL 2D Plane Stress Concentration Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../4_Examples/401_Full_examples_using_PyMAPDL/401_2.html">2D Pressure Vessel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../4_Examples/401_Full_examples_using_PyMAPDL/401_3.html">3D Stress Concentration Analysis for a Notched Plate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../4_Examples/401_Full_examples_using_PyMAPDL/401_4.html">Basic Thermal Analysis with pyMAPDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../4_Examples/401_Full_examples_using_PyMAPDL/401_6.html">Basic DPF-Core Usage with PyMAPDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../4_Examples/401_Full_examples_using_PyMAPDL/401_7.html">Static simulation of double cantilever beam test via cohesive elements</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../4_Examples/401_Full_examples_using_PyMAPDL/401_8.html">Contact Element Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../4_Examples/401_Full_examples_using_PyMAPDL/401_9.html">Cyclic Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../4_Examples/401_Full_examples_using_PyMAPDL/401_10.html">Static Cyclic Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../4_Examples/401_Full_examples_using_PyMAPDL/401_12.html">Plotting and Mesh Access</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/doc/3_API_reference/309_Mapdl_module/Mapdl/modal_analysis.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>modal_analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">Parameters:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#returns">Returns:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Mapdl.modal_analysis"><code class="docutils literal notranslate"><span class="pre">Mapdl.modal_analysis()</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modal-analysis">
+<h1>modal_analysis<a class="headerlink" href="#modal-analysis" title="Permalink to this heading">#</a></h1>
+<section id="parameters">
+<h2>Parameters:<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h2>
+<dl class="simple myst">
+<dt>method : <em><code class="docutils literal notranslate"><span class="pre">str</span></code></em></dt><dd><p>Mode-extraction method to be used for the modal analysis. Defaults to lanb (block lanczos). Must be one of the following:<br />
+用于模态分析的模态提取方法。默认为 <code class="docutils literal notranslate"><span class="pre">'LANB'</span></code>（block lanczos）。必须是以下选项之一：</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>LANB : Block Lanczos</p></li>
+<li><p>LANPCG : PCG Lanczos</p></li>
+<li><p>SNODE : Supernode modal solver - 超节点模态求解器</p></li>
+<li><p>SUBSP : Subspace algorithm - 子空间算法</p></li>
+<li><p>UNSYM : Unsymmetric matrix - 非对称矩阵</p></li>
+<li><p>DAMP : Damped system - 阻尼系统</p></li>
+<li><p>QRDAMP : Damped system using QR algorithm</p></li>
+<li><p>VT : Variational Technology - 变分法</p></li>
+</ul>
+<dl class="simple myst">
+<dt>nmode : <em><code class="docutils literal notranslate"><span class="pre">int</span></code></em> , <em><code class="docutils literal notranslate"><span class="pre">optional</span></code></em></dt><dd><p>The number of modes to extract. The value can depend on the value supplied for <code class="docutils literal notranslate"><span class="pre">Method</span></code>. NMODE has no default and must be specified. If Method = LANB, LANPCG, or SNODE, the number of modes that can be extracted can equal the DOFs in the model after the application of all boundary conditions.<br />
+要提取的模态阶数。该值取决于为 <code class="docutils literal notranslate"><span class="pre">Method</span></code> 提供的值。NMODE 没有默认值，必须指定。如果 Method = LANB、LANPCG 或 SNODE，可提取的模态数可能等于应用所有边界条件后模型中的 DOF。</p>
+</dd>
+<dt>freqb : <em><code class="docutils literal notranslate"><span class="pre">float</span></code></em> , <em><code class="docutils literal notranslate"><span class="pre">optional</span></code></em></dt><dd><p>The beginning, or lower end, of the frequency range (or eigenvalue range if <code class="docutils literal notranslate"><span class="pre">'FREQMOD'</span></code> is specified) of interest.<br />
+感兴趣的频率范围（或特征值范围，如果指定了 <code class="docutils literal notranslate"><span class="pre">'FREQMOD'</span></code>）的起点或下限。<br />
+For Method = LANB, SUBSP, UNSYM, DAMP, and QRDAMP, FREQB also represents the first shift point for the eigenvalue iterations. For UNSYM and DAMP, the default = -1.0 For other methods, the default is calculated internally.<br />
+对于 Method = LANB、SUBSP、UNSYM、DAMP 和 QRDAMP，FREQB 还表示特征值迭代的第一个移动点。对于 UNSYM 和 DAMP，默认值 = -1.0 对于其他方法，默认值由内部计算得出。<br />
+Eigenvalue extraction is most accurate near the shift point. Multiple shift points are used internally in the LANB, SUBSP, UNSYM, and QRDAMP methods. For the LANB, LANPCG, SUBSP, UNSYM, DAMP, and QRDAMP methods with a positive FREQB value, eigenvalues are output beginning at the shift point and increase in magnitude. For the UNSYM and DAMP methods with a negative FREQB value, eigenvalues are output beginning at zero magnitude and increase.<br />
+特征值提取在移位点附近最为精确。LANB、SUBSP、UNSYM 和 QRDAMP 方法内部使用多个移位点。对于具有正 FREQB 值的 LANB、LANPCG、SUBSP、UNSYM、DAMP 和 QRDAMP 方法，特征值从偏移点开始输出，并逐渐增大。对于具有负 FREQB 值的 UNSYM 和 DAMP 方法，特征值从零幅度开始输出并增加。<br />
+Choosing higher FREQB values with the LANPCG and SNODE methods may lead to inefficient solution times because these methods will find all eigenvalues between zero and FREQB before finding the requested modes between FREQB and FREQE.<br />
+使用 LANPCG 和 SNODE 方法选择较高的 FREQB 值可能会导致求解时间效率低下，因为这些方法在找到 FREQB 和 FREQE 之间的所需模式之前，会先找到零和 FREQB 之间的所有特征值。</p>
+</dd>
+<dt>freqe : <em><code class="docutils literal notranslate"><span class="pre">float</span></code></em> , <em><code class="docutils literal notranslate"><span class="pre">optional</span></code></em></dt><dd><p>The ending, or upper end, of the frequency range of interest (in Hz). The default for <code class="docutils literal notranslate"><span class="pre">Method</span> <span class="pre">=</span> <span class="pre">'SNODE'</span></code> is described below. The default for all other methods is to calculate all modes, regardless of their maximum frequency.<br />
+相关频率范围的终点或上限（单位 Hz）。<code class="docutils literal notranslate"><span class="pre">Method</span> <span class="pre">=</span> <span class="pre">'SNODE'</span></code> 的默认值如下所述。所有其他方法的默认值是计算所有模式，无论其最大频率如何。<br />
+To maintain solution efficiency, do not set the FREQE value too high; for example, not higher than 5000 Hz for an industrial problem. The higher the FREQE value used for the SNODE method, the more accurate the solution and the more eigenvalues produced; however, the solution time also increases. For example, if FREQE is set to 1e8, it causes the underlying supernodal structures to find all possible eigenvalues of each group of supernodes, requiring excessive solution time. The accuracy of the SNODE solution is controlled by FREQE and by the RangeFact value on the SNOPTION command.<br />
+为保持求解效率，请勿将 FREQE 值设得过高；例如，工业问题的 FREQE 值不得高于 5000 Hz。SNODE 方法使用的 FREQE 值越高，解法越精确，产生的特征值越多；但是，解法时间也会增加。例如，如果将 FREQE 设为 1e8，就会导致底层超节点结构寻找每组超节点的所有可能特征值，从而耗费过多的求解时间。SNODE 求解的精度由 FREQE 和 SNOPTION 命令中的 RangeFact 值控制。</p>
+</dd>
+<dt>cpxmod : <em><code class="docutils literal notranslate"><span class="pre">str</span></code></em> , <em><code class="docutils literal notranslate"><span class="pre">optional</span></code></em></dt><dd><p>Complex eigenmode key. Valid only when <code class="docutils literal notranslate"><span class="pre">method='QRDAMP'</span></code> or <code class="docutils literal notranslate"><span class="pre">method='unsym'</span></code>.<br />
+复杂特征模态键。仅当 <code class="docutils literal notranslate"><span class="pre">method='QRDAMP'</span></code> 或 <code class="docutils literal notranslate"><span class="pre">method='unsym'</span></code> 时有效。</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>AUTO : Determine automatically if the eigensolutions are real or complex and output them accordingly. This is the default for <code class="docutils literal notranslate"><span class="pre">method='UNSYM'</span></code>. Not supported for <code class="docutils literal notranslate"><span class="pre">Method</span> <span class="pre">=</span> <span class="pre">'QRDAMP'</span></code>.<br />
+AUTO：自动判断等效解是实数还是复数，并据此输出。这是 <code class="docutils literal notranslate"><span class="pre">method='UNSYM'</span></code>的默认设置。不支持 <code class="docutils literal notranslate"><span class="pre">Method</span> <span class="pre">=</span> <span class="pre">'QRDAMP'</span></code>。</p></li>
+<li><p>ON or CPLX : Calculate and output complex eigenmode shapes.<br />
+ON 或 CPLX：计算并输出复特征模态振形。</p></li>
+<li><p>OFF or REAL : Do not calculate complex eigenmode shapes. This is required if a mode-superposition analysis is intended after the modal analysis for <code class="docutils literal notranslate"><span class="pre">Method</span> <span class="pre">=</span> <span class="pre">'QRDAMP'</span></code>. This is the default for this method.<br />
+OFF 或 REAL：不计算复特征模态振型。如果要在 <code class="docutils literal notranslate"><span class="pre">Method</span> <span class="pre">=</span> <span class="pre">'QRDAMP'</span></code> 的模态分析后进行模态叠加分析，则需要执行此操作。这是此方法的默认设置。</p></li>
+</ul>
+<dl class="simple myst">
+<dt>nrmkey : <em><code class="docutils literal notranslate"><span class="pre">bool</span></code></em> , <em><code class="docutils literal notranslate"><span class="pre">optional</span></code></em></dt><dd><p>Mode shape normalization key. When <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), normalize the mode shapes to the mass matrix. When <code class="docutils literal notranslate"><span class="pre">False</span></code>, Normalize the mode shapes to unity instead of to the mass matrix. If a subsequent spectrum or mode-superposition analysis is planned, the mode shapes should be normalized to the mass matrix.<br />
+模态振型归一化键。当 <code class="docutils literal notranslate"><span class="pre">True</span></code>（默认值）时，将模态振型归一化为质量矩阵。当 <code class="docutils literal notranslate"><span class="pre">False</span></code>（假）时，将模态振型归一化为统一值，而不是质量矩阵。如果计划随后进行谱分析或模态叠加分析，则应将模态振型归一化为质量矩阵。</p>
+</dd>
+<dt>modtype : <em><code class="docutils literal notranslate"><span class="pre">str</span></code></em> , <em><code class="docutils literal notranslate"><span class="pre">optional</span></code></em></dt><dd><p>Type of modes calculated by the eigensolver. Only applicable to the unsymmetric eigensolver.<br />
+特征分解器计算的模式类型。仅适用于非对称求解器。</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Blank : Right eigenmodes. This value is the default.<br />
+Blank ：右特征值。该值为默认值。</p></li>
+<li><p>BOTH : Right and left eigenmodes. The left eigenmodes are written to Jobname.LMODE. This option must be activated if a mode-superposition analysis is intended.<br />
+BOTH : 左右特征模态。左特征模态将写入 Jobname.LMODE。如果要进行模态叠加分析，则必须激活该选项。</p></li>
+</ul>
+<dl class="simple myst">
+<dt>memory_option : <em><code class="docutils literal notranslate"><span class="pre">str</span></code></em> , <em><code class="docutils literal notranslate"><span class="pre">optional</span></code></em></dt><dd><p>Memory allocation option: 内存分配选项：</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code> - Default Memory mode (默认内存模式)<br />
+Use the default memory allocation strategy for the sparse solver. The default strategy attempts to run in the <code class="docutils literal notranslate"><span class="pre">INCORE</span></code> memory mode. If there is not enough available physical memory when the solver starts to run in the <code class="docutils literal notranslate"><span class="pre">INCORE</span></code> memory mode, the solver will then attempt to run in the <code class="docutils literal notranslate"><span class="pre">OUTOFCORE</span></code> memory mode.<br />
+使用稀疏求解器的默认内存分配策略。默认策略会尝试在 “INCORE “内存模式下运行。如果求解器在 “INCORE “内存模式下开始运行时没有足够的可用物理内存，求解器将尝试在 “OUTOFCORE “内存模式下运行。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INCORE</span></code> - In-core memory mode (核心内存模式)<br />
+Use a memory allocation strategy in the sparse solver that will attempt to obtain enough memory to run with the entire factorized matrix in memory. This option uses the most amount of memory and should avoid doing any I/O. By avoiding I/O, this option achieves optimal solver performance. However, a significant amount of memory is required to run in this mode, and it is only recommended on machines with a large amount of memory. If the allocation for in-core memory fails, the solver will automatically revert to out-of-core memory mode.<br />
+在稀疏求解器中使用内存分配策略，尝试获取足够的内存，以便在内存中运行整个因式分解矩阵。该选项使用的内存最多，并应避免执行任何 I/O。通过避免 I/O，该选项可以获得最佳的求解性能。不过，在此模式下运行需要大量内存，因此只建议在内存较大的机器上使用。如果内核内存分配失败，求解器将自动恢复到外核内存模式。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OUTOFCORE</span></code> - Out-of-core memory mode. (外核内存模式)<br />
+Use a memory allocation strategy in the sparse solver that will attempt to allocate only enough work space to factor each individual frontal matrix in memory, but will store the entire factorized matrix on disk. Typically, this memory mode results in poor performance due to the potential bottleneck caused by the I/O to the various files written by the solver.<br />
+在稀疏求解器中使用内存分配策略，尝试只分配足够的工作空间在内存中对每个单独的正面矩阵进行因式分解，但将整个因式分解后的矩阵存储在磁盘上。通常情况下，这种内存模式会导致性能低下，因为求解器写入的各种文件的 I/O 可能会造成瓶颈。</p></li>
+</ul>
+<dl class="simple myst">
+<dt>mxpand : <em><code class="docutils literal notranslate"><span class="pre">int</span></code></em> , <em><code class="docutils literal notranslate"><span class="pre">optional</span></code></em></dt><dd><p>Number of modes or array name (enclosed in percent signs) to expand and write. If -1, do not expand and do not write modes to the results file during the analysis. Default <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>.<br />
+要展开和写入的模态阶数或数组名（用百分号括起来）。如果为-1，则在分析过程中不展开也不向结果文件写入模态。默认值为 <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>。</p>
+</dd>
+<dt>elcalc : <em><code class="docutils literal notranslate"><span class="pre">bool</span></code></em> , <em><code class="docutils literal notranslate"><span class="pre">optional</span></code></em></dt><dd><p>Calculate element results, reaction forces, energies, and the nodal degree of freedom solution. Default <code class="docutils literal notranslate"><span class="pre">False</span></code>.<br />
+计算元素结果、反作用力、能量和节点自由度解。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns:<a class="headerlink" href="#returns" title="Permalink to this heading">#</a></h2>
+<dl class="simple myst">
+<dt><code class="docutils literal notranslate"><span class="pre">str</span></code></dt><dd><p>Output from MAPDL SOLVE command.</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading">#</a></h2>
+<p>For models that involve a non-symmetric element stiffness matrix, as in the case of a contact element with frictional contact, the QRDAMP eigensolver (MODOPT, QRDAMP) extracts modes in the modal subspace formed by the eigenmodes from the symmetrized eigenproblem. The QRDAMP eigensolver symmetrizes the element stiffness matrix on the first pass of the eigensolution, and in the second pass, eigenmodes are extracted in the modal subspace of the first eigensolution pass. For such non- symmetric eigenproblems, you should verify the eigenvalue and eigenmode results using the non-symmetric matrix eigensolver (MODOPT,UNSYM).<br />
+对于涉及非对称元素刚度矩阵的模型，如具有摩擦接触的接触元素，QRDAMP 特征求解器（MODOPT，QRDAMP）从对称特征问题的特征模形成的模态子空间中提取模态。QRDAMP 特征求解器在第一轮特征求解中对称元素刚度矩阵，在第二轮特征求解中，在第一轮特征求解的模态子空间中提取特征模态。对于此类非对称特征问题，应使用非对称矩阵特征分解器（MODOPT,UNSYM）验证特征值和特征模态结果。</p>
+<p>The DAMP and QRDAMP options cannot be followed by a subsequent spectrum analysis. The UNSYM method supports spectrum analysis when eigensolutions are real.<br />
+DAMP 和 QRDAMP 选项之后不能再进行频谱分析。当等效解为实数时，UNSYM 方法支持频谱分析。</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
+<p>Modal analysis using default parameters for the first 6 modes<br />
+使用默认参数对前 6 个模态进行模态分析</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapdl</span><span class="o">.</span><span class="n">modal_analysis</span><span class="p">(</span><span class="n">nmode</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<dl class="py method">
+<dt class="sig sig-object py" id="Mapdl.modal_analysis">
+<span class="sig-prename descclassname"><span class="pre">Mapdl.</span></span><span class="sig-name descname"><span class="pre">modal_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lanb'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpxmod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrmkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mxpand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elcalc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Mapdl.modal_analysis" title="Permalink to this definition">#</a></dt>
+<dd><p>Run a modal with basic settings analysis.(<code class="docutils literal notranslate"><span class="pre">*MODOPT</span></code>)<br />
+运行模态，进行基本设置分析。(<code class="docutils literal notranslate"><span class="pre">*MODOPT</span></code>)</p>
+</dd></dl>
+
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./doc\3_API_reference\309_Mapdl_module\Mapdl"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">Parameters:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#returns">Returns:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Mapdl.modal_analysis"><code class="docutils literal notranslate"><span class="pre">Mapdl.modal_analysis()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ff-郑州大学
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright  (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

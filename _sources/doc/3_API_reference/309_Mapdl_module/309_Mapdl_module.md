@@ -162,17 +162,17 @@ mapdl = pymapdl.Mapdl(channel=channel)
 | {doc}`Information.products <../309_Mapdl_module/Information/products>` | Retrieve the products from the MAPDL instance. | 从 MAPDL 实例中读取产品。 |
 | {doc}`Information.preprocessing_capabilities <../309_Mapdl_module/Information/preprocessing_capabilities>` | Retrieve the preprocessing capabilities from the MAPDL instance. | 从 MAPDL 实例读取 preprocessing 功能。 |
 | {doc}`Information.aux_capabilities <../309_Mapdl_module/Information/aux_capabilities>` | Retrieve the aux capabilities from the MAPDL instance. | 从 MAPDL 实例读取 aux 功能。 |
-| {doc}`Information.solution_options <../309_Mapdl_module/Information/solution_options >` | Retrieve the solution options from the MAPDL instance. | 从 MAPDL 实例中读取 solution 选项。 |
+| {doc}`Information.solution_options <../309_Mapdl_module/Information/solution_options>` | Retrieve the solution options from the MAPDL instance. | 从 MAPDL 实例中读取 solution 选项。 |
 | {doc}`Information.post_capabilities <../309_Mapdl_module/Information/post_capabilities>` | Retrieve the post capabilities from the MAPDL instance. | 从 MAPDL 实例中读取 post 功能。 |
 | {doc}`Information.title <../309_Mapdl_module/Information/title>` | Retrieve and set the title from the MAPDL instance. | 从 MAPDL 实例中读取并设置标题。 |
 | {doc}`Information.titles <../309_Mapdl_module/Information/titles>` | Retrieve the titles from the MAPDL instance. | 从 MAPDL 实例中读取标题。 |
 | {doc}`Information.stitles <../309_Mapdl_module/Information/stitles>` | Retrieve or set the value for the MAPDL stitle (subtitles). | 读取或设置 MAPDL 子标题的值。 |
 | {doc}`Information.units <../309_Mapdl_module/Information/units>` | Retrieve the units from the MAPDL instance. | 从 MAPDL 实例中读取单位制。 |
 | {doc}`Information.scratch_memory_status <../309_Mapdl_module/Information/scratch_memory_status>` | Retrieve the scratch memory status from the MAPDL instance. | 从 MAPDL 实例读取 scratch memory（暂存内存） 状态。 |
-| {doc}`Information.database_status <../309_Mapdl_module/Information/database_status >` | Retrieve the database status from the MAPDL instance. | 从 MAPDL 实例读取数据库状态。 |
+| {doc}`Information.database_status <../309_Mapdl_module/Information/database_status>` | Retrieve the database status from the MAPDL instance. | 从 MAPDL 实例读取数据库状态。 |
 | {doc}`Information.config_values <../309_Mapdl_module/Information/config_values>` | Retrieve the config values from the MAPDL instance. | 从 MAPDL 实例中读取配置值。 |
 | {doc}`Information.global_status <../309_Mapdl_module/Information/global_status>` | Retrieve the global status from the MAPDL instance. | 从 MAPDL 实例读取全局状态。 |
-| {doc}`Information.job_information <../309_Mapdl_module/Information/job_information >` | Retrieve the job information from the MAPDL instance. | 从 MAPDL 实例中读取 job 信息。 |
+| {doc}`Information.job_information <../309_Mapdl_module/Information/job_information>` | Retrieve the job information from the MAPDL instance. | 从 MAPDL 实例中读取 job 信息。 |
 | {doc}`Information.model_information <../309_Mapdl_module/Information/model_information>` | Retrieve the model information from the MAPDL instance. | 从 MAPDL 实例中读取模型信息。 |
 | {doc}`Information.boundary_condition_information <../309_Mapdl_module/Information/boundary_condition_information>` | Retrieve the boundary condition information from the MAPDL instance. | 从 MAPDL 实例中读取边界条件信息。 |
 | {doc}`Information.routine_information <../309_Mapdl_module/Information/routine_information>` | Retrieve the routine information from the MAPDL instance. | 从 MAPDL 实例中读取例程信息。 |
